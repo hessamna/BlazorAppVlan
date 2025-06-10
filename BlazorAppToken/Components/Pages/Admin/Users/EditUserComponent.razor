@@ -1,0 +1,48 @@
+﻿@using BlazorApptToken.Datas
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+
+<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <InputText id="email" class="form-control" @bind-Value="Model.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <InputText id="fullName" class="form-control" @bind-Value="Model.FullName" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</EditForm>
+
+@code {
+    [Parameter] public Guid UserId { get; set; }
+    [Parameter] public EventCallback OnSaved { get; set; }
+
+    private ApplicationUser Model = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await UserManager.FindByIdAsync(UserId.ToString());
+        if (user != null)
+        {
+            Model = user;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var user = await UserManager.FindByIdAsync(UserId.ToString());
+        if (user != null)
+        {
+            user.Email = Model.Email;
+            user.FullName = Model.FullName;
+            await UserManager.UpdateAsync(user);
+            await OnSaved.InvokeAsync();
+        }
+    }
+}

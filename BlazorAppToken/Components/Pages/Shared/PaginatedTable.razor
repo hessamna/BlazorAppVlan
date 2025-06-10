@@ -1,0 +1,91 @@
+﻿@typeparam TItem
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            @HeaderTemplate
+        </thead>
+        <tbody>
+            @if (PagedItems.Any())
+            {
+                @foreach (var item in PagedItems)
+                {
+                    @RowTemplate(item)
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="100%" class="text-center text-muted">No data available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(CurrentPage == 1 ? "disabled" : "")">
+                <button class="page-link" @onclick="PreviousPage">Previous</button>
+            </li>
+            @for (int i = 1; i <= TotalPages; i++)
+            {
+                var index = i;
+          
+                <li class="page-item @(index == CurrentPage ? "active" : "")">
+                    <button class="page-link" @onclick="@(() => GoToPage(index))">@index</button>
+                </li>
+            }
+            <li class="page-item @(CurrentPage == TotalPages ? "disabled" : "")">
+                <button class="page-link" @onclick="NextPage">Next</button>
+            </li>
+        </ul>
+    </nav>
+}
+
+@code {
+    [Parameter] public List<TItem> Items { get; set; } = new();
+    [Parameter] public int ItemsPerPage { get; set; } = 10;
+    [Parameter] public RenderFragment HeaderTemplate { get; set; }
+    [Parameter] public RenderFragment<TItem> RowTemplate { get; set; }
+
+    private int CurrentPage { get; set; } = 1;
+
+    private List<TItem> PagedItems =>
+        Items.Skip((CurrentPage - 1) * ItemsPerPage)
+             .Take(ItemsPerPage)
+             .ToList();
+
+    private int TotalPages => Items is not null && Items.Count > 0
+       ? (int)Math.Ceiling(Items.Count / (double)ItemsPerPage)
+       : 1;
+
+    private void GoToPage(int page)
+    {
+        if (page >= 1 && page <= TotalPages)
+        {
+            CurrentPage = page;
+            StateHasChanged();
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (CurrentPage > 1)
+        {
+            CurrentPage--;
+            StateHasChanged();
+        }
+    }
+
+    private void NextPage()
+    {
+        if (CurrentPage < TotalPages)
+        {
+            CurrentPage++;
+            StateHasChanged();
+        }
+    }
+}

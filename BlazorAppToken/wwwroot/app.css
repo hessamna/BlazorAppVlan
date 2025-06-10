@@ -1,0 +1,240 @@
+﻿/* ==============================================
+   استایل‌های عمومی
+   ============================================== */
+html, body {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f8;
+    color: #333;
+    overflow-x: hidden; /* حذف اسکرول افقی */
+}
+
+a, .btn-link {
+    color: #006bb7;
+    text-decoration: none;
+}
+
+    a:hover, .btn-link:hover {
+        color: #004a8f;
+        text-decoration: underline;
+    }
+
+/* دکمه‌ها */
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #145094;
+        border-color: #103d7a;
+    }
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* هدرها و محتوا */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+    h1:focus {
+        outline: none;
+    }
+
+.content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+/* اعتبارسنجی */
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050 !important;
+}
+
+.invalid {
+    outline: 1px solid #e50000 !important;
+}
+
+.validation-message {
+    color: #e50000;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* پیام خطای بلزر */
+.blazor-error-boundary {
+    background-color: #b32121;
+    color: white;
+    padding: 1rem 1rem 1rem 3.7rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+    .blazor-error-boundary::after {
+        content: "یک خطا رخ داده است.";
+        display: block;
+        margin-top: 0.5rem;
+        font-weight: bold;
+    }
+
+/* ==============================================
+   Sidebar – سبک ChatGPT
+   ============================================== */
+.sidebar {
+    width: 320px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #f7f7f8;
+    border-right: 1px solid #e0e0e0; /* مرز چسبیده به سمت راست */
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    direction: rtl; /* ← برای جابجایی اسکرول‌بار به چپ */
+    text-align: left; /* ← برای حفظ چیدمان متن به چپ */
+}
+    .sidebar * {
+        direction: ltr; /* ← برای جلوگیری از وارونگی آیکون‌ها و متن داخلی */
+    }
+/* هدر درون سایدبار */
+.sidebar-section-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem 1.25rem;
+}
+
+/* آیتم‌های سایدبار */
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    color: #2f2f2f;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.25rem;
+    margin: 0.25rem 0;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+        background-color: #e4e4e7;
+        color: #000;
+    }
+
+    /* آیکون در منو */
+    .sidebar .nav-link span.bi {
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+    }
+
+    /* آیتم تو رفته */
+    .sidebar .nav-link.ps-4 {
+        padding-left: 2rem !important;
+    }
+
+/* فاصله آیتم‌ها */
+.sidebar .nav-item {
+    margin-bottom: 0.2rem;
+}
+
+/* موبایل */
+@media (max-width: 991.98px) {
+    .sidebar {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 56px);
+        z-index: 1040;
+        background: #f7f7f8;
+        transform: translateX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+}
+
+/* Main Content */
+main {
+    margin-left: 320px;
+    padding: 2rem;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+/* جدول‌ها */
+table.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    table.table th,
+    table.table td {
+        padding: 0.75rem 1rem;
+        border-top: 1px solid #dee2e6;
+    }
+
+    table.table thead th {
+        background-color: #f1f2f6;
+        border-bottom: 2px solid #dfe4ea;
+    }
+
+    table.table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+/* فرم‌ها */
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-control {
+    border: 1px solid #ced6e0;
+    border-radius: 0.25rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+    .form-control:focus {
+        border-color: #1b6ec2;
+    }
+
+button.btn {
+    border-radius: 0.25rem;
+}
+
+/* فضاگذاری و ظاهر عمومی */
+.p-4 {
+    padding: 1.5rem !important;
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}

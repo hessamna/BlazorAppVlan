@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+<div class="page d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar bg-light border-end shadow-sm">
+        <NavMenu />
+    </div>
+
+    <!-- Main content area -->
+    <main class="flex-grow-1 bg-white">
+        <!-- Top bar -->
+       
+        
+        <!-- Page body -->
+        <article class="content px-4 py-3 bg-white">
+            @Body
+        </article>
+    </main>
+</div>
+
+<!-- Error UI -->
+<div id="blazor-error-ui">
+    خطایی غیرمنتظره رخ داده است.
+    <a href="" class="reload">بارگذاری مجدد</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+<style>
+    .page {
+        height: 100vh;
+        background-color: #f8f9fa;
+    }
+
+    .sidebar {
+        width: 260px;
+        height: 100vh;
+        background-color: #f8f9fa;
+    }
+
+    .top-row {
+        height: 64px;
+        background-color: #f8f9fa;
+    }
+
+    .dropdown .dropdown-toggle {
+        cursor: pointer;
+    }
+
+    .content {
+        min-height: calc(100vh - 64px);
+        background-color: #ffffff;
+    }
+
+    #blazor-error-ui {
+        display: none;
+    }
+</style>
+

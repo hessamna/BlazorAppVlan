@@ -1,0 +1,60 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using BlazorApptToken.Datas
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@inject NavigationManager Nav
+
+<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <InputText class="form-control" @bind-Value="Model.FullName" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="Model.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <InputText type="password" class="form-control" @bind-Value="Model.Password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Create User</button>
+</EditForm>
+
+@code {
+    [Parameter] public EventCallback OnSaved { get; set; }
+
+    private CreateUserModel Model = new();
+
+    private async Task HandleValidSubmit()
+    {
+        var user = new ApplicationUser
+            {
+                UserName = Model.Email,
+                Email = Model.Email,
+                FullName = Model.FullName
+            };
+
+        var result = await UserManager.CreateAsync(user, Model.Password);
+        if (result.Succeeded)
+        {
+            await OnSaved.InvokeAsync();
+        }
+        else
+        {
+            // Handle errors
+        }
+    }
+
+    public class CreateUserModel
+    {
+        [Required] public string FullName { get; set; }
+        [Required][EmailAddress] public string Email { get; set; }
+        [Required] public string Password { get; set; }
+    }
+}

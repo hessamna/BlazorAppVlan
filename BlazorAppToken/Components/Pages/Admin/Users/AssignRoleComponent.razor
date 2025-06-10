@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BlazorApptToken.Datas
+@inject UserManager<ApplicationUser> UserManager
+@inject RoleManager<ApplicationRole> RoleManager
+@inject NavigationManager NavigationManager
+
+<div>
+    <h5>Assign Role</h5>
+
+    @if (IsLoading)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <EditForm Model="this" OnValidSubmit="HandleAssignRole">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-3">
+                <label for="roleSelect" class="form-label">Select Role</label>
+                <InputSelect id="roleSelect" class="form-select" @bind-Value="SelectedRole">
+                    <option value="">-- Choose Role --</option>
+                    @foreach (var role in AvailableRoles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter] public Guid UserId { get; set; }
+    [Parameter] public EventCallback OnSaved { get; set; }
+
+    private List<string> AvailableRoles = new();
+    private string SelectedRole;
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoles();
+        IsLoading = false;
+    }
+
+    private async Task LoadRoles()
+    {
+        AvailableRoles = RoleManager.Roles.Select(r => r.Name).ToList();
+
+        var user = await UserManager.FindByIdAsync(UserId.ToString());
+        if (user != null)
+        {
+            var roles = await UserManager.GetRolesAsync(user);
+            SelectedRole = roles.FirstOrDefault();
+        }
+    }
+
+    private async Task HandleAssignRole()
+    {
+        var user = await UserManager.FindByIdAsync(UserId.ToString());
+        if (user == null || string.IsNullOrWhiteSpace(SelectedRole)) return;
+
+        var currentRoles = await UserManager.GetRolesAsync(user);
+        await UserManager.RemoveFromRolesAsync(user, currentRoles);
+        await UserManager.AddToRoleAsync(user, SelectedRole);
+
+        await OnSaved.InvokeAsync();
+    }
+}

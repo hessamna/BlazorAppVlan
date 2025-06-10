@@ -1,0 +1,105 @@
+﻿@page "/admin/users/roles"
+@using BlazorApptToken.Datas
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@attribute [Authorize]
+@rendermode InteractiveServer
+@inject RoleManager<ApplicationRole> RoleManager
+@inject NavigationManager Navigation
+
+<PageTitle>Roles</PageTitle>
+
+<h3 class="mb-4">🔐 Role Management</h3>
+
+<div class="mb-3">
+    <input @bind="newRoleName" class="form-control w-50 d-inline-block me-2" placeholder="New Role Name" />
+    <button class="btn btn-primary" @onclick="CreateRole">➕ Add Role</button>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <div class="alert alert-info">@message</div>
+}
+
+<table class="table table-bordered table-striped table-hover w-75">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Role Name</th>
+            <th>Normalized Name</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roles.Count == 0)
+        {
+            <tr>
+                <td colspan="4" class="text-center">No roles defined.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var role in roles)
+            {
+                <tr>
+                    <td>@(++index)</td>
+                    <td>@role.Name</td>
+                    <td>@role.NormalizedName</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-danger" @onclick="() => DeleteRole(role)">🗑️ Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    private string newRoleName = string.Empty;
+    private string? message;
+    private List<ApplicationRole> roles = new();
+    private int index = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoles();
+    }
+
+    private async Task LoadRoles()
+    {
+        roles = RoleManager.Roles.ToList();
+        index = 0;
+    }
+
+    private async Task CreateRole()
+    {
+        if (!string.IsNullOrWhiteSpace(newRoleName))
+        {
+            var result = await RoleManager.CreateAsync(new ApplicationRole { Name = newRoleName });
+            if (result.Succeeded)
+            {
+                message = $"Role '{newRoleName}' created.";
+                newRoleName = string.Empty;
+                await LoadRoles();
+            }
+            else
+            {
+                message = string.Join(", ", result.Errors.Select(e => e.Description));
+            }
+        }
+    }
+
+    private async Task DeleteRole(ApplicationRole role)
+    {
+        var result = await RoleManager.DeleteAsync(role);
+        if (result.Succeeded)
+        {
+            message = $"Role '{role.Name}' deleted.";
+            await LoadRoles();
+        }
+        else
+        {
+            message = string.Join(", ", result.Errors.Select(e => e.Description));
+        }
+    }
+}

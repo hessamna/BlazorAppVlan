@@ -1,0 +1,174 @@
+﻿@page "/admin/users/adminusers"
+@using BlazorApptToken.Components.Pages.Shared
+@using BlazorApptToken.Datas
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@attribute [Authorize]
+@rendermode InteractiveServer
+@inject UserManager<ApplicationUser> UserManager
+@inject RoleManager<ApplicationRole> RoleManager
+@inject NavigationManager Nav
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h3 class="mb-4">User Management</h3>
+
+<div class="mb-3 text-end">
+    <button class="btn btn-success" @onclick="ShowCreateModal">➕ Create New User</button>
+</div>
+
+<PaginatedTable TItem="UserViewModel"
+                Items="Users"
+              
+                ItemsPerPage="10"
+                >
+    <HeaderTemplate>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th class="text-center">Actions</th>
+    </HeaderTemplate>
+    <RowTemplate>
+        <tr>
+            <td>@context.Email</td>
+            <td>@context.FullName</td>
+            <td>@context.Role</td>
+            <td>
+                @if (context.IsActive)
+                {
+                    <span class="badge bg-success">Active</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Inactive</span>
+                }
+            </td>
+            <td class="text-center">
+                <button class="btn btn-sm btn-outline-primary me-1" @onclick="() => ShowEditModal(context.Id)">✏️ Edit</button>
+                <button class="btn btn-sm btn-outline-warning me-1" @onclick="() => ShowChangePasswordModal(context.Id)">🔑 Password</button>
+                <button class="btn btn-sm btn-outline-info me-1" @onclick="() => ShowRoleModal(context.Id)">🎭 Role</button>
+                <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteUser(context.Id)">🗑 Delete</button>
+            </td>
+        </tr>
+    </RowTemplate>
+</PaginatedTable>
+
+@if (ShowModal)
+{
+    <Modal Title="@ModalTitle" OnClose="CloseModal">
+        @if (ModalType == "edit")
+        {
+            <EditUserComponent UserId="SelectedUserId" OnSaved="ReloadUsers" />
+        }
+        else if (ModalType == "password")
+        {
+            <ChangePasswordComponent UserId="SelectedUserId" OnSaved="ReloadUsers" />
+        }
+        else if (ModalType == "create")
+        {
+            <CreateUserComponent OnSaved="ReloadUsers" />
+        }
+        else if (ModalType == "role")
+        {
+            <AssignRoleComponent UserId="SelectedUserId" OnSaved="ReloadUsers" />
+        }
+    </Modal>
+}
+
+@code {
+    private List<UserViewModel> Users = new();
+
+    private int PageSize = 10;
+    private int CurrentPage = 1;
+    private bool ShowModal;
+    private string ModalType;
+    private string ModalTitle;
+    private Guid SelectedUserId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        var allUsers = UserManager.Users.ToList();
+        Users = new();
+
+        foreach (var user in allUsers)
+        {
+            var roles = await UserManager.GetRolesAsync(user);
+            Users.Add(new UserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FullName = user.FullName,
+                Role = roles.FirstOrDefault() ?? "None",
+                IsActive = user.LockoutEnd == null || user.LockoutEnd <= DateTimeOffset.UtcNow
+            });
+        }
+    }
+
+ 
+
+    private void ShowEditModal(Guid userId)
+    {
+        SelectedUserId = userId;
+        ModalTitle = "Edit User";
+        ModalType = "edit";
+        ShowModal = true;
+    }
+
+    private void ShowChangePasswordModal(Guid userId)
+    {
+        SelectedUserId = userId;
+        ModalTitle = "Change Password";
+        ModalType = "password";
+        ShowModal = true;
+    }
+
+    private void ShowCreateModal()
+    {
+        ModalTitle = "Create New User";
+        ModalType = "create";
+        ShowModal = true;
+    }
+
+    private void ShowRoleModal(Guid userId)
+    {
+        SelectedUserId = userId;
+        ModalTitle = "Assign Role";
+        ModalType = "role";
+        ShowModal = true;
+    }
+
+    private async Task DeleteUser(Guid userId)
+    {
+        var user = await UserManager.FindByIdAsync(userId.ToString());
+        if (user != null)
+        {
+            await UserManager.DeleteAsync(user);
+        }
+        await LoadUsers();
+    }
+
+    private async Task ReloadUsers()
+    {
+        ShowModal = false;
+        await LoadUsers();
+    }
+
+    private void CloseModal()
+    {
+        ShowModal = false;
+    }
+
+    public class UserViewModel
+    {
+        public Guid Id { get; set; }
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public string Role { get; set; }
+        public bool IsActive { get; set; }
+    }
+}
