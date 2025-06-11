@@ -28,18 +28,28 @@
     <nav>
         <ul class="pagination justify-content-center">
             <li class="page-item @(CurrentPage == 1 ? "disabled" : "")">
-                <button class="page-link" @onclick="PreviousPage">Previous</button>
+                <button class="page-link" @onclick="() => GoToPage(1)">اول</button>
             </li>
-            @for (int i = 1; i <= TotalPages; i++)
+
+            @if (StartPage > 2)
             {
-                var index = i;
-          
-                <li class="page-item @(index == CurrentPage ? "active" : "")">
-                    <button class="page-link" @onclick="@(() => GoToPage(index))">@index</button>
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+            }
+
+            @foreach (var page in PagesToShow)
+            {
+                <li class="page-item @(page == CurrentPage ? "active" : "")">
+                    <button class="page-link" @onclick="() => GoToPage(page)">@(page)</button>
                 </li>
             }
+
+            @if (EndPage < TotalPages - 1)
+            {
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+            }
+
             <li class="page-item @(CurrentPage == TotalPages ? "disabled" : "")">
-                <button class="page-link" @onclick="NextPage">Next</button>
+                <button class="page-link" @onclick="() => GoToPage(TotalPages)">آخر</button>
             </li>
         </ul>
     </nav>
@@ -50,7 +60,11 @@
     [Parameter] public int ItemsPerPage { get; set; } = 10;
     [Parameter] public RenderFragment HeaderTemplate { get; set; }
     [Parameter] public RenderFragment<TItem> RowTemplate { get; set; }
+    private int MaxVisiblePages = 7; // تعداد دکمه‌های وسط (مثلا 7 صفحه نمایش داده شود)
 
+    private int StartPage;
+    private int EndPage;
+    private List<int> PagesToShow = new();
     private int CurrentPage { get; set; } = 1;
 
     private List<TItem> PagedItems =>
@@ -62,14 +76,7 @@
        ? (int)Math.Ceiling(Items.Count / (double)ItemsPerPage)
        : 1;
 
-    private void GoToPage(int page)
-    {
-        if (page >= 1 && page <= TotalPages)
-        {
-            CurrentPage = page;
-            StateHasChanged();
-        }
-    }
+
 
     private void PreviousPage()
     {
@@ -88,4 +95,65 @@
             StateHasChanged();
         }
     }
+
+
+    private void UpdatePageRange()
+    {
+        if (TotalPages <= MaxVisiblePages)
+        {
+            // همه صفحات را نمایش بده
+            StartPage = 1;
+            EndPage = TotalPages;
+        }
+        else
+        {
+            // می‌خواهیم وسط صفحه فعلی 7 دکمه نمایش دهیم
+            int half = MaxVisiblePages / 2;
+
+            StartPage = CurrentPage - half;
+            EndPage = CurrentPage + half;
+
+            // اگر شروع کمتر از 1 شد جبران کن
+            if (StartPage < 1)
+            {
+                EndPage += (1 - StartPage);
+                StartPage = 1;
+            }
+
+            // اگر پایان بیشتر از تعداد صفحات شد جبران کن
+            if (EndPage > TotalPages)
+            {
+                StartPage -= (EndPage - TotalPages);
+                EndPage = TotalPages;
+            }
+
+            // اطمینان از اینکه شروع کمتر از 1 نشود
+            if (StartPage < 1)
+            {
+                StartPage = 1;
+            }
+        }
+
+        PagesToShow = Enumerable.Range(StartPage, EndPage - StartPage + 1).ToList();
+    }
+
+    protected override void OnParametersSet()
+    {
+        UpdatePageRange();
+    }
+
+    private void GoToPage(int page)
+    {
+        if (page < 1) page = 1;
+        if (page > TotalPages) page = TotalPages;
+
+        if (CurrentPage != page)
+        {
+            CurrentPage = page;
+            UpdatePageRange();
+            StateHasChanged();
+        }
+    }
+
+
 }
