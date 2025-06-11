@@ -70,7 +70,7 @@ builder.Services.AddScoped<TokenTransferService>();
 builder.Services.AddScoped<MultiSigApprovalService>();
 builder.Services.AddScoped<BurnRecordService>();
 // 🔹 Add MVC Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 // 🔹 Blazor Server
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();

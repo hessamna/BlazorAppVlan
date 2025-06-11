@@ -1,4 +1,6 @@
-﻿@implements IDisposable
+﻿@using BlazorApptToken.Datas
+@using Microsoft.AspNetCore.Identity
+@implements IDisposable
 @inject NavigationManager NavigationManager
 
 <div class="sidebar bg-light d-flex flex-column shadow-sm"
@@ -8,74 +10,74 @@
         <a href="/" class="text-decoration-none text-dark fw-semibold fs-5">🧠 Blockchain</a>
     </div>
 
-    <div class="sidebar-body flex-grow-1 overflow-auto" style="direction: ltr;">
+    <div class="sidebar-body flex-grow overflow-auto" style="direction: ltr;">
         <ul class="nav flex-column small">
             <!-- COMMON -->
             <li class="nav-item px-3 pt-3 text-muted text-uppercase small">Common</li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/">🏠 Dashboard</NavLink>
             </li>
 
             <!-- ADMIN -->
             <li class="nav-item px-3 pt-4 text-muted text-uppercase small">Admin</li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/companies/companylist">🏢 Company Management</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/holdings/holdingsettings">🏦 Holdings</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/kyc/kycrequests">📁 KYC Requests</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/tokengeneration">🧬 Token Generation</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/tokenreleaseRequests">🔓 Release Requests</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/tokenburn">🔥 Burn Token</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/tokenallocation">🎯 Token Allocation</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/tokenreleaseRequests">✅ Transaction Approval</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/token/smartcontracts">📜 Smart Contracts</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/system-settings">⚙️ System Settings</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/audit-logs">📊 Reports & Audit</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/users/adminusers">🧑‍💼 Manage Users</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/admin/users/roles">🔐 Manage Roles</NavLink>
             </li>
 
             <!-- USER -->
             <li class="nav-item px-3 pt-4 text-muted text-uppercase small">User</li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/wallet">👛 Wallet</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/transfer">🔁 Token Transfer</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/multi-sign">🧾 Multi-Signature</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/transactions">📄 Transaction History</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/profile">👤 Profile</NavLink>
             </li>
-            <li class="nav-item px-3 py-1">
+            <li class="nav-item px-3 ">
                 <NavLink class="nav-link text-dark" href="/support">💬 Support</NavLink>
             </li>
         </ul>
@@ -87,8 +89,8 @@
             <div class="sidebar-footer border-top p-3 small" style="direction: ltr;">
                 <div class="text-muted">Signed in as</div>
                 <div class="fw-normal">@context.User.Identity?.Name</div>
-                <form method="post" action="Account/Logout">
-                    <AntiforgeryToken />
+                <form method="post" action="/Account/Logout">
+                    <input name="__RequestVerificationToken" type="hidden" value="@antiforgeryToken" />
                     <input type="hidden" name="ReturnUrl" value="@currentUrl" />
                     <button class="btn btn-sm btn-outline-secondary w-100 mt-2">Logout</button>
                 </form>
@@ -96,14 +98,23 @@
         </Authorized>
     </AuthorizeView>
 </div>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject NavigationManager NavigationManager
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@inject IHttpContextAccessor HttpContextAccessor
 
 @code {
+    private string? antiforgeryToken;
     private string? currentUrl;
-
+    
     protected override void OnInitialized()
     {
         currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
         NavigationManager.LocationChanged += OnLocationChanged;
+
+        var tokens = Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext);
+        antiforgeryToken = tokens.RequestToken;
+
     }
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
@@ -111,7 +122,7 @@
         currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
         StateHasChanged();
     }
-
+ 
     public void Dispose()
     {
         NavigationManager.LocationChanged -= OnLocationChanged;
