@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.36105.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApptToken", "BlazorAppToken\BlazorApptToken.csproj", "{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalzorAppVlan", "BlazorAppToken\BalzorAppVlan.csproj", "{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
