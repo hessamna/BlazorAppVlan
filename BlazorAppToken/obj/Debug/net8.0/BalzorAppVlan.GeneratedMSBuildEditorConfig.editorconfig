@@ -60,30 +60,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxDb21wYW5pZXNcQ29tcGFueUVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Holdings/HoldingSettings.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxIb2xkaW5nc1xIb2xkaW5nU2V0dGluZ3MucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/KYC/KYCRequests.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxLWUNcS1lDUmVxdWVzdHMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Token/TokenAllocation.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxUb2tlblxUb2tlbkFsbG9jYXRpb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Token/TokenBurn.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxUb2tlblxUb2tlbkJ1cm4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Token/TokenGeneration.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxUb2tlblxUb2tlbkdlbmVyYXRpb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Token/TokenReleaseRequests.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxUb2tlblxUb2tlblJlbGVhc2VSZXF1ZXN0cy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Admin/Users/AdminRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxVc2Vyc1xBZG1pblJvbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -112,40 +88,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdWRpdExvZ3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/BurnToken.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCdXJuVG9rZW4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/CompanyManagement.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYW55TWFuYWdlbWVudC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Holding.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb2xkaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/MultiSign.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNdWx0aVNpZ24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9maWxlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/ReleaseRequests.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWxlYXNlUmVxdWVzdHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Shared/Modal.razor]
@@ -156,36 +108,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaGFyZWRcUGFnaW5hdGVkVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/SmartContracts.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTbWFydENvbnRyYWN0cy5yYXpvcg==
+[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Shared/Toast.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaGFyZWRcVG9hc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Support.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBwb3J0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/SwitchManagementPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTd2l0Y2hNYW5hZ2VtZW50UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/SystemSettings.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTeXN0ZW1TZXR0aW5ncy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/TokenManagement.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb2tlbk1hbmFnZW1lbnQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/TransactionApproval.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmFuc2FjdGlvbkFwcHJvdmFsLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Transactions.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmFuc2FjdGlvbnMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Transfer.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmFuc2Zlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Wallet.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXYWxsZXQucmF6b3I=
+[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/VLanManagementPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWTGFuTWFuYWdlbWVudFBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Routes.razor]

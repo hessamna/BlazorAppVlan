@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using BlazorApptToken.Datas;
+using BalzorAppVlan.Datas;
 
 [Route("[controller]/[action]")]
 public class AccountController : Controller

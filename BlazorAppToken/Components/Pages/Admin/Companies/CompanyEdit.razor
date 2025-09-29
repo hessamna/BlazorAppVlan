@@ -1,3 +1,154 @@
-@page "/admin/companies/companyedit"
-<h3>CompanyEdit</h3>
-<p>TODO: Implement modal-based CompanyEdit form</p>
+﻿@page "/admin/companies"
+@using BalzorAppVlan.Components.Pages.Shared
+@using Microsoft.AspNetCore.Authorization
+@inject CompanyService CompanyService
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+@attribute [Authorize]
+
+<h3>Companies</h3>
+
+<button class="btn btn-success mb-3" @onclick="() => OpenDialog(new CompanyViewModel())">Add Company</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Verified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (companies is not null)
+        {
+            @foreach (var c in companies)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>@(c.IsVerified ? "✔️" : "❌")</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2"
+                                @onclick="() => OpenDialog(new CompanyViewModel { Id = c.Id, Name = c.Name, IsVerified = c.IsVerified })">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => Delete(c.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+@if (showDialog)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@((selectedCompany?.Id == Guid.Empty) ? "Add Company" : "Edit Company")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseDialog"></button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="selectedCompany" OnValidSubmit="Save">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="selectedCompany.Name" />
+                            <ValidationMessage For="@(() => selectedCompany.Name)" />
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <InputCheckbox class="form-check-input" @bind-Value="selectedCompany.IsVerified" />
+                            <label class="form-check-label">Verified</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary ms-2" @onclick="CloseDialog">Cancel</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Toast -->
+<!-- Toast -->
+<Toast Message="@toastMessage"
+       CssClass="@toastCssClass"
+       Duration="3000"
+       OnClose="ClearToast" />
+
+@code {
+    private List<Company>? companies;
+    private bool showDialog = false;
+    private CompanyViewModel selectedCompany = new();
+
+    // Toast State
+    private string toastMessage = string.Empty;
+    private string toastCssClass = "bg-success";
+
+    protected override async Task OnInitializedAsync()
+    {
+        companies = await CompanyService.GetAllAsync();
+    }
+
+    private void OpenDialog(CompanyViewModel companyVm)
+    {
+        selectedCompany = new CompanyViewModel
+        {
+            Id = companyVm.Id,
+            Name = companyVm.Name,
+            IsVerified = companyVm.IsVerified
+        };
+
+        showDialog = true;
+    }
+
+    private void CloseDialog() => showDialog = false;
+
+    private async Task Save()
+    {
+        var entity = new Company
+        {
+            Id = selectedCompany.Id,
+            Name = selectedCompany.Name,
+            IsVerified = selectedCompany.IsVerified
+        };
+
+        var result = await CompanyService.AddOrEditAsync(entity);
+
+        if (result.Success)
+        {
+            toastCssClass = "bg-success";
+        }
+        else
+        {
+            toastCssClass = "bg-danger";
+        }
+
+        toastMessage = result.Message;
+
+        companies = await CompanyService.GetAllAsync();
+        showDialog = false;
+    }
+
+    private async Task Delete(Guid id)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", $"Are you sure to delete this company?"))
+        {
+            var result = await CompanyService.DeleteAsync(id);
+
+            toastCssClass = result.Success ? "bg-success" : "bg-danger";
+            toastMessage = result.Message;
+
+            companies = await CompanyService.GetAllAsync();
+        }
+    }
+    private void ClearToast()
+    {
+        toastMessage = string.Empty;
+    }
+}

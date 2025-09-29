@@ -1,4 +1,5 @@
-﻿@using BlazorApptToken.Datas
+﻿@using BalzorAppVlan.Datas
+
 @using Microsoft.AspNetCore.Identity
 @implements IDisposable
 @inject NavigationManager NavigationManager
@@ -7,7 +8,7 @@
      style="width: 320px; direction: rtl;">
 
     <div class="sidebar-header px-3 py-3 border-bottom" style="direction: ltr;">
-        <a href="/" class="text-decoration-none text-dark fw-semibold fs-5">🧠 Blockchain</a>
+        <a href="/" class="text-decoration-none text-dark fw-semibold fs-5">Switches Management</a>
     </div>
 
     <div class="sidebar-body flex-grow overflow-auto" style="direction: ltr;">
@@ -15,72 +16,58 @@
             <!-- COMMON -->
             <li class="nav-item px-3 pt-3 text-muted text-uppercase small">Common</li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/">🏠 Dashboard</NavLink>
+                <NavLink class="nav-link text-dark" href="/">
+                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                </NavLink>
             </li>
 
             <!-- ADMIN -->
             <li class="nav-item px-3 pt-4 text-muted text-uppercase small">Admin</li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/companies/companylist">🏢 Company Management</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/companies">
+                    <i class="bi bi-buildings me-2"></i> Company Management
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/holdings/holdingsettings">🏦 Holdings</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/switches">
+                    <i class="bi bi-hdd-network me-2"></i> Switch Management
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/kyc/kycrequests">📁 KYC Requests</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/system-settings">
+                    <i class="bi bi-gear me-2"></i> System Settings
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/tokengeneration">🧬 Token Generation</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/audit-logs">
+                    <i class="bi bi-graph-up-arrow me-2"></i> Reports & Audit
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/tokenreleaseRequests">🔓 Release Requests</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/users/adminusers">
+                    <i class="bi bi-people-fill me-2"></i> Manage Users
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/tokenburn">🔥 Burn Token</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/tokenallocation">🎯 Token Allocation</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/tokenreleaseRequests">✅ Transaction Approval</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/token/smartcontracts">📜 Smart Contracts</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/system-settings">⚙️ System Settings</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/audit-logs">📊 Reports & Audit</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/users/adminusers">🧑‍💼 Manage Users</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/admin/users/roles">🔐 Manage Roles</NavLink>
+                <NavLink class="nav-link text-dark" href="/admin/users/roles">
+                    <i class="bi bi-shield-lock-fill me-2"></i> Manage Roles
+                </NavLink>
             </li>
 
             <!-- USER -->
             <li class="nav-item px-3 pt-4 text-muted text-uppercase small">User</li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/wallet">👛 Wallet</NavLink>
+                <NavLink class="nav-link text-dark" href="/profile">
+                    <i class="bi bi-person-circle me-2"></i> Profile
+                </NavLink>
             </li>
             <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/transfer">🔁 Token Transfer</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/multi-sign">🧾 Multi-Signature</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/transactions">📄 Transaction History</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/profile">👤 Profile</NavLink>
-            </li>
-            <li class="nav-item px-3 ">
-                <NavLink class="nav-link text-dark" href="/support">💬 Support</NavLink>
+                <NavLink class="nav-link text-dark" href="/support">
+                    <i class="bi bi-chat-dots me-2"></i> Support
+                </NavLink>
             </li>
         </ul>
+
 
     </div>
 

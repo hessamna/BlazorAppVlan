@@ -1,4 +1,4 @@
-using BlazorApptToken.Datas;
+﻿using BalzorAppVlan.Datas;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,78 +12,65 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public DbSet<Token> Tokens { get; set; }
+    // جداول اصلی
     public DbSet<Company> Companies { get; set; }
-    public DbSet<Holding> Holdings { get; set; }
-    public DbSet<HoldingDetail> HoldingDetails { get; set; }
-    public DbSet<TokenTransfer> TokenTransfers { get; set; }
-    public DbSet<Wallet> Wallets { get; set; }
-    public DbSet<TokenAllocation> TokenAllocations { get; set; }
+    public DbSet<Switch> Switches { get; set; }
+    public DbSet<Vlan> Vlans { get; set; }
+    public DbSet<DeviceInterface> DeviceInterfaces { get; set; }
+    public DbSet<Neighbor> Neighbors { get; set; }
+
+    // جداول دیگر
     public DbSet<User> Users { get; set; }
-    public DbSet<MultiSigApproval> MultiSigApprovals { get; set; }
-    public DbSet<SmartContract> SmartContracts { get; set; }
     public DbSet<AuditLog> AuditLogs { get; set; }
-    public DbSet<SupportTicket> SupportTickets { get; set; }
     public DbSet<SystemSetting> SystemSettings { get; set; }
-    public DbSet<BurnRecord> BurnRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // TokenTransfer: FromWallet & ToWallet
-        modelBuilder.Entity<TokenTransfer>()
-            .HasOne(t => t.FromWallet)
-            .WithMany(w => w.SentTransfers)
-            .HasForeignKey(t => t.FromWalletId)
+        // Company → Switch (1..n)
+        modelBuilder.Entity<Company>()
+            .HasMany(c => c.Switches)
+            .WithOne(s => s.Company)
+            .HasForeignKey(s => s.CompanyId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Switch → Vlan (1..n)
+        modelBuilder.Entity<Switch>()
+            .HasMany(s => s.Vlans)
+            .WithOne(v => v.Switch)
+            .HasForeignKey(v => v.SwitchId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Switch → DeviceInterface (1..n) ❌ تغییر به Restrict
+        modelBuilder.Entity<Switch>()
+            .HasMany(s => s.DeviceInterfaces)
+            .WithOne(d => d.Switch)
+            .HasForeignKey(d => d.SwitchId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<TokenTransfer>()
-            .HasOne(t => t.ToWallet)
-            .WithMany(w => w.ReceivedTransfers)
-            .HasForeignKey(t => t.ToWalletId)
+        // Switch → Neighbor (1..n) ❌ تغییر به Restrict
+        modelBuilder.Entity<Switch>()
+            .HasMany(s => s.Neighbors)
+            .WithOne(n => n.Switch)
+            .HasForeignKey(n => n.SwitchId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // TokenAllocation: Token & Wallet
-        modelBuilder.Entity<TokenAllocation>()
-            .HasOne(a => a.Token)
-            .WithMany(t => t.Allocations)
-            .HasForeignKey(a => a.TokenId);
+        // Vlan → DeviceInterface (1..n)
+        modelBuilder.Entity<Vlan>()
+            .HasMany(v => v.DeviceInterfaces)
+            .WithOne(d => d.Vlan)
+            .HasForeignKey(d => d.VlanId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<TokenAllocation>()
-            .HasOne(a => a.Wallet)
-            .WithMany(w => w.Allocations)
-            .HasForeignKey(a => a.WalletId);
-
-        // Wallet: Company
-        modelBuilder.Entity<Wallet>()
-            .HasOne(w => w.Company)
-            .WithMany(c => c.Wallets)
-            .HasForeignKey(w => w.CompanyId);
-
-        // User: Company
-        modelBuilder.Entity<User>()
-            .HasOne(u => u.Company)
-            .WithMany(c => c.Users)
-            .HasForeignKey(u => u.CompanyId);
-
-        // MultiSigApproval: TokenTransfer & User
-        modelBuilder.Entity<MultiSigApproval>()
-            .HasOne(a => a.Transfer)
-            .WithMany(t => t.Approvals)
-            .HasForeignKey(a => a.TransferId);
-
-        modelBuilder.Entity<MultiSigApproval>()
-            .HasOne(a => a.User)
-            .WithMany(u => u.Approvals)
-            .HasForeignKey(a => a.UserId);
-
-        // BurnRecord: Token
-        modelBuilder.Entity<BurnRecord>()
-            .HasOne(b => b.Token)
-            .WithMany()
-            .HasForeignKey(b => b.TokenId);
+        // Vlan → Neighbor (1..n)
+        modelBuilder.Entity<Vlan>()
+            .HasMany(v => v.Neighbors)
+            .WithOne(n => n.Vlan)
+            .HasForeignKey(n => n.VlanId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
+
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -104,13 +91,21 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
                 if (entry.State == EntityState.Added)
                 {
                     entity.CreatedDate = now;
-                    entity.CreatedBy = user;
+                    entity.CreatedBy = string.IsNullOrWhiteSpace(user) ? "System" : user;
                     entity.CreatorIp = ip;
-                    entity.CreatorMachine = machine;
+                    entity.CreatorMachine = machine?.Length > 500 ? machine.Substring(0, 500) : machine;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    // جلوگیری از تغییر Created*
+                    entry.Property(nameof(BaseEntity.CreatedDate)).IsModified = false;
+                    entry.Property(nameof(BaseEntity.CreatedBy)).IsModified = false;
+                    entry.Property(nameof(BaseEntity.CreatorIp)).IsModified = false;
+                    entry.Property(nameof(BaseEntity.CreatorMachine)).IsModified = false;
                 }
 
                 entity.ModifiedDate = now;
-                entity.ModifiedBy = user;
+                entity.ModifiedBy = string.IsNullOrWhiteSpace(user) ? "System" : user;
             }
         }
 

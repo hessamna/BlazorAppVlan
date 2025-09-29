@@ -1,4 +1,4 @@
-﻿namespace BlazorApptToken.Helper
+﻿namespace BalzorAppVlan.Helper
 {
     public static class UserRoleHelper
     {

@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace BlazorApptToken.Repository.BaseRepository
+namespace BalzorAppVlan.Repository.BaseRepository
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        Task<List<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(Guid id);
-        Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<List<T>> GetAllAsync(bool tracking = false);
+        Task<T?> GetByIdAsync(Guid id, bool tracking = false);
+        Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate, bool tracking = false);
         Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
-        Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
+        Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, bool tracking = false);
         Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
+
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
@@ -27,19 +28,31 @@ namespace BlazorApptToken.Repository.BaseRepository
             _dbSet = context.Set<T>();
         }
 
-        public virtual async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync(bool tracking = false)
         {
-            return await _dbSet.AsNoTracking().AsSplitQuery().ToListAsync();
+            var query = _dbSet.AsQueryable();
+            if (!tracking)
+                query = query.AsNoTracking().AsSplitQuery();
+
+            return await query.ToListAsync();
         }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id)
+        public virtual async Task<T?> GetByIdAsync(Guid id, bool tracking = false)
         {
-            return await _dbSet.AsNoTracking().AsSplitQuery().FirstOrDefaultAsync(e => EF.Property<Guid>(e, "Id") == id);
+            var query = _dbSet.AsQueryable();
+            if (!tracking)
+                query = query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public virtual async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate, bool tracking = false)
         {
-            return await _dbSet.AsNoTracking().AsSplitQuery().Where(predicate).ToListAsync();
+            var query = _dbSet.Where(predicate);
+            if (!tracking)
+                query = query.AsNoTracking().AsSplitQuery();
+
+            return await query.ToListAsync();
         }
 
         public virtual async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
@@ -47,9 +60,13 @@ namespace BlazorApptToken.Repository.BaseRepository
             return await _dbSet.AsNoTracking().AnyAsync(predicate);
         }
 
-        public virtual async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, bool tracking = false)
         {
-            return await _dbSet.AsNoTracking().AsSplitQuery().FirstOrDefaultAsync(predicate);
+            var query = _dbSet.Where(predicate);
+            if (!tracking)
+                query = query.AsNoTracking().AsSplitQuery();
+
+            return await query.FirstOrDefaultAsync();
         }
 
         public virtual async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
@@ -62,18 +79,28 @@ namespace BlazorApptToken.Repository.BaseRepository
         public virtual async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public virtual Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
-            _dbSet.Update(entity);
-            return Task.CompletedTask;
+            _dbSet.Attach(entity);
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
+
+            // جلوگیری از تغییر فیلدهای سیستمی
+            entry.Property(nameof(BaseEntity.CreatedDate)).IsModified = false;
+            entry.Property(nameof(BaseEntity.CreatedBy)).IsModified = false;
+            entry.Property(nameof(BaseEntity.CreatorIp)).IsModified = false;
+            entry.Property(nameof(BaseEntity.CreatorMachine)).IsModified = false;
+
+            await _context.SaveChangesAsync();
         }
 
-        public virtual Task DeleteAsync(T entity)
+        public virtual async Task DeleteAsync(T entity)
         {
-            _dbSet.Remove(entity);
-            return Task.CompletedTask;
+            _context.Entry(entity).State = EntityState.Deleted; // 👈 بدون Attach اضافه
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@code {
+    [Parameter] public string Message { get; set; } = string.Empty;
+    [Parameter] public string CssClass { get; set; } = "bg-success";
+    [Parameter] public int Duration { get; set; } = 3000; // مدت زمان نمایش (ms)
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private bool visible => !string.IsNullOrEmpty(Message);
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (visible)
+        {
+            await Task.Delay(Duration);
+            await Close();
+        }
+    }
+
+    private async Task Close()
+    {
+        Message = string.Empty;
+        await OnClose.InvokeAsync();
+    }
+}
+
+@if (visible)
+{
+    <div class="toast align-items-center text-white @CssClass show position-fixed bottom-0 end-0 m-3"
+         style="z-index: 1055;" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">@Message</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    @onclick="Close"></button>
+        </div>
+    </div>
+}

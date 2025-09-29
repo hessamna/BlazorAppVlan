@@ -1,0 +1,469 @@
+﻿@page "/admin/editswitches/{id:guid}"
+@using BalzorAppVlan.Components.Pages.Shared
+@using Microsoft.AspNetCore.Authorization
+@using System.ComponentModel.DataAnnotations
+@inject SwitchService SwitchService
+@inject VlanService VlanService
+@inject DeviceInterfaceService DeviceInterfaceService
+@inject NeighborService NeighborService
+@inject CompanyService CompanyService
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+@attribute [Authorize]
+
+<h3>🔧 Switch Details</h3>
+
+@if (switchEntity is null)
+{
+    <p class="text-muted">Loading...</p>
+}
+else
+{
+    <!-- Switch Info Card -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">@switchEntity.Name</h5>
+            <p><strong>IP:</strong> @switchEntity.IpInterface</p>
+            <p><strong>Model:</strong> @switchEntity.Model</p>
+            <p><strong>Company:</strong> @company?.Name</p>
+        </div>
+    </div>
+
+    <!-- ================= VLANs ================= -->
+    <h4>VLANs</h4>
+    <div class="d-flex mb-2">
+        <button class="btn btn-success me-2" @onclick="() => OpenVlanDialog(new VlanViewModel { SwitchId = id })">➕ Add VLAN</button>
+        <InputText class="form-control w-25"
+                   placeholder="🔍 Search VLAN..."
+                   @bind-Value="searchVlan"
+                   @oninput="FilterVlans"
+                   @onkeydown="@(e => OnSearchKeyDown(e, "vlan"))" />
+    </div>
+    <PaginatedTable TItem="VlanViewModel" Items="filteredVlans" ItemsPerPage="5">
+        <HeaderTemplate>
+            <tr>
+                <th>VLAN ID</th>
+                <th>Name</th>
+                <th>IP Interface</th>
+                <th>Actions</th>
+            </tr>
+        </HeaderTemplate>
+        <RowTemplate Context="v">
+            <tr>
+                <td>@v.VlanCode</td>
+                <td>@v.Name</td>
+                <td>@v.IpInterface</td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenVlanDialog(v)">Edit</button>
+                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteVlan(v.Id)">Delete</button>
+                </td>
+            </tr>
+        </RowTemplate>
+    </PaginatedTable>
+
+    <!-- ================= Device Interfaces ================= -->
+    <h4 class="mt-5">Device Interfaces</h4>
+    <div class="d-flex mb-2">
+        <button class="btn btn-success me-2" @onclick="() => OpenDeviceDialog(new DeviceInterfaceViewModel { SwitchId = id })">➕ Add Interface</button>
+        <button class="btn btn-warning me-2" @onclick="() => OpenRangeDialog()">➕ Add Range</button>
+        <InputText class="form-control w-25"
+                   placeholder="🔍 Search Interface..."
+                   @bind-Value="searchDevice"
+                   @oninput="FilterDevices"
+                   @onkeydown="@(e => OnSearchKeyDown(e, "device"))" />
+    </div>
+    <PaginatedTable TItem="DeviceInterfaceViewModel" Items="filteredDevices" ItemsPerPage="5">
+        <HeaderTemplate>
+            <tr>
+                <th>Port</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>VLAN</th>
+                <th>Actions</th>
+            </tr>
+        </HeaderTemplate>
+        <RowTemplate Context="d">
+            <tr>
+                <td>@d.Port</td>
+                <td>@d.Description</td>
+                <td>@(d.IsConnected ? "✅ Connected" : "❌ Not Connected")</td>
+                <td>
+                    @vlans.FirstOrDefault(v => v.Id == d.VlanId)?.VlanCode -
+                    @vlans.FirstOrDefault(v => v.Id == d.VlanId)?.Name
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenDeviceDialog(d)">Edit</button>
+                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteDevice(d.Id)">Delete</button>
+                </td>
+            </tr>
+        </RowTemplate>
+    </PaginatedTable>
+
+    <!-- ================= Neighbors ================= -->
+    <h4 class="mt-5">Neighbors</h4>
+    <div class="d-flex mb-2">
+        <button class="btn btn-success me-2" @onclick="() => OpenNeighborDialog(new NeighborViewModel { SwitchId = id })">➕ Add Neighbor</button>
+        <InputText class="form-control w-25"
+                   placeholder="🔍 Search Neighbor..."
+                   @bind-Value="searchNeighbor"
+                   @oninput="FilterNeighbors"
+                   @onkeydown="@(e => OnSearchKeyDown(e, "neighbor"))" />
+    </div>
+    <PaginatedTable TItem="NeighborViewModel" Items="filteredNeighbors" ItemsPerPage="5">
+        <HeaderTemplate>
+            <tr>
+                <th>Device ID</th>
+                <th>Local Interface</th>
+                <th>Neighbor SW</th>
+                <th>Port ID</th>
+                <th>VLAN</th>
+                <th>Actions</th>
+            </tr>
+        </HeaderTemplate>
+        <RowTemplate Context="n">
+            <tr>
+                <td>@n.DeviceId</td>
+                <td>@n.LocalInterface</td>
+                <td>@n.NeighborSWName</td>
+                <td>@n.NeighborSWNamePortId</td>
+                <td>
+                    @vlans.FirstOrDefault(v => v.Id == n.VlanId)?.VlanCode -
+                    @vlans.FirstOrDefault(v => v.Id == n.VlanId)?.Name
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenNeighborDialog(n)">Edit</button>
+                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteNeighbor(n.Id)">Delete</button>
+                </td>
+            </tr>
+        </RowTemplate>
+    </PaginatedTable>
+}
+@if (showRangeDialog)
+{
+    <Modal Title="Add Range of Interfaces" OnClose="CloseRangeDialog">
+        <EditForm Model="rangeModel" OnValidSubmit="SaveRange">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-2">
+                <label class="form-label">Number of Ports</label>
+                <InputNumber class="form-control" @bind-Value="rangeModel.Count" />
+                <ValidationMessage For="@(() => rangeModel.Count)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </EditForm>
+    </Modal>
+}
+<!-- ================= VLAN Modal ================= -->
+@if (showVlanDialog)
+{
+    <Modal Title="@(selectedVlan.Id == Guid.Empty ? "Add VLAN" : "Edit VLAN")" OnClose="CloseVlanDialog">
+        <EditForm Model="selectedVlan" OnValidSubmit="SaveVlan">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-2">
+                <label class="form-label">VLAN ID</label>
+                <InputText class="form-control" @bind-Value="selectedVlan.VlanCode" />
+                <ValidationMessage For="@(() => selectedVlan.VlanCode)" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Name</label>
+                <InputText class="form-control" @bind-Value="selectedVlan.Name" />
+                <ValidationMessage For="@(() => selectedVlan.Name)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </EditForm>
+    </Modal>
+}
+
+<!-- ================= DeviceInterface Modal ================= -->
+@if (showDeviceDialog)
+{
+    <Modal Title="@(selectedDevice.Id == Guid.Empty ? "Add Device Interface" : "Edit Device Interface")" OnClose="CloseDeviceDialog">
+        <EditForm Model="selectedDevice" OnValidSubmit="SaveDevice">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-2">
+                <label class="form-label">Port</label>
+                <InputText class="form-control" @bind-Value="selectedDevice.Port" />
+                <ValidationMessage For="@(() => selectedDevice.Port)" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Description</label>
+                <InputText class="form-control" @bind-Value="selectedDevice.Description" />
+            </div>
+
+            <label class="form-label">Status</label>
+            <InputSelect class="form-select mb-2" @bind-Value="selectedDevice.IsConnected">
+                <option value="true">✅ Connected</option>
+                <option value="false">❌ Not Connected</option>
+            </InputSelect>
+
+            <label class="form-label">VLAN</label>
+            <InputSelect class="form-select mb-2" @bind-Value="selectedDevice.VlanId">
+                <option value="">-- Select VLAN --</option>
+                @foreach (var v in vlans)
+                {
+                    <option value="@v.Id">@v.VlanCode - @v.Name</option>
+                }
+            </InputSelect>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </EditForm>
+    </Modal>
+}
+
+<!-- ================= Neighbor Modal ================= -->
+@if (showNeighborDialog)
+{
+    <Modal Title="@(selectedNeighbor.Id == Guid.Empty ? "Add Neighbor" : "Edit Neighbor")" OnClose="CloseNeighborDialog">
+        <EditForm Model="selectedNeighbor" OnValidSubmit="SaveNeighbor">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-2">
+                <label class="form-label">Device ID</label>
+                <InputText class="form-control" @bind-Value="selectedNeighbor.DeviceId" />
+                <ValidationMessage For="@(() => selectedNeighbor.DeviceId)" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Local Interface</label>
+                <InputText class="form-control" @bind-Value="selectedNeighbor.LocalInterface" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Neighbor SW Name</label>
+                <InputText class="form-control" @bind-Value="selectedNeighbor.NeighborSWName" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Port ID</label>
+                <InputText class="form-control" @bind-Value="selectedNeighbor.NeighborSWNamePortId" />
+            </div>
+
+            <label class="form-label">VLAN</label>
+            <InputSelect class="form-select mb-2" @bind-Value="selectedNeighbor.VlanId">
+                <option value="">-- Select VLAN --</option>
+                @foreach (var v in vlans)
+                {
+                    <option value="@v.Id">@v.VlanCode - @v.Name</option>
+                }
+            </InputSelect>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </EditForm>
+    </Modal>
+}
+
+<!-- ================= Toast ================= -->
+<Toast Message="@toastMessage"
+       CssClass="@toastCssClass"
+       Duration="3000"
+       OnClose="ClearToast" />
+
+@code {
+    [Parameter] public Guid id { get; set; }
+
+    private Switch? switchEntity;
+    private Company? company;
+
+    private string toastMessage = string.Empty;
+    private string toastCssClass = "bg-success";
+
+    private bool showRangeDialog;
+    private RangeModel rangeModel = new();
+
+    private List<VlanViewModel> vlans = new();
+    private List<VlanViewModel> filteredVlans = new();
+    private List<DeviceInterfaceViewModel> devices = new();
+    private List<DeviceInterfaceViewModel> filteredDevices = new();
+    private List<NeighborViewModel> neighbors = new();
+    private List<NeighborViewModel> filteredNeighbors = new();
+
+    private string searchVlan = string.Empty;
+    private string searchDevice = string.Empty;
+    private string searchNeighbor = string.Empty;
+
+    private bool showVlanDialog, showDeviceDialog, showNeighborDialog;
+    private VlanViewModel selectedVlan = new();
+    private DeviceInterfaceViewModel selectedDevice = new();
+    private NeighborViewModel selectedNeighbor = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        switchEntity = await SwitchService.GetByIdAsync(id);
+        if (switchEntity != null)
+        {
+            company = await CompanyService.GetByIdAsync(switchEntity.CompanyId);
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        vlans = (await VlanService.GetAllAsync()).Where(v => v.SwitchId == id)
+            .Select(v => new VlanViewModel { Id = v.Id, VlanCode = v.VlanCode, Name = v.Name, IpInterface = v.IpInterface, SwitchId = v.SwitchId }).ToList();
+
+        devices = (await DeviceInterfaceService.GetAllAsync()).Where(d => d.SwitchId == id)
+            .Select(d => new DeviceInterfaceViewModel { Id = d.Id, Port = d.Port, Description = d.Description, IsConnected = d.IsConnected, SwitchId = d.SwitchId, VlanId = d.VlanId }).ToList();
+
+        neighbors = (await NeighborService.GetAllAsync()).Where(n => n.SwitchId == id)
+            .Select(n => new NeighborViewModel { Id = n.Id, DeviceId = n.DeviceId, LocalInterface = n.LocalInterface, NeighborSWName = n.NeighborSWName, NeighborSWNamePortId = n.NeighborSWNamePortId, SwitchId = n.SwitchId, VlanId = n.VlanId }).ToList();
+
+        FilterVlans();
+        FilterDevices();
+        FilterNeighbors();
+    }
+
+    private void FilterVlans() =>
+        filteredVlans = string.IsNullOrWhiteSpace(searchVlan) ? vlans :
+            vlans.Where(v => v.Name.Contains(searchVlan, StringComparison.OrdinalIgnoreCase) ||
+                             v.VlanCode.Contains(searchVlan, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    private void FilterDevices() =>
+        filteredDevices = string.IsNullOrWhiteSpace(searchDevice) ? devices :
+            devices.Where(d => d.Port.Contains(searchDevice, StringComparison.OrdinalIgnoreCase) ||
+                               (d.Description ?? "").Contains(searchDevice, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    private void FilterNeighbors() =>
+        filteredNeighbors = string.IsNullOrWhiteSpace(searchNeighbor) ? neighbors :
+            neighbors.Where(n => n.DeviceId.Contains(searchNeighbor, StringComparison.OrdinalIgnoreCase) ||
+                                 n.LocalInterface.Contains(searchNeighbor, StringComparison.OrdinalIgnoreCase) ||
+                                 (n.NeighborSWName ?? "").Contains(searchNeighbor, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    private void OnSearchKeyDown(KeyboardEventArgs e, string target)
+    {
+        if (e.Key == "Enter")
+        {
+            switch (target)
+            {
+                case "vlan": FilterVlans(); break;
+                case "device": FilterDevices(); break;
+                case "neighbor": FilterNeighbors(); break;
+            }
+        }
+    }
+
+    private void ShowToast(bool success, string message)
+    {
+        toastCssClass = success ? "bg-success" : "bg-danger";
+        toastMessage = message;
+    }
+
+    // VLAN
+    private void OpenVlanDialog(VlanViewModel v) { selectedVlan = v; showVlanDialog = true; }
+    private void CloseVlanDialog() => showVlanDialog = false;
+    private async Task SaveVlan()
+    {
+        var result = await VlanService.AddOrEditAsync(new Vlan
+        {
+            Id = selectedVlan.Id,
+            VlanCode = selectedVlan.VlanCode,
+            Name = selectedVlan.Name,
+            IpInterface = selectedVlan.IpInterface,
+            SwitchId = id
+        });
+        ShowToast(result.Success, result.Message);
+        if (result.Success) { await LoadDataAsync(); showVlanDialog = false; }
+    }
+    private async Task DeleteVlan(Guid vid)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", "Delete VLAN?"))
+        {
+            var result = await VlanService.DeleteAsync(vid);
+            ShowToast(result.Success, result.Message);
+            if (result.Success) await LoadDataAsync();
+        }
+    }
+
+    // Device
+    private void OpenDeviceDialog(DeviceInterfaceViewModel d) { selectedDevice = d; showDeviceDialog = true; }
+    private void CloseDeviceDialog() => showDeviceDialog = false;
+    private async Task SaveDevice()
+    {
+        var result = await DeviceInterfaceService.AddOrEditAsync(new DeviceInterface
+        {
+            Id = selectedDevice.Id,
+            Port = selectedDevice.Port,
+            Description = selectedDevice.Description,
+            IsConnected = selectedDevice.IsConnected,
+            SwitchId = id,
+            VlanId = selectedDevice.VlanId
+        });
+        ShowToast(result.Success, result.Message);
+        if (result.Success) { await LoadDataAsync(); showDeviceDialog = false; }
+    }
+    private async Task DeleteDevice(Guid did)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", "Delete Device Interface?"))
+        {
+            var result = await DeviceInterfaceService.DeleteAsync(did);
+            ShowToast(result.Success, result.Message);
+            if (result.Success) await LoadDataAsync();
+        }
+    }
+
+    // Neighbor
+    private void OpenNeighborDialog(NeighborViewModel n) { selectedNeighbor = n; showNeighborDialog = true; }
+    private void CloseNeighborDialog() => showNeighborDialog = false;
+    private async Task SaveNeighbor()
+    {
+        var result = await NeighborService.AddOrEditAsync(new Neighbor
+        {
+            Id = selectedNeighbor.Id,
+            DeviceId = selectedNeighbor.DeviceId,
+            LocalInterface = selectedNeighbor.LocalInterface,
+            NeighborSWName = selectedNeighbor.NeighborSWName,
+            NeighborSWNamePortId = selectedNeighbor.NeighborSWNamePortId,
+            SwitchId = id,
+            VlanId = selectedNeighbor.VlanId
+        });
+        ShowToast(result.Success, result.Message);
+        if (result.Success) { await LoadDataAsync(); showNeighborDialog = false; }
+    }
+    private async Task DeleteNeighbor(Guid nid)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", "Delete Neighbor?"))
+        {
+            var result = await NeighborService.DeleteAsync(nid);
+            ShowToast(result.Success, result.Message);
+            if (result.Success) await LoadDataAsync();
+        }
+    }
+    private void ClearToast()
+    {
+        toastMessage = string.Empty;
+    }
+    public class RangeModel
+    {
+        [Range(1, 1000, ErrorMessage = "Count must be at least 1")]
+        public int Count { get; set; }
+    }
+
+    // باز کردن/بستن مودال
+    private void OpenRangeDialog()
+    {
+        rangeModel = new RangeModel();
+        showRangeDialog = true;
+    }
+    private void CloseRangeDialog() => showRangeDialog = false;
+
+    // ذخیره رنج
+    private async Task SaveRange()
+    {
+        var result = await DeviceInterfaceService.AddRangeAsync(id, rangeModel.Count);
+        ShowToast(result.Success, result.Message);
+        if (result.Success)
+        {
+            await LoadDataAsync();
+            showRangeDialog = false;
+        }
+    }
+}

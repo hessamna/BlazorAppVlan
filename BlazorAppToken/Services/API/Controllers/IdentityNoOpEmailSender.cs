@@ -1,8 +1,8 @@
-using BlazorApptToken.Datas;
+using BalzorAppVlan.Datas;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
-namespace BlazorApptToken.Services.API.Controllers
+namespace BalzorAppVlan.Services.API.Controllers
 {
     // Remove the "else if (EmailSender is IdentityNoOpEmailSender)" block from RegisterConfirmation.razor after updating with a real implementation.
     internal sealed class IdentityNoOpEmailSender : IEmailSender<ApplicationUser>

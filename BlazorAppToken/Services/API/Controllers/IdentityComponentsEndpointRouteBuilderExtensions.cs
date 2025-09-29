@@ -1,11 +1,11 @@
-using BlazorApptToken.Datas;
+using BalzorAppVlan.Datas;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text.Json;
 
-namespace BlazorApptToken.Services.API.Controllers
+namespace BalzorAppVlan.Services.API.Controllers
 {
     internal static class IdentityComponentsEndpointRouteBuilderExtensions
     {

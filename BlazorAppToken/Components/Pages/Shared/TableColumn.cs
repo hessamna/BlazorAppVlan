@@ -1,4 +1,4 @@
-﻿namespace BlazorApptToken.Components.Pages.Shared
+﻿namespace BalzorAppVlan.Components.Pages.Shared
 {
     public class TableColumn<TItem>
     {

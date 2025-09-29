@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace BlazorApptToken.Datas
+namespace BalzorAppVlan.Datas
 {
     public class ApplicationUser : IdentityUser<Guid>
         {

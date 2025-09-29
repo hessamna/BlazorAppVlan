@@ -1,0 +1,228 @@
+﻿@page "/admin/switches"
+@using BalzorAppVlan.Components.Pages.Shared
+@using Microsoft.AspNetCore.Authorization
+@inject SwitchService SwitchService
+@inject CompanyService CompanyService
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+@attribute [Authorize]
+
+<h3>Switches</h3>
+
+<div class="d-flex mb-3">
+    <button class="btn btn-success me-3" @onclick="() => OpenDialog(new SwitchViewModel())">➕ Add Switch</button>
+
+    <InputText @bind-Value="searchText"
+               class="form-control w-25"
+               placeholder="🔍 Search..."
+               @oninput="FilterSwitches"
+               @onkeydown="OnSearchKeyDown" />
+
+</div>
+
+<PaginatedTable TItem="SwitchViewModel" Items="filteredSwitches" ItemsPerPage="10">
+    <HeaderTemplate>
+        <tr>
+            <th>Name</th>
+            <th>IP Interface</th>
+            <th>Model</th>
+            <th>Company</th>
+            <th>Actions</th>
+        </tr>
+    </HeaderTemplate>
+    <RowTemplate Context="s">
+        <tr>
+            <td>@s.Name</td>
+            <td>@s.IpInterface</td>
+            <td>@s.Model</td>
+            <td>@companies.FirstOrDefault(c => c.Id == s.CompanyId)?.Name</td>
+            <td>
+                <button class="btn btn-primary btn-sm me-2"
+                        @onclick="() => OpenDialog(new SwitchViewModel { Id = s.Id, Name = s.Name, IpInterface = s.IpInterface, Model = s.Model, CompanyId = s.CompanyId })">
+                    Edit
+                </button>
+                <button class="btn btn-info btn-sm me-2" @onclick="() => ViewDetails(s.Id)">
+                    View Details
+                </button>
+                <button class="btn btn-danger btn-sm" @onclick="() => Delete(s.Id)">Delete</button>
+            </td>
+        </tr>
+    </RowTemplate>
+</PaginatedTable>
+
+<!-- Modal -->
+@if (showDialog)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@((selectedSwitch?.Id == Guid.Empty) ? "Add Switch" : "Edit Switch")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseDialog"></button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="selectedSwitch" OnValidSubmit="Save">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="selectedSwitch.Name" />
+                            <ValidationMessage For="@(() => selectedSwitch.Name)" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">IP Interface</label>
+                            <InputText class="form-control" @bind-Value="selectedSwitch.IpInterface" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Model</label>
+                            <InputText class="form-control" @bind-Value="selectedSwitch.Model" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Company</label>
+                            <InputSelect class="form-select" @bind-Value="selectedSwitch.CompanyId">
+                                <option value="">-- Select Company --</option>
+                                @foreach (var c in companies)
+                                {
+                                    <option value="@c.Id">@c.Name</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage For="@(() => selectedSwitch.CompanyId)" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary ms-2" @onclick="CloseDialog">Cancel</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Toast -->
+<Toast Message="@toastMessage"
+       CssClass="@toastCssClass"
+       Duration="3000"
+       OnClose="ClearToast" />
+
+@code {
+    private List<SwitchViewModel> switches = new();
+    private List<SwitchViewModel> filteredSwitches = new();
+    private List<Company> companies = new();
+    private bool showDialog = false;
+    private SwitchViewModel selectedSwitch = new();
+    private string searchText = string.Empty;
+
+    // Toast
+    private string toastMessage = string.Empty;
+    private string toastCssClass = "bg-success";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDataAsync();
+    }
+
+    private async Task LoadDataAsync()
+    {
+        var switchEntities = await SwitchService.GetAllAsync();
+        switches = switchEntities.Select(s => new SwitchViewModel
+        {
+            Id = s.Id,
+            Name = s.Name,
+            IpInterface = s.IpInterface,
+            Model = s.Model,
+            CompanyId = s.CompanyId
+        }).ToList();
+
+        companies = await CompanyService.GetAllAsync();
+        FilterSwitches();
+    }
+
+    private void FilterSwitches(ChangeEventArgs? e = null)
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredSwitches = switches;
+        }
+        else
+        {
+            var lower = searchText.ToLower();
+            filteredSwitches = switches.Where(s =>
+                (!string.IsNullOrEmpty(s.Name) && s.Name.ToLower().Contains(lower)) ||
+                (!string.IsNullOrEmpty(s.IpInterface) && s.IpInterface.ToLower().Contains(lower)) ||
+                (!string.IsNullOrEmpty(s.Model) && s.Model.ToLower().Contains(lower)) ||
+                companies.FirstOrDefault(c => c.Id == s.CompanyId)?.Name?.ToLower().Contains(lower) == true
+            ).ToList();
+        }
+        StateHasChanged();
+    }
+
+    private void OpenDialog(SwitchViewModel switchVm)
+    {
+        selectedSwitch = new SwitchViewModel
+        {
+            Id = switchVm.Id,
+            Name = switchVm.Name,
+            IpInterface = switchVm.IpInterface,
+            Model = switchVm.Model,
+            CompanyId = switchVm.CompanyId
+        };
+
+        showDialog = true;
+    }
+
+    private void CloseDialog() => showDialog = false;
+
+    private async Task Save()
+    {
+        var entity = new Switch
+        {
+            Id = selectedSwitch.Id,
+            Name = selectedSwitch.Name,
+            IpInterface = selectedSwitch.IpInterface,
+            Model = selectedSwitch.Model,
+            CompanyId = selectedSwitch.CompanyId
+        };
+
+        var result = await SwitchService.AddOrEditAsync(entity);
+
+        toastCssClass = result.Success ? "bg-success" : "bg-danger";
+        toastMessage = result.Message;
+
+        await LoadDataAsync();
+        showDialog = false;
+    }
+
+    private async Task Delete(Guid id)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", $"Are you sure to delete this Switch?"))
+        {
+            var result = await SwitchService.DeleteAsync(id);
+
+            toastCssClass = result.Success ? "bg-success" : "bg-danger";
+            toastMessage = result.Message;
+
+            await LoadDataAsync();
+        }
+    }
+
+    private void ViewDetails(Guid switchId)
+    {
+        Navigation.NavigateTo($"/admin/editswitches/{switchId}");
+    }
+    private void OnSearchKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            FilterSwitches();
+        }
+    }
+    private void ClearToast()
+    {
+        toastMessage = string.Empty;
+    }
+}

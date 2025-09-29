@@ -1,4 +1,4 @@
-using BlazorApptToken.Datas;
+using BalzorAppVlan.Datas;
 using Microsoft.AspNetCore.Identity;
 
 public static class SeedData

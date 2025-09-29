@@ -1,11 +1,12 @@
-﻿using BlazorApptToken.Components;
-using BlazorApptToken.Datas;
-using BlazorApptToken.Services.API.Controllers;
+﻿using BalzorAppVlan.Datas;
+using BalzorAppVlan.Services.API.Controllers;
+using BalzorAppVlan.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BalzorAppVlan.Repository.BaseRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,32 +44,30 @@ builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
 // Repositories
-builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
-builder.Services.AddScoped<IHoldingRepository, HoldingRepository>();
-builder.Services.AddScoped<ISmartContractRepository, SmartContractRepository>();
-builder.Services.AddScoped<IWalletRepository, WalletRepository>();
+builder.Services.AddScoped<ISwitchRepository, SwitchRepository>();
+builder.Services.AddScoped<IVlanRepository, VlanRepository>();
+builder.Services.AddScoped<IDeviceInterfaceRepository, DeviceInterfaceRepository>();
+builder.Services.AddScoped<INeighborRepository, NeighborRepository>();
 builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
 builder.Services.AddScoped<ISystemSettingRepository, SystemSettingRepository>();
-builder.Services.AddScoped<ISupportTicketRepository, SupportTicketRepository>();
-builder.Services.AddScoped<ITokenTransferRepository, TokenTransferRepository>();
-builder.Services.AddScoped<IMultiSigApprovalRepository, MultiSigApprovalRepository>();
-builder.Services.AddScoped<IBurnRecordRepository, BurnRecordRepository>();
+
 
 // Services
-builder.Services.AddScoped<TokenService>();
-builder.Services.AddScoped<UserService>();
+
+
 builder.Services.AddScoped<CompanyService>();
-builder.Services.AddScoped<HoldingService>();
-builder.Services.AddScoped<SmartContractService>();
-builder.Services.AddScoped< WalletService>();
-builder.Services.AddScoped<AuditLogService>();
-builder.Services.AddScoped<SystemSettingService>();
-builder.Services.AddScoped<SupportTicketService>();
-builder.Services.AddScoped<TokenTransferService>();
-builder.Services.AddScoped<MultiSigApprovalService>();
-builder.Services.AddScoped<BurnRecordService>();
+builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<SwitchService>();
+builder.Services.AddScoped<VlanService>();
+builder.Services.AddScoped<DeviceInterfaceService>();
+builder.Services.AddScoped<NeighborService>();
+
+
+;
+
 // 🔹 Add MVC Controllers
 builder.Services.AddControllersWithViews();
 

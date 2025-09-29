@@ -3,9 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class SystemSetting : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
-
+ 
     [Required, MaxLength(100)]
     public string Key { get; set; }
 

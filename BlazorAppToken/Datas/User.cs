@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 public class User : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
+  
 
     [Required, MaxLength(100)]
     public string FullName { get; set; }
@@ -20,5 +16,5 @@ public class User : BaseEntity
     public Guid? CompanyId { get; set; }
     public Company Company { get; set; }
 
-    public ICollection<MultiSigApproval> Approvals { get; set; }
+  
 }

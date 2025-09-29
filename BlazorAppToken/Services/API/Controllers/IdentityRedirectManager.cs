@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorApptToken.Services.API.Controllers
+namespace BalzorAppVlan.Services.API.Controllers
 {
     internal sealed class IdentityRedirectManager(NavigationManager navigationManager)
     {

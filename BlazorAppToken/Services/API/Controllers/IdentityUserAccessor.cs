@@ -1,7 +1,7 @@
-using BlazorApptToken.Datas;
+using BalzorAppVlan.Datas;
 using Microsoft.AspNetCore.Identity;
 
-namespace BlazorApptToken.Services.API.Controllers
+namespace BalzorAppVlan.Services.API.Controllers
 {
     internal sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
     {

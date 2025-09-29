@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace BlazorApptToken.Components._Helpers
+namespace BalzorAppVlan.Components._Helpers
 {
     public static class PersianDateHelper
     {
