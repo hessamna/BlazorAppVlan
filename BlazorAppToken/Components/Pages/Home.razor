@@ -1,42 +1,265 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.Authorization
-@using Microsoft.AspNetCore.Components.Authorization
-@using System.Security.Claims
-
-@attribute [Authorize]
+@using BalzorAppVlan.Components.Pages.Shared
+@using BalzorAppVlan.Services
+@inject ISwitchService SwitchService
+@inject IDeviceInterfaceService DeviceInterfaceService
+@inject IVlanService VlanService
+@inject INeighborService NeighborService
+@inject ICompanyService CompanyService
+@inject NavigationManager Navigation
 @rendermode InteractiveServer
 
-@inject AuthenticationStateProvider AuthenticationStateProvider
+<h3>Locations</h3>
+    <!-- Sidebar -->
+<div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 sidebar-tree">
+        <h5>🏢 Locations</h5>
+        <ul class="tree">
+            @foreach (var company in companies)
+            {
+                <li>
+                    <div class="company-name" @onclick="() => ToggleCompany(company.Id)">
+                        📂 @company.Name
+                    </div>
 
-<h3>خوش آمدید</h3>
+                    <ul>
+                        @foreach (var sw in switches.Where(s => s.CompanyId == company.Id))
+                        {
+                            <li class="switch-item"
+                                @onclick="() => SelectSwitch(sw.Id)">
+                                💡 @sw.Name
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
 
-@if (user is not null && user.Identity.IsAuthenticated)
-{
-    
-        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-       var userPhone = user.FindFirst(ClaimTypes.MobilePhone)?.Value;
-        var userName = user.Identity.Name;
-        var role = user.FindFirst(ClaimTypes.Role)?.Value;
-        isAdmin = role == "Admin";
-    
+    <!-- Main Content -->
+    <div class="col-md-9 col-lg-10 main-content-tree">
+        @if (selectedSwitch is not null)
+        {
+            <div class="switch-card">
+                <div class="switch-info mb-3">
+                    <h4>@selectedSwitch.Name (@selectedSwitch.Model)</h4>
+                    <p><b>IP:</b> @selectedSwitch.IpInterface</p>
+                    <p><b>Locations:</b> @companies.FirstOrDefault(c => c.Id == selectedSwitch.CompanyId)?.Name</p>
+                </div>
 
-    <p>کاربر: <strong>@userId</strong></p>
-    <p>تلفن: <strong>@userPhone</strong></p>
-    <p>نام: <strong>@userName</strong></p>
-    <p>نقش شما: <strong>@(isAdmin ? "مدیر سیستم" : "کاربر معمولی")</strong></p>
-}
-else
-{
-    <p>شما وارد نشده‌اید یا اطلاعات کاربر بارگذاری نشده است.</p>
-}
+                <!-- Rack -->
+                <div class="rack-wrapper">
+                    <SwitchRack Switch="selectedSwitch"
+                                Interfaces="selectedSwitch.Interfaces"
+                                Vlans="selectedSwitch.Vlans"
+                                PortsPerRow="selectedSwitch.Interfaces.Count"
+                                OnPortDoubleClick="GoToDetails" />
+                </div>
+
+                <!-- Neighbors -->
+                @if (selectedSwitch.Neighbors.Any())
+                {
+                    <div class="neighbors-table mt-4">
+                        <h6>🌐 Neighbors</h6>
+                        <table class="table table-sm table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="color:black">Device ID</th>
+                                    <th style="color:black">Local Intf</th>
+                                    <th style="color:black">Neighbor SW</th>
+                                    <th style="color:black">Port</th>
+                                    <th style="color:black">VLAN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var n in selectedSwitch.Neighbors)
+                                {
+                                    <tr>
+                                        <td>@n.DeviceId</td>
+                                        <td>@n.LocalInterface</td>
+                                        <td>@n.NeighborSWName</td>
+                                        <td>@n.NeighborSWNamePortId</td>
+                                        <td>@selectedSwitch.Vlans.FirstOrDefault(v => v.Id == n.VlanId)?.VlanCode</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted" style="color:azure !important">👈 لطفاً یک سوئیچ را از سمت چپ انتخاب کنید.</p>
+        }
+    </div>
+</div>
+
+
 
 @code {
-    private ClaimsPrincipal user;
-    private bool isAdmin;
+    private List<CompanyViewModel> companies = new();
+    private List<SwitchViewModelEx> switches = new();
+    private HashSet<Guid> expandedCompanies = new(); // برای باز و بسته کردن درخت
+    private SwitchViewModelEx? selectedSwitch;
 
     protected override async Task OnInitializedAsync()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        user = authState.User;
+        companies = await CompanyService.GetAllAsync();
+
+        var allSwitches = await SwitchService.GetAllAsync();
+        var allVlans = await VlanService.GetAllAsync();
+        var allInterfaces = await DeviceInterfaceService.GetAllAsync();
+        var allNeighbors = await NeighborService.GetAllAsync();
+
+        switches = allSwitches.Select(sw => new SwitchViewModelEx
+        {
+            Id = sw.Id,
+            Name = sw.Name,
+            IpInterface = sw.IpInterface,
+            Model = sw.Model,
+            CompanyId = sw.CompanyId,
+            Vlans = allVlans.Where(v => v.SwitchId == sw.Id).ToList(),
+            Interfaces = allInterfaces.Where(i => i.SwitchId == sw.Id)
+                                      .OrderBy(i => ExtractPortNumber(i.Port))
+                                      .ToList(),
+            Neighbors = allNeighbors.Where(n => n.SwitchId == sw.Id).ToList()
+        }).ToList();
+    }
+
+    private void ToggleCompany(Guid companyId)
+    {
+        if (expandedCompanies.Contains(companyId))
+            expandedCompanies.Remove(companyId);
+        else
+            expandedCompanies.Add(companyId);
+    }
+
+    private void SelectSwitch(Guid switchId)
+    {
+        selectedSwitch = switches.FirstOrDefault(s => s.Id == switchId);
+    }
+
+    private void GoToDetails(DeviceInterfaceViewModel port)
+    {
+        Navigation.NavigateTo($"/admin/editswitches/{port.SwitchId}");
+    }
+
+    private int ExtractPortNumber(string? port)
+    {
+        if (string.IsNullOrWhiteSpace(port)) return 0;
+        var digits = new string(port.Where(char.IsDigit).ToArray());
+        return int.TryParse(digits, out int number) ? number : 0;
+    }
+
+    private class SwitchViewModelEx : SwitchViewModel
+    {
+        public List<DeviceInterfaceViewModel> Interfaces { get; set; } = new();
+        public List<VlanViewModel> Vlans { get; set; } = new();
+        public List<NeighborViewModel> Neighbors { get; set; } = new();
     }
 }
+<style>
+
+    h3, h4, h5, h6 {
+        color: #fff; /* همه هدینگ‌ها سفید */
+        font-weight: 600;
+    }
+
+    /* Sidebar */
+    .sidebar-tree {
+        background: #2a2a2a;
+        padding: 15px;
+        border-radius: 8px;
+
+        color: #eee;
+        height: 80vh;
+        overflow-y: auto;
+    }
+
+    .tree {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+        .tree li {
+            margin: 6px 0;
+        }
+
+    .company-name {
+        cursor: pointer;
+        font-weight: bold;
+        color: #00d8ff;
+    }
+
+    .switch-item {
+        margin-left: 20px;
+        cursor: pointer;
+        color: #ccc;
+        transition: color 0.2s;
+    }
+
+        .switch-item:hover {
+            color: #00ff99;
+        }
+
+    /* Main_te Content */
+    .main-content-tree {
+        background: #1e1e1e;
+        padding: 20px;
+        border-radius: 8px;
+        color: #eee;
+        min-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .switch-card {
+        background: #252525;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    /* رک تطبیق با کادر */
+    .rack-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* جدول همسایه‌ها */
+    .neighbors-table table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+
+    .neighbors-table thead {
+        background: linear-gradient(180deg, #000, #222);
+    }
+
+        .neighbors-table thead th {
+            color: #fff;
+            padding: 6px;
+            text-align: center;
+        }
+
+    .neighbors-table tbody td {
+        padding: 6px;
+        text-align: center;
+        border-bottom: 1px solid #333;
+    }
+
+    .neighbors-table tbody tr:nth-child(even) {
+        background: #2a2a2a;
+    }
+
+    .neighbors-table tbody tr:nth-child(odd) {
+        background: #1e1e1e;
+    }
+
+
+</style>

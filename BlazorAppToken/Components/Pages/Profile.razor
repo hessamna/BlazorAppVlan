@@ -1,3 +1,42 @@
-@page "/profile"
-<h3>Profile</h3>
-<p>TODO: Implement Profile UI</p>
+﻿@page "/profile"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+@attribute [Authorize]
+@rendermode InteractiveServer
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>خوش آمدید</h3>
+
+@if (user is not null && user.Identity.IsAuthenticated)
+{
+
+    var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var userPhone = user.FindFirst(ClaimTypes.MobilePhone)?.Value;
+    var userName = user.Identity.Name;
+    var role = user.FindFirst(ClaimTypes.Role)?.Value;
+    isAdmin = role == "Admin";
+
+
+    <p>کاربر: <strong>@userId</strong></p>
+    <p>تلفن: <strong>@userPhone</strong></p>
+    <p>نام: <strong>@userName</strong></p>
+    <p>نقش شما: <strong>@(isAdmin ? "مدیر سیستم" : "کاربر معمولی")</strong></p>
+}
+else
+{
+    <p>شما وارد نشده‌اید یا اطلاعات کاربر بارگذاری نشده است.</p>
+}
+
+@code {
+    private ClaimsPrincipal user;
+    private bool isAdmin;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        user = authState.User;
+    }
+}

@@ -1,8 +1,9 @@
 ﻿@page "/admin/switches"
 @using BalzorAppVlan.Components.Pages.Shared
+@using BalzorAppVlan.Services
 @using Microsoft.AspNetCore.Authorization
-@inject SwitchService SwitchService
-@inject CompanyService CompanyService
+@inject ISwitchService SwitchService
+@inject ICompanyService CompanyService
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
@@ -12,16 +13,16 @@
 
 <div class="d-flex mb-3">
     <button class="btn btn-success me-3" @onclick="() => OpenDialog(new SwitchViewModel())">➕ Add Switch</button>
-
-    <InputText @bind-Value="searchText"
-               class="form-control w-25"
-               placeholder="🔍 Search..."
-               @oninput="FilterSwitches"
-               @onkeydown="OnSearchKeyDown" />
+    <input class="form-control  w-25"
+           @bind="SearchText"
+           @bind:event="oninput"
+           @bind:after="FilterSwitches"
+           type="text"
+           placeholder="جستجو ..." />
 
 </div>
 
-<PaginatedTable TItem="SwitchViewModel" Items="filteredSwitches" ItemsPerPage="10">
+<PaginatedTable TItem="SwitchViewModel" Items="filteredSwitches" ItemsPerPage="15">
     <HeaderTemplate>
         <tr>
             <th>Name</th>
@@ -83,7 +84,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Company</label>
+                            <label class="form-label">Location</label>
                             <InputSelect class="form-select" @bind-Value="selectedSwitch.CompanyId">
                                 <option value="">-- Select Company --</option>
                                 @foreach (var c in companies)
@@ -112,10 +113,16 @@
 @code {
     private List<SwitchViewModel> switches = new();
     private List<SwitchViewModel> filteredSwitches = new();
-    private List<Company> companies = new();
+    private List<CompanyViewModel> companies = new();
     private bool showDialog = false;
     private SwitchViewModel selectedSwitch = new();
-    private string searchText = string.Empty;
+
+    // search
+
+    private string SearchText = string.Empty;
+
+    
+
 
     // Toast
     private string toastMessage = string.Empty;
@@ -142,15 +149,15 @@
         FilterSwitches();
     }
 
-    private void FilterSwitches(ChangeEventArgs? e = null)
+    private void FilterSwitches()
     {
-        if (string.IsNullOrWhiteSpace(searchText))
+        if (string.IsNullOrWhiteSpace(SearchText))
         {
             filteredSwitches = switches;
         }
         else
         {
-            var lower = searchText.ToLower();
+            var lower = SearchText.ToLower();
             filteredSwitches = switches.Where(s =>
                 (!string.IsNullOrEmpty(s.Name) && s.Name.ToLower().Contains(lower)) ||
                 (!string.IsNullOrEmpty(s.IpInterface) && s.IpInterface.ToLower().Contains(lower)) ||
@@ -158,7 +165,6 @@
                 companies.FirstOrDefault(c => c.Id == s.CompanyId)?.Name?.ToLower().Contains(lower) == true
             ).ToList();
         }
-        StateHasChanged();
     }
 
     private void OpenDialog(SwitchViewModel switchVm)
@@ -179,16 +185,9 @@
 
     private async Task Save()
     {
-        var entity = new Switch
-        {
-            Id = selectedSwitch.Id,
-            Name = selectedSwitch.Name,
-            IpInterface = selectedSwitch.IpInterface,
-            Model = selectedSwitch.Model,
-            CompanyId = selectedSwitch.CompanyId
-        };
+      
 
-        var result = await SwitchService.AddOrEditAsync(entity);
+        var result = await SwitchService.AddOrEditAsync(selectedSwitch);
 
         toastCssClass = result.Success ? "bg-success" : "bg-danger";
         toastMessage = result.Message;
@@ -214,13 +213,7 @@
     {
         Navigation.NavigateTo($"/admin/editswitches/{switchId}");
     }
-    private void OnSearchKeyDown(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            FilterSwitches();
-        }
-    }
+
     private void ClearToast()
     {
         toastMessage = string.Empty;

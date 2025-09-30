@@ -1,0 +1,136 @@
+﻿@using BalzorAppVlan.Services
+
+<div class="switch-panel">
+    <div class="switch-left">
+        <div class="switch-label">
+            <strong>@Switch.Name</strong><br />
+            <small>@Switch.Model</small>
+        </div>
+    </div>
+
+    <div class="switch-right">
+        @foreach (var row in GetPortRows(Interfaces, PortsPerRow / 2))
+        {
+            <div class="switch-row">
+                @foreach (var port in row)
+                {
+                    <div class="switch-port @(port.IsConnected ? "connected" : "disconnected")"
+                         @ondblclick="() => HandlePortDoubleClick(port)"
+                         title="@GetTooltip(port)">
+                        <span class="port-label">@port.Port</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public SwitchViewModel Switch { get; set; } = new();
+    [Parameter] public List<DeviceInterfaceViewModel> Interfaces { get; set; } = new();
+    [Parameter] public List<VlanViewModel> Vlans { get; set; } = new();
+    [Parameter] public int PortsPerRow { get; set; } = 24;
+    [Parameter] public EventCallback<DeviceInterfaceViewModel> OnPortDoubleClick { get; set; }
+
+    private IEnumerable<List<DeviceInterfaceViewModel>> GetPortRows(List<DeviceInterfaceViewModel> ports, int perRow)
+    {
+        for (int i = 0; i < ports.Count; i += perRow)
+            yield return ports.Skip(i).Take(perRow).ToList();
+    }
+
+    private string GetTooltip(DeviceInterfaceViewModel port)
+    {
+        var vlan = Vlans.FirstOrDefault(v => v.Id == port.VlanId);
+        return $"{port.Port}\n" +
+               $"Status: {(port.IsConnected ? "✅ Connected" : "❌ Not Connected")}\n" +
+               $"VLAN: {vlan?.VlanCode} - {vlan?.Name}\n" +
+               $"{(string.IsNullOrWhiteSpace(port.Description) ? "" : $"Desc: {port.Description}")}";
+    }
+
+    private async Task HandlePortDoubleClick(DeviceInterfaceViewModel port)
+    {
+        if (OnPortDoubleClick.HasDelegate)
+            await OnPortDoubleClick.InvokeAsync(port);
+    }
+}
+
+<style>
+    .switch-panel {
+        display: flex;
+        border: 2px solid #333;
+        border-radius: 8px;
+        background: linear-gradient(145deg, #1b1b1b, #2a2a2a);
+        color: #eee;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.6);
+        font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .switch-left {
+        width: 120px; /* فضای خالی سمت چپ */
+        background: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 2px solid #333;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .switch-label {
+        color: #00d8ff;
+        font-size: 14px;
+    }
+
+    .switch-right {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .switch-row {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .switch-port {
+        width: 42px;
+        height: 42px;
+        border-radius: 5px;
+        border: 1px solid #555;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+    }
+
+        .switch-port .port-label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .switch-port.connected {
+            background: radial-gradient(circle at 30% 30%, #00ff55, #006b1c);
+            color: black;
+            box-shadow: 0 0 6px #00ff55;
+        }
+
+        .switch-port.disconnected {
+            background: radial-gradient(circle at 30% 30%, #444, #111);
+            color: #bbb;
+        }
+
+        .switch-port:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 12px #00d8ff;
+        }
+
+
+</style>

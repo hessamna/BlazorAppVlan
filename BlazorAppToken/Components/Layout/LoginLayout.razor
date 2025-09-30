@@ -1,22 +1,15 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="public-layout">
-    <main class="container ">
-        @Body
-    </main>
+    @Body
 </div>
 
 <style>
     .public-layout {
-        background-color: #f8f9fa;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container {
-   
-        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden; /* مطمئن می‌شه اسکرول اضافه نمیاد */
     }
 </style>

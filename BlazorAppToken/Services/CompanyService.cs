@@ -1,287 +1,464 @@
 ﻿using BalzorAppVlan.Helper;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
-// ======================= CompanyService =======================
-public class CompanyService : IEntityService<Company>
+namespace BalzorAppVlan.Services
 {
-    private readonly ICompanyRepository _repo;
-
-    public CompanyService(ICompanyRepository repo) => _repo = repo;
-
-    public Task<List<Company>> GetAllAsync() => _repo.GetAllAsync();
-    public Task<Company?> GetByIdAsync(Guid id) => _repo.GetByIdAsync(id);
-
-    public async Task<ServiceResult> AddOrEditAsync(Company model)
+    // ======================= CompanyService =======================
+    public class CompanyService : ICompanyService
     {
-        // 🚨 چک کردن یکتا بودن نام شرکت
-        var exists = await _repo.ExistsAsync(c =>
-            c.Name.ToLower() == model.Name.ToLower() &&
-            c.Id != model.Id);
+        private readonly IServiceScopeFactory _scopeFactory;
+        public CompanyService(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
 
-        if (exists)
-            return ServiceResult.Fail($"Company with name '{model.Name}' already exists.");
-
-        if (model.Id == Guid.Empty)
+        public async Task<List<CompanyViewModel>> GetAllAsync()
         {
-            model.Id = Guid.NewGuid();
-            await _repo.AddAsync(model);
-            return ServiceResult.Ok("Company created successfully.");
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
+            var entities = await repo.GetAllAsync(false);
+            return entities.Select(MapToViewModel).ToList();
         }
-        else
+
+        public async Task<CompanyViewModel?> GetByIdAsync(Guid id)
         {
-            await _repo.UpdateAsync(model);
-            return ServiceResult.Ok("Company updated successfully.");
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            return entity is null ? null : MapToViewModel(entity);
         }
-    }
 
-    public async Task<ServiceResult> DeleteAsync(Guid id)
-    {
-        var entity = await _repo.GetByIdAsync(id);
-        if (entity == null) return ServiceResult.Fail("Company not found.");
-
-        await _repo.DeleteAsync(entity);
-        return ServiceResult.Ok("Company deleted successfully.");
-    }
-}
-
-
-// ======================= SwitchService =======================
-// ======================= SwitchService =======================
-public class SwitchService : IEntityService<Switch>
-{
-    private readonly ISwitchRepository _repo;
-    private readonly IVlanRepository _vlanRepo;
-    private readonly IDeviceInterfaceRepository _deviceRepo;
-    private readonly INeighborRepository _neighborRepo;
-
-    public SwitchService(
-        ISwitchRepository repo,
-        IVlanRepository vlanRepo,
-        IDeviceInterfaceRepository deviceRepo,
-        INeighborRepository neighborRepo)
-    {
-        _repo = repo;
-        _vlanRepo = vlanRepo;
-        _deviceRepo = deviceRepo;
-        _neighborRepo = neighborRepo;
-    }
-
-    public Task<List<Switch>> GetAllAsync() => _repo.GetAllAsync();
-    public Task<Switch?> GetByIdAsync(Guid id) => _repo.GetByIdAsync(id);
-
-    public async Task<ServiceResult> AddOrEditAsync(Switch model)
-    {
-        var exists = await _repo.ExistsAsync(s =>
-            s.Name.ToLower() == model.Name.ToLower() &&
-            s.Id != model.Id);
-
-        if (exists)
-            return ServiceResult.Fail($"Switch with name '{model.Name}' already exists.");
-
-        if (model.Id == Guid.Empty)
+        public async Task<ServiceResult> AddOrEditAsync(CompanyViewModel vm)
         {
-            model.Id = Guid.NewGuid();
-            await _repo.AddAsync(model);
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
 
-            // VLAN پیش‌فرض
-            await _vlanRepo.AddAsync(new Vlan
+            var exists = await repo.ExistsAsync(c =>
+                c.Name.ToLower() == vm.Name.ToLower() && c.Id != vm.Id);
+            if (exists)
+                return ServiceResult.Fail($"Company with name '{vm.Name}' already exists.");
+
+            if (vm.Id == Guid.Empty)
             {
-                Id = Guid.NewGuid(),
-                VlanCode = "1",
-                Name = "Default VLAN",
-                SwitchId = model.Id
-            });
-
-            await _vlanRepo.AddAsync(new Vlan
+                var entity = MapToEntity(vm);
+                entity.Id = Guid.NewGuid();
+                await repo.AddAsync(entity);
+            }
+            else
             {
-                Id = Guid.NewGuid(),
-                VlanCode = "Trunk",
-                Name = "Trunk VLAN",
-                SwitchId = model.Id
-            });
+                var entity = MapToEntity(vm);
+                repo.Update(entity);
+            }
 
-            return ServiceResult.Ok("Switch created successfully with default VLANs.");
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Company created successfully." : "Company updated successfully.");
         }
-        else
+
+        public async Task<ServiceResult> DeleteAsync(Guid id)
         {
-            await _repo.UpdateAsync(model);
-            return ServiceResult.Ok("Switch updated successfully.");
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            if (entity == null) return ServiceResult.Fail("Company not found.");
+            repo.Delete(entity);
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok("Company deleted successfully.");
         }
-    }
 
-    public async Task<ServiceResult> DeleteAsync(Guid id)
-    {
-        var entity = await _repo.GetByIdAsync(id);
-        if (entity == null) return ServiceResult.Fail("Switch not found.");
-
-        // 1. حذف Neighbors
-        var neighbors = await _neighborRepo.FindAsync(n => n.SwitchId == id);
-        foreach (var neighbor in neighbors)
-            await _neighborRepo.DeleteAsync(neighbor);
-
-        // 2. حذف Device Interfaces
-        var devices = await _deviceRepo.FindAsync(d => d.SwitchId == id);
-        foreach (var device in devices)
-            await _deviceRepo.DeleteAsync(device);
-
-        // 3. حذف VLANs
-        var vlans = await _vlanRepo.FindAsync(v => v.SwitchId == id);
-        foreach (var vlan in vlans)
-            await _vlanRepo.DeleteAsync(vlan);
-
-        // 4. در نهایت حذف خود Switch
-        await _repo.DeleteAsync(entity);
-
-        return ServiceResult.Ok("Switch and all related entities deleted successfully.");
-    }
-}
-
-
-// ======================= VlanService =======================
-public class VlanService : IEntityService<Vlan>
-{
-    private readonly IVlanRepository _repo;
-
-    public VlanService(IVlanRepository repo) => _repo = repo;
-
-    public Task<List<Vlan>> GetAllAsync() => _repo.GetAllAsync();
-    public Task<Vlan?> GetByIdAsync(Guid id) => _repo.GetByIdAsync(id);
-
-    public async Task<ServiceResult> AddOrEditAsync(Vlan model)
-    {
-        var exists = await _repo.ExistsAsync(v =>
-            v.SwitchId == model.SwitchId &&
-            v.VlanCode.ToLower() == model.VlanCode.ToLower() &&
-            v.Id != model.Id);
-
-        if (exists)
-            return ServiceResult.Fail($"VLAN with code '{model.VlanCode}' already exists in this switch.");
-
-        if (model.Id == Guid.Empty)
+        private static CompanyViewModel MapToViewModel(Company e) => new()
         {
-            model.Id = Guid.NewGuid();
-            await _repo.AddAsync(model);
-            return ServiceResult.Ok("VLAN created successfully.");
+            Id = e.Id,
+            Name = e.Name,
+            IsVerified = e.IsVerified
+        };
+        private static Company MapToEntity(CompanyViewModel vm) => new()
+        {
+            Id = vm.Id,
+            Name = vm.Name,
+            IsVerified = vm.IsVerified
+        };
+    }
+
+    // ======================= SwitchService =======================
+    public class SwitchService : ISwitchService
+    {
+        private readonly IServiceScopeFactory _scopeFactory;
+        public SwitchService(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
+
+        public async Task<List<SwitchViewModel>> GetAllAsync()
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
+            var entities = await repo.GetAllAsync(false);
+            return entities.Select(MapToViewModel).ToList();
         }
-        else
+
+        public async Task<SwitchViewModel?> GetByIdAsync(Guid id)
         {
-            await _repo.UpdateAsync(model);
-            return ServiceResult.Ok("VLAN updated successfully.");
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            return entity is null ? null : MapToViewModel(entity);
         }
-    }
 
-    public async Task<ServiceResult> DeleteAsync(Guid id)
-    {
-        var entity = await _repo.GetByIdAsync(id);
-        if (entity == null) return ServiceResult.Fail("VLAN not found.");
-
-        await _repo.DeleteAsync(entity);
-        return ServiceResult.Ok("VLAN deleted successfully.");
-    }
-}
-
-// ======================= DeviceInterfaceService =======================
-public class DeviceInterfaceService : IEntityService<DeviceInterface>
-{
-    private readonly IDeviceInterfaceRepository _repo;
-    private readonly IVlanRepository _vlanRepo;
-    public DeviceInterfaceService(IDeviceInterfaceRepository repo, IVlanRepository vlanRepo)
-    {
-        _repo = repo;
-        _vlanRepo = vlanRepo;
-    }
-
-    public Task<List<DeviceInterface>> GetAllAsync() => _repo.GetAllAsync();
-    public Task<DeviceInterface?> GetByIdAsync(Guid id) => _repo.GetByIdAsync(id);
-
-    public async Task<ServiceResult> AddOrEditAsync(DeviceInterface model)
-    {
-        if (model.Id == Guid.Empty)
+        public async Task<ServiceResult> AddOrEditAsync(SwitchViewModel vm)
         {
-            model.Id = Guid.NewGuid();
-            await _repo.AddAsync(model);
-            return ServiceResult.Ok("Device interface created successfully.");
-        }
-        else
-        {
-            await _repo.UpdateAsync(model);
-            return ServiceResult.Ok("Device interface updated successfully.");
-        }
-    }
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
+            var vlanRepo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
 
-    public async Task<ServiceResult> DeleteAsync(Guid id)
-    {
-        var entity = await _repo.GetByIdAsync(id);
-        if (entity == null) return ServiceResult.Fail("Device interface not found.");
+            var exists = await repo.ExistsAsync(s =>
+                s.Name.ToLower() == vm.Name.ToLower() && s.Id != vm.Id);
+            if (exists)
+                return ServiceResult.Fail($"Switch with name '{vm.Name}' already exists.");
 
-        await _repo.DeleteAsync(entity);
-        return ServiceResult.Ok("Device interface deleted successfully.");
-    }
-    public async Task<ServiceResult> AddRangeAsync(Guid switchId, int count, string portPrefix = "Gi1/0/")
-    {
-        if (count <= 0)
-            return ServiceResult.Fail("Count must be greater than zero.");
-
-        // گرفتن VLAN 1 پیش‌فرض از repo
-        var defaultVlan = await _vlanRepo.FirstOrDefaultAsync(
-            v => v.SwitchId == switchId && v.VlanCode == "1"
-        );
-
-        if (defaultVlan == null)
-            return ServiceResult.Fail("Default VLAN (1) not found for this switch.");
-
-        for (int i = 1; i <= count; i++)
-        {
-            var newInterface = new DeviceInterface
+            if (vm.Id == Guid.Empty)
             {
-                Id = Guid.NewGuid(),
-                Port = $"{portPrefix}{i}",
-                Description = $"Auto generated port {i}",
-                IsConnected = false,
-                SwitchId = switchId,
-                VlanId = defaultVlan.Id
-            };
+                var entity = MapToEntity(vm);
+                entity.Id = Guid.NewGuid();
+                await repo.AddAsync(entity);
 
-            await _repo.AddAsync(newInterface);
+                // Default VLANs
+                await vlanRepo.AddAsync(new Vlan
+                {
+                    Id = Guid.NewGuid(),
+                    VlanCode = "1",
+                    Name = "Default VLAN",
+                    SwitchId = entity.Id
+                });
+                await vlanRepo.AddAsync(new Vlan
+                {
+                    Id = Guid.NewGuid(),
+                    VlanCode = "Trunk",
+                    Name = "Trunk VLAN",
+                    SwitchId = entity.Id
+                });
+            }
+            else
+            {
+                var entity = MapToEntity(vm);
+                repo.Update(entity);
+            }
+
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Switch created successfully with default VLANs." : "Switch updated successfully.");
         }
 
-        return ServiceResult.Ok($"{count} interfaces created successfully with default VLAN 1.");
-    }
-}
-
-// ======================= NeighborService =======================
-public class NeighborService : IEntityService<Neighbor>
-{
-    private readonly INeighborRepository _repo;
-
-    public NeighborService(INeighborRepository repo) => _repo = repo;
-
-    public Task<List<Neighbor>> GetAllAsync() => _repo.GetAllAsync();
-    public Task<Neighbor?> GetByIdAsync(Guid id) => _repo.GetByIdAsync(id);
-
-    public async Task<ServiceResult> AddOrEditAsync(Neighbor model)
-    {
-        if (model.Id == Guid.Empty)
+        public async Task<ServiceResult> DeleteAsync(Guid id)
         {
-            model.Id = Guid.NewGuid();
-            await _repo.AddAsync(model);
-            return ServiceResult.Ok("Neighbor created successfully.");
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
+            var vlanRepo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+            var deviceRepo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            var neighborRepo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
+
+            var entity = await repo.GetByIdAsync(id, false);
+            if (entity == null) return ServiceResult.Fail("Switch not found.");
+
+            var neighbors = await neighborRepo.FindAsync(n => n.SwitchId == id);
+            neighborRepo.DeleteRange(neighbors);
+
+            var devices = await deviceRepo.FindAsync(d => d.SwitchId == id);
+            deviceRepo.DeleteRange(devices);
+
+            var vlans = await vlanRepo.FindAsync(v => v.SwitchId == id);
+            vlanRepo.DeleteRange(vlans);
+
+            repo.Delete(entity);
+
+            await neighborRepo.SaveChangesAsync();
+            await deviceRepo.SaveChangesAsync();
+            await vlanRepo.SaveChangesAsync();
+            await repo.SaveChangesAsync();
+
+            return ServiceResult.Ok("Switch and all related entities deleted successfully.");
         }
-        else
+
+        private static SwitchViewModel MapToViewModel(Switch e) => new()
         {
-            await _repo.UpdateAsync(model);
-            return ServiceResult.Ok("Neighbor updated successfully.");
-        }
+            Id = e.Id,
+            Name = e.Name,
+            IpInterface = e.IpInterface,
+            Model = e.Model,
+            CompanyId = e.CompanyId
+        };
+        private static Switch MapToEntity(SwitchViewModel vm) => new()
+        {
+            Id = vm.Id,
+            Name = vm.Name,
+            IpInterface = vm.IpInterface,
+            Model = vm.Model,
+            CompanyId = vm.CompanyId
+        };
     }
 
-    public async Task<ServiceResult> DeleteAsync(Guid id)
+    // ======================= VlanService =======================
+    public class VlanService : IVlanService
     {
-        var entity = await _repo.GetByIdAsync(id);
-        if (entity == null) return ServiceResult.Fail("Neighbor not found.");
+        private readonly IServiceScopeFactory _scopeFactory;
+        public VlanService(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
 
-        await _repo.DeleteAsync(entity);
-        return ServiceResult.Ok("Neighbor deleted successfully.");
+        public async Task<List<VlanViewModel>> GetAllAsync()
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+            var entities = await repo.GetAllAsync(false);
+            return entities.Select(MapToViewModel).ToList();
+        }
+
+        public async Task<VlanViewModel?> GetByIdAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            return entity is null ? null : MapToViewModel(entity);
+        }
+
+        public async Task<ServiceResult> AddOrEditAsync(VlanViewModel vm)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+
+            var exists = await repo.ExistsAsync(v =>
+                v.SwitchId == vm.SwitchId &&
+                v.VlanCode.ToLower() == vm.VlanCode.ToLower() &&
+                v.Id != vm.Id);
+            if (exists)
+                return ServiceResult.Fail($"VLAN with code '{vm.VlanCode}' already exists in this switch.");
+
+            if (vm.Id == Guid.Empty)
+            {
+                var entity = MapToEntity(vm);
+                entity.Id = Guid.NewGuid();
+                await repo.AddAsync(entity);
+            }
+            else
+            {
+                var entity = MapToEntity(vm);
+                repo.Update(entity);
+            }
+
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok(vm.Id == Guid.Empty ? "VLAN created successfully." : "VLAN updated successfully.");
+        }
+
+        public async Task<ServiceResult> DeleteAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            if (entity == null) return ServiceResult.Fail("VLAN not found.");
+            repo.Delete(entity);
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok("VLAN deleted successfully.");
+        }
+
+        private static VlanViewModel MapToViewModel(Vlan e) => new()
+        {
+            Id = e.Id,
+            VlanCode = e.VlanCode,
+            Name = e.Name,
+            IpInterface = e.IpInterface,
+            SwitchId = e.SwitchId
+        };
+        private static Vlan MapToEntity(VlanViewModel vm) => new()
+        {
+            Id = vm.Id,
+            VlanCode = vm.VlanCode,
+            Name = vm.Name,
+            IpInterface = vm.IpInterface,
+            SwitchId = vm.SwitchId
+        };
+    }
+
+    // ======================= DeviceInterfaceService =======================
+    public class DeviceInterfaceService : IDeviceInterfaceService
+    {
+        private readonly IServiceScopeFactory _scopeFactory;
+        public DeviceInterfaceService(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
+
+        public async Task<List<DeviceInterfaceViewModel>> GetAllAsync()
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            var entities = await repo.GetAllAsync(false);
+            return entities.Select(MapToViewModel).ToList();
+        }
+
+        public async Task<DeviceInterfaceViewModel?> GetByIdAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            return entity is null ? null : MapToViewModel(entity);
+        }
+
+        public async Task<ServiceResult> AddOrEditAsync(DeviceInterfaceViewModel vm)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+
+            if (vm.Id == Guid.Empty)
+            {
+                var entity = MapToEntity(vm);
+                entity.Id = Guid.NewGuid();
+                await repo.AddAsync(entity);
+            }
+            else
+            {
+                var entity = MapToEntity(vm);
+                repo.Update(entity);
+            }
+
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Device interface created successfully." : "Device interface updated successfully.");
+        }
+
+        public async Task<ServiceResult> DeleteAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            if (entity == null) return ServiceResult.Fail("Device interface not found.");
+            repo.Delete(entity);
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok("Device interface deleted successfully.");
+        }
+
+        public async Task<ServiceResult> UpdateRangeAsync(List<DeviceInterfaceViewModel> vms)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            if (vms == null || vms.Count == 0)
+                return ServiceResult.Fail("No interfaces provided.");
+            var entities = vms.Select(MapToEntity).ToList();
+            repo.UpdateRange(entities);
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok("All device interfaces updated successfully.");
+        }
+
+        public async Task<ServiceResult> AddRangeAsync(Guid switchId, int count, string portPrefix = "Gi1/0/")
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
+            var vlanRepo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
+
+            if (count <= 0)
+                return ServiceResult.Fail("Count must be greater than zero.");
+
+            var defaultVlan = await vlanRepo.FirstOrDefaultAsync(v =>
+                v.SwitchId == switchId && v.VlanCode == "1");
+            if (defaultVlan == null)
+                return ServiceResult.Fail("Default VLAN (1) not found for this switch.");
+
+            for (int i = 1; i <= count; i++)
+            {
+                var entity = new DeviceInterface
+                {
+                    Id = Guid.NewGuid(),
+                    Port = $"{portPrefix}{i}",
+                    Description = "",
+                    IsConnected = false,
+                    SwitchId = switchId,
+                    VlanId = defaultVlan.Id
+                };
+                await repo.AddAsync(entity);
+            }
+
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok($"{count} interfaces created successfully with default VLAN 1.");
+        }
+
+        private static DeviceInterfaceViewModel MapToViewModel(DeviceInterface e) => new()
+        {
+            Id = e.Id,
+            Port = e.Port,
+            Description = e.Description,
+            IsConnected = e.IsConnected,
+            SwitchId = e.SwitchId,
+            VlanId = e.VlanId
+        };
+        private static DeviceInterface MapToEntity(DeviceInterfaceViewModel vm) => new()
+        {
+            Id = vm.Id,
+            Port = vm.Port,
+            Description = vm.Description,
+            IsConnected = vm.IsConnected,
+            SwitchId = vm.SwitchId,
+            VlanId = vm.VlanId
+        };
+    }
+
+    // ======================= NeighborService =======================
+    public class NeighborService : INeighborService
+    {
+        private readonly IServiceScopeFactory _scopeFactory;
+        public NeighborService(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
+
+        public async Task<List<NeighborViewModel>> GetAllAsync()
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
+            var entities = await repo.GetAllAsync(false);
+            return entities.Select(MapToViewModel).ToList();
+        }
+
+        public async Task<NeighborViewModel?> GetByIdAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            return entity is null ? null : MapToViewModel(entity);
+        }
+
+        public async Task<ServiceResult> AddOrEditAsync(NeighborViewModel vm)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
+
+            if (vm.Id == Guid.Empty)
+            {
+                var entity = MapToEntity(vm);
+                entity.Id = Guid.NewGuid();
+                await repo.AddAsync(entity);
+            }
+            else
+            {
+                var entity = MapToEntity(vm);
+                repo.Update(entity);
+            }
+
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Neighbor created successfully." : "Neighbor updated successfully.");
+        }
+
+        public async Task<ServiceResult> DeleteAsync(Guid id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
+            var entity = await repo.GetByIdAsync(id, false);
+            if (entity == null) return ServiceResult.Fail("Neighbor not found.");
+            repo.Delete(entity);
+            await repo.SaveChangesAsync();
+            return ServiceResult.Ok("Neighbor deleted successfully.");
+        }
+
+        private static NeighborViewModel MapToViewModel(Neighbor e) => new()
+        {
+            Id = e.Id,
+            DeviceId = e.DeviceId,
+            LocalInterface = e.LocalInterface,
+            NeighborSWName = e.NeighborSWName,
+            NeighborSWNamePortId = e.NeighborSWNamePortId,
+            SwitchId = e.SwitchId,
+            VlanId = e.VlanId
+        };
+        private static Neighbor MapToEntity(NeighborViewModel vm) => new()
+        {
+            Id = vm.Id,
+            DeviceId = vm.DeviceId,
+            LocalInterface = vm.LocalInterface,
+            NeighborSWName = vm.NeighborSWName,
+            NeighborSWNamePortId = vm.NeighborSWNamePortId,
+            SwitchId = vm.SwitchId,
+            VlanId = vm.VlanId
+        };
     }
 }

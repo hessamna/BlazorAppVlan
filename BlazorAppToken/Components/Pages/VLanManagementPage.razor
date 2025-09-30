@@ -1,12 +1,13 @@
 ﻿@page "/admin/editswitches/{id:guid}"
 @using BalzorAppVlan.Components.Pages.Shared
+@using BalzorAppVlan.Services
 @using Microsoft.AspNetCore.Authorization
 @using System.ComponentModel.DataAnnotations
-@inject SwitchService SwitchService
-@inject VlanService VlanService
-@inject DeviceInterfaceService DeviceInterfaceService
-@inject NeighborService NeighborService
-@inject CompanyService CompanyService
+@inject ISwitchService SwitchService
+@inject IVlanService VlanService
+@inject IDeviceInterfaceService DeviceInterfaceService
+@inject INeighborService NeighborService
+@inject ICompanyService CompanyService
 @inject IJSRuntime JS
 @rendermode InteractiveServer
 @attribute [Authorize]
@@ -23,21 +24,27 @@ else
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h5 class="card-title">@switchEntity.Name</h5>
-            <p><strong>IP:</strong> @switchEntity.IpInterface</p>
-            <p><strong>Model:</strong> @switchEntity.Model</p>
-            <p><strong>Company:</strong> @company?.Name</p>
+            <strong>IP:</strong> @switchEntity.IpInterface
+            <strong>Model:</strong> @switchEntity.Model
+            <strong>Location:</strong> @company?.Name
         </div>
     </div>
-
+    <SwitchRack Switch="switchEntity"
+                Interfaces="devices"
+                Vlans="vlans"
+                PortsPerRow="filteredDevices.Count"
+                OnPortDoubleClick="OpenDeviceDialog" />
     <!-- ================= VLANs ================= -->
     <h4>VLANs</h4>
     <div class="d-flex mb-2">
         <button class="btn btn-success me-2" @onclick="() => OpenVlanDialog(new VlanViewModel { SwitchId = id })">➕ Add VLAN</button>
-        <InputText class="form-control w-25"
-                   placeholder="🔍 Search VLAN..."
-                   @bind-Value="searchVlan"
-                   @oninput="FilterVlans"
-                   @onkeydown="@(e => OnSearchKeyDown(e, "vlan"))" />
+   
+        <input class="form-control  w-25"
+               @bind="searchVlan"
+               @bind:event="oninput"
+               @bind:after="FilterVlans"
+               type="text"
+               placeholder="🔍 Search VLAN..." />
     </div>
     <PaginatedTable TItem="VlanViewModel" Items="filteredVlans" ItemsPerPage="5">
         <HeaderTemplate>
@@ -66,13 +73,23 @@ else
     <div class="d-flex mb-2">
         <button class="btn btn-success me-2" @onclick="() => OpenDeviceDialog(new DeviceInterfaceViewModel { SwitchId = id })">➕ Add Interface</button>
         <button class="btn btn-warning me-2" @onclick="() => OpenRangeDialog()">➕ Add Range</button>
-        <InputText class="form-control w-25"
-                   placeholder="🔍 Search Interface..."
-                   @bind-Value="searchDevice"
-                   @oninput="FilterDevices"
-                   @onkeydown="@(e => OnSearchKeyDown(e, "device"))" />
+        @if (!IsBulkEditing)
+        {
+            <button class="btn btn-primary me-2" @onclick="() => IsBulkEditing = true">✏️ Edit All</button>
+        }
+        else
+        {
+            <button class="btn btn-success me-2" @onclick="SaveAllDevices">💾 Save All</button>
+            <button class="btn btn-secondary" @onclick="() => CancelBulkEdit()">❌ Cancel</button>
+        }
+        <input class="form-control  w-25"
+               @bind="searchDevice"
+               @bind:event="oninput"
+               @bind:after="FilterDevices"
+               type="text"
+               placeholder="🔍 Search Interface..." />
     </div>
-    <PaginatedTable TItem="DeviceInterfaceViewModel" Items="filteredDevices" ItemsPerPage="5">
+    <PaginatedTable TItem="DeviceInterfaceViewModel" Items="filteredDevices" ItemsPerPage="52">
         <HeaderTemplate>
             <tr>
                 <th>Port</th>
@@ -85,15 +102,50 @@ else
         <RowTemplate Context="d">
             <tr>
                 <td>@d.Port</td>
-                <td>@d.Description</td>
-                <td>@(d.IsConnected ? "✅ Connected" : "❌ Not Connected")</td>
                 <td>
-                    @vlans.FirstOrDefault(v => v.Id == d.VlanId)?.VlanCode -
-                    @vlans.FirstOrDefault(v => v.Id == d.VlanId)?.Name
+                    @if (IsBulkEditing)
+                    {
+                        <input class="form-control form-control-sm" @bind="d.Description" />
+                    }
+                    else
+                    {
+                        @d.Description
+                    }
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenDeviceDialog(d)">Edit</button>
-                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteDevice(d.Id)">Delete</button>
+                    @if (IsBulkEditing)
+                    {
+                        <input type="checkbox" @bind="d.IsConnected" />
+                    }
+                    else
+                    {
+                        @(d.IsConnected ? "✅ Connected" : "❌ Not Connected")
+                    }
+                </td>
+                <td>
+                    @if (IsBulkEditing)
+                    {
+                        <select class="form-select form-select-sm" @bind="d.VlanId">
+                            @foreach (var v in vlans)
+                            {
+                                <option value="@v.Id">@v.VlanCode - @v.Name</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        @($"{vlans.FirstOrDefault(v => v.Id == d.VlanId)?.VlanCode} - {vlans.FirstOrDefault(v => v.Id == d.VlanId)?.Name}")
+                                }
+                </td>
+                <td>
+                    @if (!IsBulkEditing)
+                    {
+                        <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenDeviceDialog(d)">Edit</button>
+                        <button class="btn btn-danger btn-sm"
+                                @onclick="() => DeleteDevice(d.Id)">
+                            Delete
+                        </button>
+                    }
                 </td>
             </tr>
         </RowTemplate>
@@ -103,13 +155,17 @@ else
     <h4 class="mt-5">Neighbors</h4>
     <div class="d-flex mb-2">
         <button class="btn btn-success me-2" @onclick="() => OpenNeighborDialog(new NeighborViewModel { SwitchId = id })">➕ Add Neighbor</button>
-        <InputText class="form-control w-25"
-                   placeholder="🔍 Search Neighbor..."
-                   @bind-Value="searchNeighbor"
-                   @oninput="FilterNeighbors"
-                   @onkeydown="@(e => OnSearchKeyDown(e, "neighbor"))" />
+        <input class="form-control  w-25"
+               @bind="searchNeighbor"
+               @bind:event="oninput"
+               @bind:after="FilterNeighbors"
+               type="text"
+               placeholder="🔍 Search Neighbor..." />
+        
+        
+        
     </div>
-    <PaginatedTable TItem="NeighborViewModel" Items="filteredNeighbors" ItemsPerPage="5">
+    <PaginatedTable TItem="NeighborViewModel" Items="filteredNeighbors" ItemsPerPage="10">
         <HeaderTemplate>
             <tr>
                 <th>Device ID</th>
@@ -175,6 +231,11 @@ else
                 <ValidationMessage For="@(() => selectedVlan.Name)" />
             </div>
 
+            <div class="mb-2">
+                <label class="form-label">Ip Interface</label>
+                <InputText class="form-control" @bind-Value="selectedVlan.IpInterface" />
+                <ValidationMessage For="@(() => selectedVlan.IpInterface)" />
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </EditForm>
     </Modal>
@@ -271,9 +332,9 @@ else
 @code {
     [Parameter] public Guid id { get; set; }
 
-    private Switch? switchEntity;
-    private Company? company;
-
+    private SwitchViewModel? switchEntity;
+    private CompanyViewModel? company;
+    private bool IsBulkEditing = false;
     private string toastMessage = string.Empty;
     private string toastCssClass = "bg-success";
 
@@ -311,8 +372,19 @@ else
         vlans = (await VlanService.GetAllAsync()).Where(v => v.SwitchId == id)
             .Select(v => new VlanViewModel { Id = v.Id, VlanCode = v.VlanCode, Name = v.Name, IpInterface = v.IpInterface, SwitchId = v.SwitchId }).ToList();
 
-        devices = (await DeviceInterfaceService.GetAllAsync()).Where(d => d.SwitchId == id)
-            .Select(d => new DeviceInterfaceViewModel { Id = d.Id, Port = d.Port, Description = d.Description, IsConnected = d.IsConnected, SwitchId = d.SwitchId, VlanId = d.VlanId }).ToList();
+        devices = (await DeviceInterfaceService.GetAllAsync())
+      .Where(d => d.SwitchId == id)
+      .Select(d => new DeviceInterfaceViewModel
+      {
+          Id = d.Id,
+          Port = d.Port,
+          Description = d.Description,
+          IsConnected = d.IsConnected,
+          SwitchId = d.SwitchId,
+          VlanId = d.VlanId
+      })
+      .OrderBy(d => ExtractPortNumber(d.Port)) // 👈 مرتب‌سازی از همون اول
+      .ToList();
 
         neighbors = (await NeighborService.GetAllAsync()).Where(n => n.SwitchId == id)
             .Select(n => new NeighborViewModel { Id = n.Id, DeviceId = n.DeviceId, LocalInterface = n.LocalInterface, NeighborSWName = n.NeighborSWName, NeighborSWNamePortId = n.NeighborSWNamePortId, SwitchId = n.SwitchId, VlanId = n.VlanId }).ToList();
@@ -327,10 +399,24 @@ else
             vlans.Where(v => v.Name.Contains(searchVlan, StringComparison.OrdinalIgnoreCase) ||
                              v.VlanCode.Contains(searchVlan, StringComparison.OrdinalIgnoreCase)).ToList();
 
-    private void FilterDevices() =>
-        filteredDevices = string.IsNullOrWhiteSpace(searchDevice) ? devices :
-            devices.Where(d => d.Port.Contains(searchDevice, StringComparison.OrdinalIgnoreCase) ||
-                               (d.Description ?? "").Contains(searchDevice, StringComparison.OrdinalIgnoreCase)).ToList();
+    private void FilterDevices()
+    {
+        if (string.IsNullOrWhiteSpace(searchDevice))
+        {
+            filteredDevices = devices
+                .OrderBy(d => ExtractPortNumber(d.Port))
+                .ToList();
+        }
+        else
+        {
+            filteredDevices = devices
+                .Where(d =>
+                    d.Port.Contains(searchDevice, StringComparison.OrdinalIgnoreCase) ||
+                    (d.Description ?? "").Contains(searchDevice, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(d => ExtractPortNumber(d.Port))
+                .ToList();
+        }
+    }
 
     private void FilterNeighbors() =>
         filteredNeighbors = string.IsNullOrWhiteSpace(searchNeighbor) ? neighbors :
@@ -338,18 +424,7 @@ else
                                  n.LocalInterface.Contains(searchNeighbor, StringComparison.OrdinalIgnoreCase) ||
                                  (n.NeighborSWName ?? "").Contains(searchNeighbor, StringComparison.OrdinalIgnoreCase)).ToList();
 
-    private void OnSearchKeyDown(KeyboardEventArgs e, string target)
-    {
-        if (e.Key == "Enter")
-        {
-            switch (target)
-            {
-                case "vlan": FilterVlans(); break;
-                case "device": FilterDevices(); break;
-                case "neighbor": FilterNeighbors(); break;
-            }
-        }
-    }
+   
 
     private void ShowToast(bool success, string message)
     {
@@ -362,19 +437,22 @@ else
     private void CloseVlanDialog() => showVlanDialog = false;
     private async Task SaveVlan()
     {
-        var result = await VlanService.AddOrEditAsync(new Vlan
-        {
-            Id = selectedVlan.Id,
-            VlanCode = selectedVlan.VlanCode,
-            Name = selectedVlan.Name,
-            IpInterface = selectedVlan.IpInterface,
-            SwitchId = id
-        });
+        var result = await VlanService.AddOrEditAsync(selectedVlan);
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showVlanDialog = false; }
     }
     private async Task DeleteVlan(Guid vid)
     {
+        var vlan = vlans.FirstOrDefault(v => v.Id == vid);
+
+        // ❌ جلوگیری از حذف VLAN های سیستمی
+        if (vlan != null && (vlan.VlanCode == "1" ||
+                             vlan.VlanCode.Equals("Trunk", StringComparison.OrdinalIgnoreCase)))
+        {
+            ShowToast(false, $"❌ VLAN {vlan.VlanCode} cannot be deleted.");
+            return;
+        }
+
         if (await JS.InvokeAsync<bool>("confirm", "Delete VLAN?"))
         {
             var result = await VlanService.DeleteAsync(vid);
@@ -383,20 +461,13 @@ else
         }
     }
 
+
     // Device
     private void OpenDeviceDialog(DeviceInterfaceViewModel d) { selectedDevice = d; showDeviceDialog = true; }
     private void CloseDeviceDialog() => showDeviceDialog = false;
     private async Task SaveDevice()
     {
-        var result = await DeviceInterfaceService.AddOrEditAsync(new DeviceInterface
-        {
-            Id = selectedDevice.Id,
-            Port = selectedDevice.Port,
-            Description = selectedDevice.Description,
-            IsConnected = selectedDevice.IsConnected,
-            SwitchId = id,
-            VlanId = selectedDevice.VlanId
-        });
+        var result = await DeviceInterfaceService.AddOrEditAsync(selectedDevice );
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showDeviceDialog = false; }
     }
@@ -415,16 +486,7 @@ else
     private void CloseNeighborDialog() => showNeighborDialog = false;
     private async Task SaveNeighbor()
     {
-        var result = await NeighborService.AddOrEditAsync(new Neighbor
-        {
-            Id = selectedNeighbor.Id,
-            DeviceId = selectedNeighbor.DeviceId,
-            LocalInterface = selectedNeighbor.LocalInterface,
-            NeighborSWName = selectedNeighbor.NeighborSWName,
-            NeighborSWNamePortId = selectedNeighbor.NeighborSWNamePortId,
-            SwitchId = id,
-            VlanId = selectedNeighbor.VlanId
-        });
+        var result = await NeighborService.AddOrEditAsync(selectedNeighbor);
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showNeighborDialog = false; }
     }
@@ -465,5 +527,42 @@ else
             await LoadDataAsync();
             showRangeDialog = false;
         }
+    }
+    private int ExtractPortNumber(string? port)
+    {
+        if (string.IsNullOrWhiteSpace(port))
+            return 0;
+
+        // همه عددها را از رشته استخراج کن
+        var digits = new string(port.Where(char.IsDigit).ToArray());
+
+        if (int.TryParse(digits, out int number))
+            return number;
+
+        return 0;
+    }
+    private async Task SaveAllDevices()
+    {
+        var result = await DeviceInterfaceService.UpdateRangeAsync(filteredDevices);
+
+        ShowToast(result.Success, result.Message);
+
+        if (result.Success)
+            await LoadDataAsync();
+    }
+
+
+    private void CancelBulkEdit()
+    {
+        IsBulkEditing = false;
+        // داده‌ها رو دوباره بارگذاری کن که تغییرات نیمه‌کاره برگردن
+        _ = LoadDataAsync();
+    }
+    private List<ValidationResult> ValidateModel(object model)
+    {
+        var results = new List<ValidationResult>();
+        var context = new ValidationContext(model, null, null);
+        Validator.TryValidateObject(model, context, results, true);
+        return results;
     }
 }

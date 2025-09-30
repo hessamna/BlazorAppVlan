@@ -3,8 +3,6 @@
 @using System.ComponentModel.DataAnnotations
 @using BalzorAppVlan.Datas
 @using BalzorAppVlan.Services.API.Controllers
-@using BalzorAppVlan.Datas
-@using BalzorAppVlan.Services.API.Controllers
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
 @rendermode InteractiveServer
@@ -13,51 +11,96 @@
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
+@inject IJSRuntime JS
 
-<PageTitle>Login - Blockchain Management System</PageTitle>
+<PageTitle>Login - Switch Management System</PageTitle>
 
-<div class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-    <div class="card shadow rounded-4" style="width: 420px;">
-        <div class="card-body p-4">
-            <h2 class="text-center mb-2 fw-bold">Vlan Management System</h2>
-            <p class="text-center text-muted mb-4">Sign in to your account</p>
+<div id="login-background" class="login-background">
+    <div class="overlay d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card shadow rounded-4 login-card">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-2 fw-bold">Vlan Management System</h2>
+                <p class="text-center text-muted mb-4">Sign in to your account</p>
 
-            <StatusMessage Message="@errorMessage" />
+                <StatusMessage Message="@errorMessage" />
 
-            <EditForm Model="Input" OnValidSubmit="LoginUser" method="post" FormName="login">
-                <DataAnnotationsValidator />
-                <ValidationSummary class="text-danger" role="alert" />
+                <EditForm Model="Input" OnValidSubmit="LoginUser" method="post" FormName="login">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary class="text-danger" role="alert" />
 
-                <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.Email" class="form-control" id="email" autocomplete="username" placeholder="Email" />
-                    <label for="email">Email</label>
-                    <ValidationMessage For="() => Input.Email" class="text-danger small" />
-                </div>
-
-                <div class="form-floating mb-3">
-                    <InputText type="password" @bind-Value="Input.Password" class="form-control" id="password" autocomplete="current-password" placeholder="Password" />
-                    <label for="password">Password</label>
-                    <ValidationMessage For="() => Input.Password" class="text-danger small" />
-                </div>
-
-                <div class="form-check mb-3">
-                    <InputCheckbox @bind-Value="Input.RememberMe" class="form-check-input" id="rememberMe" />
-                    <label class="form-check-label" for="rememberMe">Remember me</label>
-                </div>
-
-                @if (!string.IsNullOrEmpty(errorMessage))
-                {
-                    <div class="alert alert-danger text-center py-2">
-                        @errorMessage
+                    <div class="form-floating mb-3">
+                        <InputText @bind-Value="Input.Email" class="form-control" id="email" autocomplete="username" placeholder="Email" />
+                        <label for="email">Email</label>
+                        <ValidationMessage For="() => Input.Email" class="text-danger small" />
                     </div>
-                }
 
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </EditForm>
+                    <div class="form-floating mb-3">
+                        <InputText type="password" @bind-Value="Input.Password" class="form-control" id="password" autocomplete="current-password" placeholder="Password" />
+                        <label for="password">Password</label>
+                        <ValidationMessage For="() => Input.Password" class="text-danger small" />
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <InputCheckbox @bind-Value="Input.RememberMe" class="form-check-input" id="rememberMe" />
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger text-center py-2">
+                            @errorMessage
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </EditForm>
+            </div>
         </div>
     </div>
 </div>
 
+<style>
+    .login-background {
+        background-image: url('/images/bg1.png'); /* تصویر پیش‌فرض */
+        height: 100vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 1s ease-in-out;
+    }
+
+    .overlay {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.3); /* کمی تاریک */
+    }
+
+    .login-card {
+        width: 420px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(6px);
+        border: none;
+    }
+</style>
+<script>
+       window.startBackgroundSlideshow = function () {
+        const images = [
+            "/images/bg1.png",
+            "/images/bg2.png",
+            "/images/bg3.png"
+        ];
+        let index = 0;
+        const background = document.getElementById("login-background");
+
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            background.style.backgroundImage = `url('${images[index]}')`;
+        }, 2000);
+    };
+</script>
 @code {
     private string? errorMessage;
 
@@ -66,6 +109,14 @@
 
     [SupplyParameterFromQuery]
     private string? ReturnUrl { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("startBackgroundSlideshow");
+        }
+    }
 
     public async Task LoginUser()
     {

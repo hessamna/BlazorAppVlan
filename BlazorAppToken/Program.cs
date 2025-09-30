@@ -1,12 +1,13 @@
-﻿using BalzorAppVlan.Datas;
+﻿using BalzorAppVlan.Components;
+using BalzorAppVlan.Datas;
+using BalzorAppVlan.Repository.BaseRepository;
+using BalzorAppVlan.Services;
 using BalzorAppVlan.Services.API.Controllers;
-using BalzorAppVlan.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using BalzorAppVlan.Repository.BaseRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,12 +59,11 @@ builder.Services.AddScoped<ISystemSettingRepository, SystemSettingRepository>();
 // Services
 
 
-builder.Services.AddScoped<CompanyService>();
-builder.Services.AddScoped<CompanyService>();
-builder.Services.AddScoped<SwitchService>();
-builder.Services.AddScoped<VlanService>();
-builder.Services.AddScoped<DeviceInterfaceService>();
-builder.Services.AddScoped<NeighborService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<ISwitchService, SwitchService>();
+builder.Services.AddScoped<IVlanService, VlanService>();
+builder.Services.AddScoped<IDeviceInterfaceService, DeviceInterfaceService>();
+builder.Services.AddScoped<INeighborService, NeighborService>();
 
 
 ;

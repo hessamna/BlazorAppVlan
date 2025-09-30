@@ -68,6 +68,7 @@ public class DeviceInterfaceViewModel
 
     [Required(ErrorMessage = "VlanId is required")]
     public Guid VlanId { get; set; }
+
 }
 
 public class NeighborViewModel
@@ -94,4 +95,8 @@ public class NeighborViewModel
 
     [Required(ErrorMessage = "SwitchId is required")]
     public Guid SwitchId { get; set; }
+}
+public class SwitchWithPortsViewModel : SwitchViewModel
+{
+    public List<DeviceInterfaceViewModel> Ports { get; set; } = new();
 }

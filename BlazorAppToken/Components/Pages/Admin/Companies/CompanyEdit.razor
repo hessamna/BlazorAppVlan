@@ -1,19 +1,20 @@
 ﻿@page "/admin/companies"
 @using BalzorAppVlan.Components.Pages.Shared
+@using BalzorAppVlan.Services
 @using Microsoft.AspNetCore.Authorization
-@inject CompanyService CompanyService
+@inject ICompanyService CompanyService
 @inject IJSRuntime JS
 @rendermode InteractiveServer
 @attribute [Authorize]
 
-<h3>Companies</h3>
+<h3>Locations</h3>
 
-<button class="btn btn-success mb-3" @onclick="() => OpenDialog(new CompanyViewModel())">Add Company</button>
+<button class="btn btn-success mb-3" @onclick="() => OpenDialog(new CompanyViewModel())">Add Location</button>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Locations</th>
             <th>Verified</th>
             <th>Actions</th>
         </tr>
@@ -46,7 +47,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@((selectedCompany?.Id == Guid.Empty) ? "Add Company" : "Edit Company")</h5>
+                    <h5 class="modal-title">@((selectedCompany?.Id == Guid.Empty) ? "Add Locations" : "Edit Locations")</h5>
                     <button type="button" class="btn-close" @onclick="CloseDialog"></button>
                 </div>
                 <div class="modal-body">
@@ -82,7 +83,7 @@
        OnClose="ClearToast" />
 
 @code {
-    private List<Company>? companies;
+    private List<CompanyViewModel>? companies;
     private bool showDialog = false;
     private CompanyViewModel selectedCompany = new();
 
@@ -111,14 +112,9 @@
 
     private async Task Save()
     {
-        var entity = new Company
-        {
-            Id = selectedCompany.Id,
-            Name = selectedCompany.Name,
-            IsVerified = selectedCompany.IsVerified
-        };
+      
 
-        var result = await CompanyService.AddOrEditAsync(entity);
+        var result = await CompanyService.AddOrEditAsync(selectedCompany);
 
         if (result.Success)
         {

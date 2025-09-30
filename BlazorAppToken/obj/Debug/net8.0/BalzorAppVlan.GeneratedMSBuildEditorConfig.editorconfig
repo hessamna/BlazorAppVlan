@@ -108,6 +108,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaGFyZWRcUGFnaW5hdGVkVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Shared/SwitchRack.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaGFyZWRcU3dpdGNoUmFjay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/h.nazerian/source/repos/BlazorAppVlan/BlazorAppToken/Components/Pages/Shared/Toast.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaGFyZWRcVG9hc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

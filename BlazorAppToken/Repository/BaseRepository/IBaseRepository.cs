@@ -13,19 +13,24 @@ namespace BalzorAppVlan.Repository.BaseRepository
         Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
 
         Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task AddRangeAsync(IEnumerable<T> entities);
+        void Update(T entity);
+        void UpdateRange(IEnumerable<T> entities);
+        void Delete(T entity);
+        void DeleteRange(IEnumerable<T> entities);
+
+        Task<int> SaveChangesAsync();
     }
 
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbSet<T> _dbSet;
 
         public BaseRepository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
+            _dbSet = _context.Set<T>();
         }
 
         public virtual async Task<List<T>> GetAllAsync(bool tracking = false)
@@ -33,7 +38,6 @@ namespace BalzorAppVlan.Repository.BaseRepository
             var query = _dbSet.AsQueryable();
             if (!tracking)
                 query = query.AsNoTracking().AsSplitQuery();
-
             return await query.ToListAsync();
         }
 
@@ -42,7 +46,6 @@ namespace BalzorAppVlan.Repository.BaseRepository
             var query = _dbSet.AsQueryable();
             if (!tracking)
                 query = query.AsNoTracking();
-
             return await query.FirstOrDefaultAsync(e => e.Id == id);
         }
 
@@ -51,7 +54,6 @@ namespace BalzorAppVlan.Repository.BaseRepository
             var query = _dbSet.Where(predicate);
             if (!tracking)
                 query = query.AsNoTracking().AsSplitQuery();
-
             return await query.ToListAsync();
         }
 
@@ -65,7 +67,6 @@ namespace BalzorAppVlan.Repository.BaseRepository
             var query = _dbSet.Where(predicate);
             if (!tracking)
                 query = query.AsNoTracking().AsSplitQuery();
-
             return await query.FirstOrDefaultAsync();
         }
 
@@ -76,31 +77,41 @@ namespace BalzorAppVlan.Repository.BaseRepository
                 : await _dbSet.CountAsync(predicate);
         }
 
+        // ================= CRUD =================
+
         public virtual async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
         }
 
-        public virtual async Task UpdateAsync(T entity)
+        public virtual async Task AddRangeAsync(IEnumerable<T> entities)
         {
-            _dbSet.Attach(entity);
-            var entry = _context.Entry(entity);
-            entry.State = EntityState.Modified;
-
-            // جلوگیری از تغییر فیلدهای سیستمی
-            entry.Property(nameof(BaseEntity.CreatedDate)).IsModified = false;
-            entry.Property(nameof(BaseEntity.CreatedBy)).IsModified = false;
-            entry.Property(nameof(BaseEntity.CreatorIp)).IsModified = false;
-            entry.Property(nameof(BaseEntity.CreatorMachine)).IsModified = false;
-
-            await _context.SaveChangesAsync();
+            await _dbSet.AddRangeAsync(entities);
         }
 
-        public virtual async Task DeleteAsync(T entity)
+        public virtual void Update(T entity)
         {
-            _context.Entry(entity).State = EntityState.Deleted; // 👈 بدون Attach اضافه
-            await _context.SaveChangesAsync();
+            _dbSet.Update(entity);
+        }
+
+        public virtual void UpdateRange(IEnumerable<T> entities)
+        {
+            _dbSet.UpdateRange(entities);
+        }
+
+        public virtual void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public virtual void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        public virtual async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
         }
     }
 }

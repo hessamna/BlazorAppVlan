@@ -1,11 +1,11 @@
 ﻿@typeparam TItem
 
 <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-light">
+    <table class="table table-bordered table-hover table-sm align-middle">
+        <thead class="table-light small">
             @HeaderTemplate
         </thead>
-        <tbody>
+        <tbody class="small">
             @if (PagedItems.Any())
             {
                 @foreach (var item in PagedItems)
@@ -26,7 +26,7 @@
 @if (TotalPages > 1)
 {
     <nav>
-        <ul class="pagination justify-content-center">
+        <ul class="pagination pagination-sm justify-content-center">
             <li class="page-item @(CurrentPage == 1 ? "disabled" : "")">
                 <button class="page-link" @onclick="() => GoToPage(1)">اول</button>
             </li>
@@ -54,7 +54,13 @@
         </ul>
     </nav>
 }
-
+<style>
+    .table.table-sm td,
+    .table.table-sm th {
+        padding: 0.25rem 0.5rem; /* پیش‌فرض bootstrap-sm حدود 0.3rem هست */
+        font-size: 0.85rem; /* فونت ریزتر */
+    }
+</style>
 @code {
     [Parameter] public List<TItem> Items { get; set; } = new();
     [Parameter] public int ItemsPerPage { get; set; } = 10;
