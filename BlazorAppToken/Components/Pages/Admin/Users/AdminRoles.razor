@@ -1,9 +1,9 @@
 ﻿@page "/admin/users/roles"
 @using BalzorAppVlan.Datas
-@using BalzorAppVlan.Datas
+
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Identity
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin")]
 @rendermode InteractiveServer
 @inject RoleManager<ApplicationRole> RoleManager
 @inject NavigationManager Navigation

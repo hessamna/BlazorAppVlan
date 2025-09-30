@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using BalzorAppVlan.Components.Pages.Shared
 @using BalzorAppVlan.Services
+@using Microsoft.AspNetCore.Authorization
 @inject ISwitchService SwitchService
 @inject IDeviceInterfaceService DeviceInterfaceService
 @inject IVlanService VlanService
@@ -8,44 +9,34 @@
 @inject ICompanyService CompanyService
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
+@attribute [Authorize]
+<h3 style="color:black">🌍 Network Locations</h3>
 
-<h3>Locations</h3>
-    <!-- Sidebar -->
 <div class="row">
     <!-- Sidebar -->
-    <div class="col-md-3 col-lg-2 sidebar-tree">
+    <div class="col-md-3 col-lg-3 sidebar-tree">
         <h5>🏢 Locations</h5>
         <ul class="tree">
-            @foreach (var company in companies)
+            @if (companies is not null)
             {
-                <li>
-                    <div class="company-name" @onclick="() => ToggleCompany(company.Id)">
-                        📂 @company.Name
-                    </div>
-
-                    <ul>
-                        @foreach (var sw in switches.Where(s => s.CompanyId == company.Id))
-                        {
-                            <li class="switch-item"
-                                @onclick="() => SelectSwitch(sw.Id)">
-                                💡 @sw.Name
-                            </li>
-                        }
-                    </ul>
-                </li>
+                @foreach (var c in companies)
+                {
+                    @RenderCompanyNode(c)
+                }
             }
         </ul>
     </div>
 
     <!-- Main Content -->
-    <div class="col-md-9 col-lg-10 main-content-tree">
+    <div class="col-md-9 col-lg-9 main-content-tree">
         @if (selectedSwitch is not null)
         {
             <div class="switch-card">
                 <div class="switch-info mb-3">
-                    <h4>@selectedSwitch.Name (@selectedSwitch.Model)</h4>
-                    <p><b>IP:</b> @selectedSwitch.IpInterface</p>
-                    <p><b>Locations:</b> @companies.FirstOrDefault(c => c.Id == selectedSwitch.CompanyId)?.Name</p>
+                    <h4>🖥️ @selectedSwitch.Name (@selectedSwitch.Model)</h4>
+                    <p><b>🌐 IP:</b> @selectedSwitch.IpInterface</p>
+                    <p><b>🏢 Location:</b> @GetFullCompanyPath(FindCompanyById(companies, selectedSwitch.CompanyId), companies)</p>
+
                 </div>
 
                 <!-- Rack -->
@@ -64,7 +55,7 @@
                         <h6>🌐 Neighbors</h6>
                         <table class="table table-sm table-dark table-striped">
                             <thead>
-                                <tr>
+                                <tr >
                                     <th style="color:black">Device ID</th>
                                     <th style="color:black">Local Intf</th>
                                     <th style="color:black">Neighbor SW</th>
@@ -97,16 +88,15 @@
 </div>
 
 
-
 @code {
     private List<CompanyViewModel> companies = new();
     private List<SwitchViewModelEx> switches = new();
-    private HashSet<Guid> expandedCompanies = new(); // برای باز و بسته کردن درخت
+    private HashSet<int> expandedCompanies = new();
     private SwitchViewModelEx? selectedSwitch;
 
     protected override async Task OnInitializedAsync()
     {
-        companies = await CompanyService.GetAllAsync();
+        companies = await CompanyService.GetAllHierarchyAsync();
 
         var allSwitches = await SwitchService.GetAllAsync();
         var allVlans = await VlanService.GetAllAsync();
@@ -126,17 +116,91 @@
                                       .ToList(),
             Neighbors = allNeighbors.Where(n => n.SwitchId == sw.Id).ToList()
         }).ToList();
+
+        // باز کردن همه سطوح درخت
+        expandedCompanies = new HashSet<int>();
+        ExpandAll(companies);
     }
 
-    private void ToggleCompany(Guid companyId)
+    private void ExpandAll(List<CompanyViewModel> companies)
+    {
+        foreach (var c in companies)
+        {
+            if (c.Id.HasValue)
+                expandedCompanies.Add(c.Id.Value);
+
+            if (c.SubCompanies != null && c.SubCompanies.Any())
+                ExpandAll(c.SubCompanies);
+        }
+    }
+
+
+    private RenderFragment RenderCompanyNode(CompanyViewModel company) => __builder =>
+    {
+        <li>
+            <div class="company-name" @onclick="() => ToggleCompany(company.Id.Value)">
+                @(expandedCompanies.Contains(company.Id.Value) ? "➖" : "➕") 📁 @company.Name
+            </div>
+
+            @if (expandedCompanies.Contains(company.Id.Value))
+            {
+                <ul>
+                    <!-- سوئیچ‌های این شرکت -->
+                    @foreach (var sw in switches.Where(s => s.CompanyId == company.Id))
+                    {
+                        <li class="switch-item"
+                            @onclick="() => SelectSwitch(sw.Id.Value)">
+                            🖥️ @sw.Name
+                        </li>
+                    }
+
+                    <!-- زیرشرکت‌ها -->
+                    @if (company.SubCompanies != null && company.SubCompanies.Any())
+                    {
+                        @foreach (var child in company.SubCompanies)
+                        {
+                            @RenderCompanyNode(child)
+                        }
+                    }
+                </ul>
+            }
+        </li>
+;
+    };
+
+    private void ToggleCompany(int companyId)
     {
         if (expandedCompanies.Contains(companyId))
             expandedCompanies.Remove(companyId);
         else
             expandedCompanies.Add(companyId);
     }
+    private CompanyViewModel? FindCompanyById(List<CompanyViewModel> list, int companyId)
+    {
+        foreach (var c in list)
+        {
+            if (c.Id == companyId)
+                return c;
 
-    private void SelectSwitch(Guid switchId)
+            if (c.SubCompanies != null && c.SubCompanies.Any())
+            {
+                var found = FindCompanyById(c.SubCompanies, companyId);
+                if (found != null)
+                    return found;
+            }
+        }
+        return null;
+    }
+    private string GetFullCompanyPath(CompanyViewModel? company, List<CompanyViewModel> allCompanies)
+    {
+        if (company == null) return "";
+
+        var parent = FindCompanyById(allCompanies, company.ParentCompanyId ?? 0);
+        return parent != null
+            ? $"{GetFullCompanyPath(parent, allCompanies)} → {company.Name}"
+            : company.Name;
+    }
+    private void SelectSwitch(int switchId)
     {
         selectedSwitch = switches.FirstOrDefault(s => s.Id == switchId);
     }
@@ -161,9 +225,8 @@
     }
 }
 <style>
-
     h3, h4, h5, h6 {
-        color: #fff; /* همه هدینگ‌ها سفید */
+        color: #fff;
         font-weight: 600;
     }
 
@@ -172,10 +235,10 @@
         background: #2a2a2a;
         padding: 15px;
         border-radius: 8px;
-
         color: #eee;
         height: 80vh;
         overflow-y: auto;
+        font-size: 14px; /* کوچکتر و خواناتر */
     }
 
     .tree {
@@ -185,27 +248,30 @@
     }
 
         .tree li {
-            margin: 6px 0;
+            margin: 4px 0;
         }
 
     .company-name {
         cursor: pointer;
-        font-weight: bold;
+        font-weight: 500;
         color: #00d8ff;
+        user-select: none;
+        padding: 3px 0;
     }
 
     .switch-item {
-        margin-left: 20px;
+        margin-left: 25px;
         cursor: pointer;
         color: #ccc;
         transition: color 0.2s;
+        font-size: 13px;
     }
 
         .switch-item:hover {
             color: #00ff99;
         }
 
-    /* Main_te Content */
+    /* Main Content */
     .main-content-tree {
         background: #1e1e1e;
         padding: 20px;
@@ -213,6 +279,7 @@
         color: #eee;
         min-height: 80vh;
         overflow-y: auto;
+        font-size: 14px;
     }
 
     .switch-card {
@@ -222,7 +289,7 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     }
 
-    /* رک تطبیق با کادر */
+    /* رک */
     .rack-wrapper {
         width: 100%;
         overflow-x: auto;
@@ -261,5 +328,43 @@
         background: #1e1e1e;
     }
 
+    .tree {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
 
+        .tree li {
+            margin: 4px 0;
+        }
+
+        /* تورفتگی و فاصله بین لول‌ها */
+        .tree ul {
+            margin-left: 20px; /* فاصله از پرنت */
+            margin-top: 6px; /* فاصله از آیتم‌های بالا */
+            margin-bottom: 6px; /* فاصله از آیتم‌های پایین */
+            padding-left: 15px; /* ایجاد تورفتگی */
+            border-left: 1px dashed #444; /* خط راهنما برای زیبایی */
+        }
+
+    .company-name {
+        cursor: pointer;
+        font-weight: 500;
+        color: #00d8ff;
+        user-select: none;
+        padding: 3px 0;
+    }
+
+    .switch-item {
+        margin-left: 10px; /* کمی تورفتگی برای تمایز از شرکت */
+        cursor: pointer;
+        color: #ccc;
+        transition: color 0.2s;
+        font-size: 13px;
+        padding: 2px 0;
+    }
+
+        .switch-item:hover {
+            color: #00ff99;
+        }
 </style>

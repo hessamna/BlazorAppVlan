@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BalzorAppVlan.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250929053524_second-load-1")]
-    partial class secondload1
+    [Migration("20250930110252_changetoint2")]
+    partial class changetoint2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,9 +26,11 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("AuditLog", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Action")
                         .IsRequired()
@@ -121,8 +123,8 @@ namespace BalzorAppVlan.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -186,9 +188,11 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("Company", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -224,16 +228,23 @@ namespace BalzorAppVlan.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int?>("ParentCompanyId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCompanyId");
 
                     b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("DeviceInterface", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -273,11 +284,11 @@ namespace BalzorAppVlan.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("SwitchId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("SwitchId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("VlanId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VlanId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -393,9 +404,11 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("Neighbor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -442,11 +455,11 @@ namespace BalzorAppVlan.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("SwitchId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("SwitchId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("VlanId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VlanId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -459,12 +472,14 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("Switch", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -514,9 +529,11 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("SystemSetting", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -562,68 +579,13 @@ namespace BalzorAppVlan.Migrations
                     b.ToTable("SystemSettings");
                 });
 
-            modelBuilder.Entity("User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatorIp")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorMachine")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("Vlan", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -660,8 +622,8 @@ namespace BalzorAppVlan.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("SwitchId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("SwitchId")
+                        .HasColumnType("int");
 
                     b.Property<string>("VlanCode")
                         .IsRequired()
@@ -673,6 +635,16 @@ namespace BalzorAppVlan.Migrations
                     b.HasIndex("SwitchId");
 
                     b.ToTable("Vlans");
+                });
+
+            modelBuilder.Entity("Company", b =>
+                {
+                    b.HasOne("Company", "ParentCompany")
+                        .WithMany("SubCompanies")
+                        .HasForeignKey("ParentCompanyId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ParentCompany");
                 });
 
             modelBuilder.Entity("DeviceInterface", b =>
@@ -775,15 +747,6 @@ namespace BalzorAppVlan.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("User", b =>
-                {
-                    b.HasOne("Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("Vlan", b =>
                 {
                     b.HasOne("Switch", "Switch")
@@ -797,6 +760,8 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("Company", b =>
                 {
+                    b.Navigation("SubCompanies");
+
                     b.Navigation("Switches");
                 });
 

@@ -12,7 +12,12 @@
 <h3>Switches</h3>
 
 <div class="d-flex mb-3">
+    <AuthorizeView Roles="Admin">
+                    <Authorized>
     <button class="btn btn-success me-3" @onclick="() => OpenDialog(new SwitchViewModel())">➕ Add Switch</button>
+        </Authorized>
+  
+    </AuthorizeView>
     <input class="form-control  w-25"
            @bind="SearchText"
            @bind:event="oninput"
@@ -37,16 +42,26 @@
             <td>@s.Name</td>
             <td>@s.IpInterface</td>
             <td>@s.Model</td>
-            <td>@companies.FirstOrDefault(c => c.Id == s.CompanyId)?.Name</td>
+            <td>@GetFullCompanyName(FindCompanyById(s.CompanyId))</td>
             <td>
-                <button class="btn btn-primary btn-sm me-2"
-                        @onclick="() => OpenDialog(new SwitchViewModel { Id = s.Id, Name = s.Name, IpInterface = s.IpInterface, Model = s.Model, CompanyId = s.CompanyId })">
-                    Edit
-                </button>
-                <button class="btn btn-info btn-sm me-2" @onclick="() => ViewDetails(s.Id)">
+                <AuthorizeView Roles="Admin">
+                    <Authorized>
+                        <button class="btn btn-primary btn-sm me-2"
+                                @onclick="() => OpenDialog(new SwitchViewModel { Id = s.Id, Name = s.Name, IpInterface = s.IpInterface, Model = s.Model, CompanyId = s.CompanyId })">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => Delete(s.Id.Value)">
+                            Delete
+                        </button>
+                    </Authorized>
+                    <NotAuthorized>
+                        <!-- اگه خواستی برای غیر ادمین چیزی دیگه نشون بده -->
+                    </NotAuthorized>
+                </AuthorizeView>
+
+                <button class="btn btn-info btn-sm me-2" @onclick="() => ViewDetails(s.Id.Value)">
                     View Details
                 </button>
-                <button class="btn btn-danger btn-sm" @onclick="() => Delete(s.Id)">Delete</button>
             </td>
         </tr>
     </RowTemplate>
@@ -59,7 +74,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@((selectedSwitch?.Id == Guid.Empty) ? "Add Switch" : "Edit Switch")</h5>
+                    <h5 class="modal-title">@((selectedSwitch?.Id == null) ? "Add Switch" : "Edit Switch")</h5>
                     <button type="button" class="btn-close" @onclick="CloseDialog"></button>
                 </div>
                 <div class="modal-body">
@@ -87,13 +102,11 @@
                             <label class="form-label">Location</label>
                             <InputSelect class="form-select" @bind-Value="selectedSwitch.CompanyId">
                                 <option value="">-- Select Company --</option>
-                                @foreach (var c in companies)
-                                {
-                                    <option value="@c.Id">@c.Name</option>
-                                }
+                                @RenderCompanyOptions(companies)
                             </InputSelect>
                             <ValidationMessage For="@(() => selectedSwitch.CompanyId)" />
                         </div>
+
 
                         <button type="submit" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-secondary ms-2" @onclick="CloseDialog">Cancel</button>
@@ -145,7 +158,8 @@
             CompanyId = s.CompanyId
         }).ToList();
 
-        companies = await CompanyService.GetAllAsync();
+        companies = await CompanyService.GetAllHierarchyAsync();
+
         FilterSwitches();
     }
 
@@ -196,7 +210,7 @@
         showDialog = false;
     }
 
-    private async Task Delete(Guid id)
+    private async Task Delete(int id)
     {
         if (await JS.InvokeAsync<bool>("confirm", $"Are you sure to delete this Switch?"))
         {
@@ -209,7 +223,7 @@
         }
     }
 
-    private void ViewDetails(Guid switchId)
+    private void ViewDetails(int switchId)
     {
         Navigation.NavigateTo($"/admin/editswitches/{switchId}");
     }
@@ -218,4 +232,49 @@
     {
         toastMessage = string.Empty;
     }
+    private string GetFullCompanyName(CompanyViewModel company)
+    {
+        if (company == null) return "";
+        var parent = FindCompanyById(company.ParentCompanyId);
+        return parent != null
+            ? $"{GetFullCompanyName(parent)} → {company.Name}"
+            : company.Name;
+    }
+
+    // ✅ جستجو در کل درخت شرکت‌ها
+    private CompanyViewModel? FindCompanyById(int? id)
+    {
+        if (id == null) return null;
+
+        CompanyViewModel? Search(List<CompanyViewModel> list, int idToFind)
+        {
+            foreach (var c in list)
+            {
+                if (c.Id == idToFind) return c;
+                var found = Search(c.SubCompanies, idToFind);
+                if (found != null) return found;
+            }
+            return null;
+        }
+
+        return Search(companies, id.Value);
+    }
+
+    private RenderFragment RenderCompanyOptions(List<CompanyViewModel> companies, int level = 0) => __builder =>
+{
+    int seq = 0;
+    foreach (var company in companies)
+    {
+        <option value="@company.Id">
+            @($"{new string('-', level * 2)} {company.Name}")
+        </option>
+        ;
+
+        if (company.SubCompanies != null && company.SubCompanies.Any())
+        {
+            __builder.AddContent(seq++, RenderCompanyOptions(company.SubCompanies, level + 1));
+        }
+    }
+};
+
 }

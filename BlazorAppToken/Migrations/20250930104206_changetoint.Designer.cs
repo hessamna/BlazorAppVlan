@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BalzorAppVlan.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250930104206_changetoint")]
+    partial class changetoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,12 +228,7 @@ namespace BalzorAppVlan.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int?>("ParentCompanyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentCompanyId");
 
                     b.ToTable("Companies");
                 });
@@ -634,16 +632,6 @@ namespace BalzorAppVlan.Migrations
                     b.ToTable("Vlans");
                 });
 
-            modelBuilder.Entity("Company", b =>
-                {
-                    b.HasOne("Company", "ParentCompany")
-                        .WithMany("SubCompanies")
-                        .HasForeignKey("ParentCompanyId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("ParentCompany");
-                });
-
             modelBuilder.Entity("DeviceInterface", b =>
                 {
                     b.HasOne("Switch", "Switch")
@@ -757,8 +745,6 @@ namespace BalzorAppVlan.Migrations
 
             modelBuilder.Entity("Company", b =>
                 {
-                    b.Navigation("SubCompanies");
-
                     b.Navigation("Switches");
                 });
 

@@ -19,14 +19,18 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<DeviceInterface> DeviceInterfaces { get; set; }
     public DbSet<Neighbor> Neighbors { get; set; }
 
-    // جداول دیگر
-    public DbSet<User> Users { get; set; }
+
     public DbSet<AuditLog> AuditLogs { get; set; }
     public DbSet<SystemSetting> SystemSettings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Company>()
+       .HasMany(c => c.SubCompanies)
+       .WithOne(c => c.ParentCompany)
+       .HasForeignKey(c => c.ParentCompanyId)
+       .OnDelete(DeleteBehavior.Restrict); // جلوگیری از حذف زنجیره‌ای
 
         // Company → Switch (1..n)
         modelBuilder.Entity<Company>()
@@ -34,6 +38,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
             .WithOne(s => s.Company)
             .HasForeignKey(s => s.CompanyId)
             .OnDelete(DeleteBehavior.Cascade);
+
+
 
         // Switch → Vlan (1..n)
         modelBuilder.Entity<Switch>()

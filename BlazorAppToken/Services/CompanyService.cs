@@ -17,7 +17,7 @@ namespace BalzorAppVlan.Services
             return entities.Select(MapToViewModel).ToList();
         }
 
-        public async Task<CompanyViewModel?> GetByIdAsync(Guid id)
+        public async Task<CompanyViewModel?> GetByIdAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
@@ -30,15 +30,20 @@ namespace BalzorAppVlan.Services
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
 
+            // ✅ چک تکراری بودن فقط در همان Parent
             var exists = await repo.ExistsAsync(c =>
-                c.Name.ToLower() == vm.Name.ToLower() && c.Id != vm.Id);
-            if (exists)
-                return ServiceResult.Fail($"Company with name '{vm.Name}' already exists.");
+                c.Name.ToLower() == vm.Name.ToLower() &&
+                c.ParentCompanyId == vm.ParentCompanyId && // فقط در همان سطح
+                c.Id != vm.Id);
 
-            if (vm.Id == Guid.Empty)
+            if (exists)
+                return ServiceResult.Fail(
+                    $"Company with name '{vm.Name}' already exists under this parent."
+                );
+
+            if (vm.Id == null)
             {
                 var entity = MapToEntity(vm);
-                entity.Id = Guid.NewGuid();
                 await repo.AddAsync(entity);
             }
             else
@@ -48,10 +53,11 @@ namespace BalzorAppVlan.Services
             }
 
             await repo.SaveChangesAsync();
-            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Company created successfully." : "Company updated successfully.");
+            return ServiceResult.Ok(vm.Id == null ? "Company created successfully." : "Company updated successfully.");
         }
 
-        public async Task<ServiceResult> DeleteAsync(Guid id)
+
+        public async Task<ServiceResult> DeleteAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
@@ -61,19 +67,58 @@ namespace BalzorAppVlan.Services
             await repo.SaveChangesAsync();
             return ServiceResult.Ok("Company deleted successfully.");
         }
-
-        private static CompanyViewModel MapToViewModel(Company e) => new()
+        private static CompanyViewModel MapToViewModel(Company e)
         {
-            Id = e.Id,
-            Name = e.Name,
-            IsVerified = e.IsVerified
-        };
+            return new CompanyViewModel
+            {
+                Id = e.Id,
+                Name = e.Name,
+                IsVerified = e.IsVerified,
+                ParentCompanyId = e.ParentCompanyId,
+                ParentCompanyName = e.ParentCompanyId != null ? e.ParentCompany?.Name : null,
+                SubCompanies = new List<CompanyViewModel>() // بعداً پر میشه توی MapWithChildren
+            };
+        }
+
         private static Company MapToEntity(CompanyViewModel vm) => new()
         {
-            Id = vm.Id,
+            Id = vm.Id ?? 0,
             Name = vm.Name,
-            IsVerified = vm.IsVerified
+            IsVerified = vm.IsVerified,
+            ParentCompanyId = vm.ParentCompanyId
         };
+        public async Task<List<CompanyViewModel>> GetAllHierarchyAsync()
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
+            var entities = await repo.GetAllAsync(false);
+
+            // پرنت‌ها
+            var parents = entities.Where(c => c.ParentCompanyId == null).ToList();
+            return parents.Select(e => MapWithChildren(e, entities)).ToList();
+        }
+        public async Task<CompanyViewModel?> GetByIdHierarchyAsync(int id)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<ICompanyRepository>();
+            var entities = await repo.GetAllAsync(false);
+
+            var company = entities.FirstOrDefault(c => c.Id == id);
+            if (company == null)
+                return null;
+
+            return MapWithChildren(company, entities);
+        }
+
+        private CompanyViewModel MapWithChildren(Company e, List<Company> all)
+        {
+            var vm = MapToViewModel(e);
+            vm.SubCompanies = all
+                .Where(c => c.ParentCompanyId == e.Id)
+                .Select(c => MapWithChildren(c, all))
+                .ToList();
+            return vm;
+        }
     }
 
     // ======================= SwitchService =======================
@@ -90,7 +135,7 @@ namespace BalzorAppVlan.Services
             return entities.Select(MapToViewModel).ToList();
         }
 
-        public async Task<SwitchViewModel?> GetByIdAsync(Guid id)
+        public async Task<SwitchViewModel?> GetByIdAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
@@ -109,39 +154,45 @@ namespace BalzorAppVlan.Services
             if (exists)
                 return ServiceResult.Fail($"Switch with name '{vm.Name}' already exists.");
 
-            if (vm.Id == Guid.Empty)
+            if (vm.Id == null)
             {
                 var entity = MapToEntity(vm);
-                entity.Id = Guid.NewGuid();
                 await repo.AddAsync(entity);
+                await repo.SaveChangesAsync(); // ذخیره اول Switch
 
-                // Default VLANs
+                // ایجاد VLANهای پیش‌فرض
                 await vlanRepo.AddAsync(new Vlan
                 {
-                    Id = Guid.NewGuid(),
                     VlanCode = "1",
                     Name = "Default VLAN",
                     SwitchId = entity.Id
                 });
                 await vlanRepo.AddAsync(new Vlan
                 {
-                    Id = Guid.NewGuid(),
                     VlanCode = "Trunk",
                     Name = "Trunk VLAN",
                     SwitchId = entity.Id
                 });
+                await vlanRepo.SaveChangesAsync();
             }
             else
             {
-                var entity = MapToEntity(vm);
+                var entity = await repo.GetByIdAsync(vm.Id.Value);
+                if (entity == null) return ServiceResult.Fail("Switch not found.");
+
+                entity.Name = vm.Name;
+                entity.IpInterface = vm.IpInterface;
+                entity.Model = vm.Model;
+                entity.CompanyId = vm.CompanyId;
+
                 repo.Update(entity);
+                await repo.SaveChangesAsync();
             }
 
-            await repo.SaveChangesAsync();
-            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Switch created successfully with default VLANs." : "Switch updated successfully.");
+            return ServiceResult.Ok(vm.Id == null ? "Switch created successfully with default VLANs." : "Switch updated successfully.");
         }
 
-        public async Task<ServiceResult> DeleteAsync(Guid id)
+        public async Task<ServiceResult> DeleteAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<ISwitchRepository>();
@@ -181,7 +232,7 @@ namespace BalzorAppVlan.Services
         };
         private static Switch MapToEntity(SwitchViewModel vm) => new()
         {
-            Id = vm.Id,
+            Id = vm.Id ?? 0,
             Name = vm.Name,
             IpInterface = vm.IpInterface,
             Model = vm.Model,
@@ -203,7 +254,7 @@ namespace BalzorAppVlan.Services
             return entities.Select(MapToViewModel).ToList();
         }
 
-        public async Task<VlanViewModel?> GetByIdAsync(Guid id)
+        public async Task<VlanViewModel?> GetByIdAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
@@ -223,10 +274,9 @@ namespace BalzorAppVlan.Services
             if (exists)
                 return ServiceResult.Fail($"VLAN with code '{vm.VlanCode}' already exists in this switch.");
 
-            if (vm.Id == Guid.Empty)
+            if (vm.Id == null)
             {
                 var entity = MapToEntity(vm);
-                entity.Id = Guid.NewGuid();
                 await repo.AddAsync(entity);
             }
             else
@@ -236,10 +286,10 @@ namespace BalzorAppVlan.Services
             }
 
             await repo.SaveChangesAsync();
-            return ServiceResult.Ok(vm.Id == Guid.Empty ? "VLAN created successfully." : "VLAN updated successfully.");
+            return ServiceResult.Ok(vm.Id == null ? "VLAN created successfully." : "VLAN updated successfully.");
         }
 
-        public async Task<ServiceResult> DeleteAsync(Guid id)
+        public async Task<ServiceResult> DeleteAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IVlanRepository>();
@@ -260,11 +310,11 @@ namespace BalzorAppVlan.Services
         };
         private static Vlan MapToEntity(VlanViewModel vm) => new()
         {
-            Id = vm.Id,
+            Id = vm.Id ?? 0,
             VlanCode = vm.VlanCode,
             Name = vm.Name,
             IpInterface = vm.IpInterface,
-            SwitchId = vm.SwitchId
+            SwitchId = vm.SwitchId ?? 0
         };
     }
 
@@ -282,7 +332,7 @@ namespace BalzorAppVlan.Services
             return entities.Select(MapToViewModel).ToList();
         }
 
-        public async Task<DeviceInterfaceViewModel?> GetByIdAsync(Guid id)
+        public async Task<DeviceInterfaceViewModel?> GetByIdAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
@@ -295,10 +345,9 @@ namespace BalzorAppVlan.Services
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
 
-            if (vm.Id == Guid.Empty)
+            if (vm.Id == null)
             {
                 var entity = MapToEntity(vm);
-                entity.Id = Guid.NewGuid();
                 await repo.AddAsync(entity);
             }
             else
@@ -308,10 +357,10 @@ namespace BalzorAppVlan.Services
             }
 
             await repo.SaveChangesAsync();
-            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Device interface created successfully." : "Device interface updated successfully.");
+            return ServiceResult.Ok(vm.Id == null ? "Device interface created successfully." : "Device interface updated successfully.");
         }
 
-        public async Task<ServiceResult> DeleteAsync(Guid id)
+        public async Task<ServiceResult> DeleteAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
@@ -334,7 +383,7 @@ namespace BalzorAppVlan.Services
             return ServiceResult.Ok("All device interfaces updated successfully.");
         }
 
-        public async Task<ServiceResult> AddRangeAsync(Guid switchId, int count, string portPrefix = "Gi1/0/")
+        public async Task<ServiceResult> AddRangeAsync(int switchId, int count, string portPrefix = "Gi1/0/")
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IDeviceInterfaceRepository>();
@@ -352,7 +401,6 @@ namespace BalzorAppVlan.Services
             {
                 var entity = new DeviceInterface
                 {
-                    Id = Guid.NewGuid(),
                     Port = $"{portPrefix}{i}",
                     Description = "",
                     IsConnected = false,
@@ -377,7 +425,7 @@ namespace BalzorAppVlan.Services
         };
         private static DeviceInterface MapToEntity(DeviceInterfaceViewModel vm) => new()
         {
-            Id = vm.Id,
+            Id = vm.Id ?? 0,
             Port = vm.Port,
             Description = vm.Description,
             IsConnected = vm.IsConnected,
@@ -400,7 +448,7 @@ namespace BalzorAppVlan.Services
             return entities.Select(MapToViewModel).ToList();
         }
 
-        public async Task<NeighborViewModel?> GetByIdAsync(Guid id)
+        public async Task<NeighborViewModel?> GetByIdAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
@@ -413,10 +461,9 @@ namespace BalzorAppVlan.Services
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
 
-            if (vm.Id == Guid.Empty)
+            if (vm.Id == null)
             {
                 var entity = MapToEntity(vm);
-                entity.Id = Guid.NewGuid();
                 await repo.AddAsync(entity);
             }
             else
@@ -426,10 +473,10 @@ namespace BalzorAppVlan.Services
             }
 
             await repo.SaveChangesAsync();
-            return ServiceResult.Ok(vm.Id == Guid.Empty ? "Neighbor created successfully." : "Neighbor updated successfully.");
+            return ServiceResult.Ok(vm.Id == null ? "Neighbor created successfully." : "Neighbor updated successfully.");
         }
 
-        public async Task<ServiceResult> DeleteAsync(Guid id)
+        public async Task<ServiceResult> DeleteAsync(int id)
         {
             using var scope = _scopeFactory.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<INeighborRepository>();
@@ -452,7 +499,7 @@ namespace BalzorAppVlan.Services
         };
         private static Neighbor MapToEntity(NeighborViewModel vm) => new()
         {
-            Id = vm.Id,
+            Id = vm.Id ?? 0,
             DeviceId = vm.DeviceId,
             LocalInterface = vm.LocalInterface,
             NeighborSWName = vm.NeighborSWName,

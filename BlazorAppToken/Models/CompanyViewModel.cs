@@ -3,18 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 public class CompanyViewModel
 {
-    public Guid Id { get; set; }
+    public int? Id { get; set; }
 
     [Required(ErrorMessage = "Company name is required")]
     [MaxLength(500, ErrorMessage = "Company name cannot exceed 500 characters")]
     public string Name { get; set; }
 
     public bool IsVerified { get; set; }
+    public string? ParentCompanyName { get; set; }
+    // 🔹 Parent/Child
+    public int? ParentCompanyId { get; set; }
+    public List<CompanyViewModel> SubCompanies { get; set; } = new();
 }
+
 
 public class SwitchViewModel
 {
-    public Guid Id { get; set; }
+    public int? Id { get; set; }
 
     [Required(ErrorMessage = "Switch name is required")]
     [MaxLength(500, ErrorMessage = "Switch name cannot exceed 500 characters")]
@@ -27,12 +32,12 @@ public class SwitchViewModel
     public string? Model { get; set; }
 
     [Required(ErrorMessage = "CompanyId is required")]
-    public Guid CompanyId { get; set; }
+    public int CompanyId { get; set; }
 }
 
 public class VlanViewModel
 {
-    public Guid Id { get; set; }
+    public int? Id { get; set; }
 
     [Required(ErrorMessage = "VLAN ID is required")]
     [MaxLength(500, ErrorMessage = "VLAN ID cannot exceed 500 characters")]
@@ -47,12 +52,12 @@ public class VlanViewModel
     public string? IpInterface { get; set; }
 
     [Required(ErrorMessage = "SwitchId is required")]
-    public Guid SwitchId { get; set; }
+    public int? SwitchId { get; set; }
 }
 
 public class DeviceInterfaceViewModel
 {
-    public Guid Id { get; set; }
+    public int? Id { get; set; }
 
     [Required(ErrorMessage = "Port is required")]
     [MaxLength(500, ErrorMessage = "Port cannot exceed 500 characters")]
@@ -64,16 +69,16 @@ public class DeviceInterfaceViewModel
     public bool IsConnected { get; set; }
 
     [Required(ErrorMessage = "SwitchId is required")]
-    public Guid SwitchId { get; set; }
+    public int SwitchId { get; set; }
 
     [Required(ErrorMessage = "VlanId is required")]
-    public Guid VlanId { get; set; }
+    public int VlanId { get; set; }
 
 }
 
 public class NeighborViewModel
 {
-    public Guid Id { get; set; }
+    public int? Id { get; set; }
 
     [Required(ErrorMessage = "DeviceId is required")]
     [MaxLength(500, ErrorMessage = "DeviceId cannot exceed 500 characters")]
@@ -91,10 +96,10 @@ public class NeighborViewModel
     public string NeighborSWNamePortId { get; set; }
 
     [Required(ErrorMessage = "VlanId is required")]
-    public Guid VlanId { get; set; }
+    public int VlanId { get; set; }
 
     [Required(ErrorMessage = "SwitchId is required")]
-    public Guid SwitchId { get; set; }
+    public int SwitchId { get; set; }
 }
 public class SwitchWithPortsViewModel : SwitchViewModel
 {

@@ -7,7 +7,7 @@ namespace BalzorAppVlan.Datas
     public class ApplicationUser : IdentityUser<Guid>
         {
             public string? FullName { get; set; }
-            public Guid? CompanyId { get; set; }
+            public int? CompanyId { get; set; }
         }
     
 }

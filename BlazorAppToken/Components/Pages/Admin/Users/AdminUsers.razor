@@ -1,10 +1,10 @@
 ﻿@page "/admin/users/adminusers"
 @using BalzorAppVlan.Datas
 @using BalzorAppVlan.Components.Pages.Shared
-@using BalzorAppVlan.Datas
+
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Identity
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin")]
 @rendermode InteractiveServer
 @inject UserManager<ApplicationUser> UserManager
 @inject RoleManager<ApplicationRole> RoleManager

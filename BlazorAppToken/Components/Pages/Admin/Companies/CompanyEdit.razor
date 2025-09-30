@@ -5,16 +5,16 @@
 @inject ICompanyService CompanyService
 @inject IJSRuntime JS
 @rendermode InteractiveServer
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin")]
 
-<h3>Locations</h3>
+<h3>Companies & Locations</h3>
 
-<button class="btn btn-success mb-3" @onclick="() => OpenDialog(new CompanyViewModel())">Add Location</button>
+<button class="btn btn-success mb-3" @onclick="() => OpenDialog(new CompanyViewModel())">➕ Add Root Company</button>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Locations</th>
+            <th>Company / Location</th>
             <th>Verified</th>
             <th>Actions</th>
         </tr>
@@ -24,17 +24,7 @@
         {
             @foreach (var c in companies)
             {
-                <tr>
-                    <td>@c.Name</td>
-                    <td>@(c.IsVerified ? "✔️" : "❌")</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm me-2"
-                                @onclick="() => OpenDialog(new CompanyViewModel { Id = c.Id, Name = c.Name, IsVerified = c.IsVerified })">
-                            Edit
-                        </button>
-                        <button class="btn btn-danger btn-sm" @onclick="() => Delete(c.Id)">Delete</button>
-                    </td>
-                </tr>
+                @RenderCompanyRow(c, 0)
             }
         }
     </tbody>
@@ -47,7 +37,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@((selectedCompany?.Id == Guid.Empty) ? "Add Locations" : "Edit Locations")</h5>
+                    <h5 class="modal-title">@((selectedCompany?.Id == null) ? "Add Company/Location" : "Edit Company/Location")</h5>
                     <button type="button" class="btn-close" @onclick="CloseDialog"></button>
                 </div>
                 <div class="modal-body">
@@ -66,6 +56,14 @@
                             <label class="form-check-label">Verified</label>
                         </div>
 
+                        @if (selectedCompany.ParentCompanyId != null)
+                        {
+                            <div class="alert alert-info">
+                                This will be added under Parent Company:
+                                <strong>@selectedCompany.ParentCompanyName</strong>
+                            </div>
+                        }
+
                         <button type="submit" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-secondary ms-2" @onclick="CloseDialog">Cancel</button>
                     </EditForm>
@@ -75,7 +73,6 @@
     </div>
 }
 
-<!-- Toast -->
 <!-- Toast -->
 <Toast Message="@toastMessage"
        CssClass="@toastCssClass"
@@ -93,7 +90,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        companies = await CompanyService.GetAllAsync();
+        companies = await CompanyService.GetAllHierarchyAsync();
     }
 
     private void OpenDialog(CompanyViewModel companyVm)
@@ -102,9 +99,21 @@
         {
             Id = companyVm.Id,
             Name = companyVm.Name,
-            IsVerified = companyVm.IsVerified
+            IsVerified = companyVm.IsVerified,
+            ParentCompanyId = companyVm.ParentCompanyId
         };
 
+        showDialog = true;
+    }
+
+    private void OpenChildDialog(int parentId)
+    {
+        var parent = companies?.SelectMany(FlattenCompanies).FirstOrDefault(c => c.Id == parentId);
+        selectedCompany = new CompanyViewModel
+        {
+            ParentCompanyId = parentId,
+            ParentCompanyName = parent?.Name
+        };
         showDialog = true;
     }
 
@@ -112,39 +121,73 @@
 
     private async Task Save()
     {
-      
-
         var result = await CompanyService.AddOrEditAsync(selectedCompany);
 
-        if (result.Success)
-        {
-            toastCssClass = "bg-success";
-        }
-        else
-        {
-            toastCssClass = "bg-danger";
-        }
-
+        toastCssClass = result.Success ? "bg-success" : "bg-danger";
         toastMessage = result.Message;
 
-        companies = await CompanyService.GetAllAsync();
+        companies = await CompanyService.GetAllHierarchyAsync();
         showDialog = false;
     }
 
-    private async Task Delete(Guid id)
+    private async Task Delete(int id)
     {
-        if (await JS.InvokeAsync<bool>("confirm", $"Are you sure to delete this company?"))
+        if (await JS.InvokeAsync<bool>("confirm", $"Are you sure to delete this company and its sub-companies?"))
         {
             var result = await CompanyService.DeleteAsync(id);
 
             toastCssClass = result.Success ? "bg-success" : "bg-danger";
             toastMessage = result.Message;
 
-            companies = await CompanyService.GetAllAsync();
+            companies = await CompanyService.GetAllHierarchyAsync();
         }
     }
+
     private void ClearToast()
     {
         toastMessage = string.Empty;
     }
+    private IEnumerable<CompanyViewModel> FlattenCompanies(CompanyViewModel c)
+    {
+        yield return c;
+        if (c.SubCompanies != null)
+        {
+            foreach (var child in c.SubCompanies.SelectMany(FlattenCompanies))
+                yield return child;
+        }
+    }
+    // Recursive Row Renderer
+    private RenderFragment RenderCompanyRow(CompanyViewModel company, int level) => __builder =>
+    {
+        <tr>
+            <td style="padding-left:@(level * 20)px">
+                @(level > 0 ? "↳ " : "") @company.Name
+            </td>
+            <td>@(company.IsVerified ? "✔️" : "❌")</td>
+            <td>
+                <button class="btn btn-success btn-sm me-2"
+                        @onclick="() => OpenChildDialog(company.Id.Value)">
+                    ➕ Add Child
+                </button>
+                <button class="btn btn-primary btn-sm me-2"
+                        @onclick="() => OpenDialog(company)">
+                    ✏️ Edit
+                </button>
+                <button class="btn btn-danger btn-sm"
+                        @onclick="() => Delete(company.Id.Value)">
+                    🗑 Delete
+                </button>
+            </td>
+        </tr>
+        ;
+
+        if (company.SubCompanies != null && company.SubCompanies.Any())
+        {
+            foreach (var child in company.SubCompanies)
+            {
+                __builder.AddContent(1, RenderCompanyRow(child, level + 1));
+            }
+        }
+    };
+  
 }

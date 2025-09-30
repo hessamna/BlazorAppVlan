@@ -6,7 +6,7 @@ namespace BalzorAppVlan.Repository.BaseRepository
     public interface IBaseRepository<T> where T : BaseEntity
     {
         Task<List<T>> GetAllAsync(bool tracking = false);
-        Task<T?> GetByIdAsync(Guid id, bool tracking = false);
+        Task<T?> GetByIdAsync(int id, bool tracking = false);
         Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate, bool tracking = false);
         Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
         Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, bool tracking = false);
@@ -41,7 +41,7 @@ namespace BalzorAppVlan.Repository.BaseRepository
             return await query.ToListAsync();
         }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id, bool tracking = false)
+        public virtual async Task<T?> GetByIdAsync(int id, bool tracking = false)
         {
             var query = _dbSet.AsQueryable();
             if (!tracking)

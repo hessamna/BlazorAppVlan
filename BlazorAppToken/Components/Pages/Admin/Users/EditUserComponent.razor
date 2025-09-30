@@ -1,5 +1,6 @@
 ﻿@using BalzorAppVlan.Datas
-@using BalzorAppVlan.Datas
+@attribute [Authorize(Roles = "Admin")]
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 

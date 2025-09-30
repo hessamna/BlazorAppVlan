@@ -1,4 +1,4 @@
-using BalzorAppVlan.Repository.BaseRepository;
+﻿using BalzorAppVlan.Repository.BaseRepository;
 
 public class CompanyRepository : BaseRepository<Company>, ICompanyRepository
 {

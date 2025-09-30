@@ -9,6 +9,14 @@ public class Company : BaseEntity
 
     public bool IsVerified { get; set; }
 
+    // 🔹 Parent
+    public int? ParentCompanyId { get; set; }
+    public Company? ParentCompany { get; set; }
+
+    // 🔹 Children
+    public ICollection<Company> SubCompanies { get; set; } = new HashSet<Company>();
+
+    // 🔹 ارتباط قبلی با سوئیچ‌ها
     public ICollection<Switch> Switches { get; set; } = new HashSet<Switch>();
 }
 
@@ -25,7 +33,7 @@ public class Switch : BaseEntity
 
     // FK
     [Required]
-    public Guid CompanyId { get; set; }
+    public int CompanyId { get; set; }
     public Company Company { get; set; }
 
     public ICollection<Vlan> Vlans { get; set; } = new HashSet<Vlan>();
@@ -47,7 +55,7 @@ public class Vlan : BaseEntity
 
     // FK
     [Required]
-    public Guid SwitchId { get; set; }
+    public int SwitchId { get; set; }
     public Switch Switch { get; set; }
 
     public ICollection<DeviceInterface> DeviceInterfaces { get; set; } = new HashSet<DeviceInterface>();
@@ -66,11 +74,11 @@ public class DeviceInterface : BaseEntity
 
     // FKs
     [Required]
-    public Guid SwitchId { get; set; }
+    public int SwitchId { get; set; }
     public Switch Switch { get; set; }
 
     [Required]
-    public Guid VlanId { get; set; }
+    public int VlanId { get; set; }
     public Vlan Vlan { get; set; }
 }
 
@@ -90,10 +98,10 @@ public class Neighbor : BaseEntity
 
     // FKs
     [Required]
-    public Guid VlanId { get; set; }
+    public int VlanId { get; set; }
     public Vlan Vlan { get; set; }
 
     [Required]
-    public Guid SwitchId { get; set; }
+    public int SwitchId { get; set; }
     public Switch Switch { get; set; }
 }

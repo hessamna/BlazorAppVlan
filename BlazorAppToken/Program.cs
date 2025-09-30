@@ -46,7 +46,6 @@ builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
 // Repositories
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ISwitchRepository, SwitchRepository>();
 builder.Services.AddScoped<IVlanRepository, VlanRepository>();

@@ -1,4 +1,4 @@
-﻿@page "/admin/editswitches/{id:guid}"
+﻿@page "/admin/editswitches/{id:int}"
 @using BalzorAppVlan.Components.Pages.Shared
 @using BalzorAppVlan.Services
 @using Microsoft.AspNetCore.Authorization
@@ -26,7 +26,7 @@ else
             <h5 class="card-title">@switchEntity.Name</h5>
             <strong>IP:</strong> @switchEntity.IpInterface
             <strong>Model:</strong> @switchEntity.Model
-            <strong>Location:</strong> @company?.Name
+            <strong>Location:</strong> @GetFullCompanyName(company)
         </div>
     </div>
     <SwitchRack Switch="switchEntity"
@@ -37,15 +37,20 @@ else
     <!-- ================= VLANs ================= -->
     <h4>VLANs</h4>
     <div class="d-flex mb-2">
-        <button class="btn btn-success me-2" @onclick="() => OpenVlanDialog(new VlanViewModel { SwitchId = id })">➕ Add VLAN</button>
-   
-        <input class="form-control  w-25"
+        <AuthorizeView Roles="Admin">
+            <Authorized>
+                <button class="btn btn-success me-2" @onclick="() => OpenVlanDialog(new VlanViewModel { SwitchId = id })">➕ Add VLAN</button>
+            </Authorized>
+        </AuthorizeView>
+
+        <input class="form-control w-25"
                @bind="searchVlan"
                @bind:event="oninput"
                @bind:after="FilterVlans"
                type="text"
                placeholder="🔍 Search VLAN..." />
     </div>
+
     <PaginatedTable TItem="VlanViewModel" Items="filteredVlans" ItemsPerPage="5">
         <HeaderTemplate>
             <tr>
@@ -61,8 +66,12 @@ else
                 <td>@v.Name</td>
                 <td>@v.IpInterface</td>
                 <td>
-                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenVlanDialog(v)">Edit</button>
-                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteVlan(v.Id)">Delete</button>
+                    <AuthorizeView Roles="Admin">
+                        <Authorized>
+                            <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenVlanDialog(v)">Edit</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteVlan(v.Id.Value)">Delete</button>
+                        </Authorized>
+                    </AuthorizeView>
                 </td>
             </tr>
         </RowTemplate>
@@ -71,17 +80,23 @@ else
     <!-- ================= Device Interfaces ================= -->
     <h4 class="mt-5">Device Interfaces</h4>
     <div class="d-flex mb-2">
-        <button class="btn btn-success me-2" @onclick="() => OpenDeviceDialog(new DeviceInterfaceViewModel { SwitchId = id })">➕ Add Interface</button>
-        <button class="btn btn-warning me-2" @onclick="() => OpenRangeDialog()">➕ Add Range</button>
-        @if (!IsBulkEditing)
-        {
-            <button class="btn btn-primary me-2" @onclick="() => IsBulkEditing = true">✏️ Edit All</button>
-        }
-        else
-        {
-            <button class="btn btn-success me-2" @onclick="SaveAllDevices">💾 Save All</button>
-            <button class="btn btn-secondary" @onclick="() => CancelBulkEdit()">❌ Cancel</button>
-        }
+        <AuthorizeView Roles="Admin">
+            <Authorized>
+                <button class="btn btn-success me-2" @onclick="() => OpenDeviceDialog(new DeviceInterfaceViewModel { SwitchId = id })">➕ Add Interface</button>
+                <button class="btn btn-warning me-2" @onclick="() => OpenRangeDialog()">➕ Add Range</button>
+
+                @if (!IsBulkEditing)
+                {
+                    <button class="btn btn-primary me-2" @onclick="() => IsBulkEditing = true">✏️ Edit All</button>
+                }
+                else
+                {
+                    <button class="btn btn-success me-2" @onclick="SaveAllDevices">💾 Save All</button>
+                    <button class="btn btn-secondary me-2" @onclick="() => CancelBulkEdit()">❌ Cancel</button>
+                }
+            </Authorized>
+        </AuthorizeView>
+
         <input class="form-control  w-25"
                @bind="searchDevice"
                @bind:event="oninput"
@@ -140,11 +155,12 @@ else
                 <td>
                     @if (!IsBulkEditing)
                     {
-                        <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenDeviceDialog(d)">Edit</button>
-                        <button class="btn btn-danger btn-sm"
-                                @onclick="() => DeleteDevice(d.Id)">
-                            Delete
-                        </button>
+                        <AuthorizeView Roles="Admin">
+                            <Authorized>
+                                <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenDeviceDialog(d)">Edit</button>
+                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteDevice(d.Id.Value)">Delete</button>
+                            </Authorized>
+                        </AuthorizeView>
                     }
                 </td>
             </tr>
@@ -152,18 +168,19 @@ else
     </PaginatedTable>
 
     <!-- ================= Neighbors ================= -->
-    <h4 class="mt-5">Neighbors</h4>
     <div class="d-flex mb-2">
-        <button class="btn btn-success me-2" @onclick="() => OpenNeighborDialog(new NeighborViewModel { SwitchId = id })">➕ Add Neighbor</button>
-        <input class="form-control  w-25"
+        <AuthorizeView Roles="Admin">
+            <Authorized>
+                <button class="btn btn-success me-2" @onclick="() => OpenNeighborDialog(new NeighborViewModel { SwitchId = id })">➕ Add Neighbor</button>
+            </Authorized>
+        </AuthorizeView>
+
+        <input class="form-control w-25"
                @bind="searchNeighbor"
                @bind:event="oninput"
                @bind:after="FilterNeighbors"
                type="text"
                placeholder="🔍 Search Neighbor..." />
-        
-        
-        
     </div>
     <PaginatedTable TItem="NeighborViewModel" Items="filteredNeighbors" ItemsPerPage="10">
         <HeaderTemplate>
@@ -187,8 +204,12 @@ else
                     @vlans.FirstOrDefault(v => v.Id == n.VlanId)?.Name
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenNeighborDialog(n)">Edit</button>
-                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteNeighbor(n.Id)">Delete</button>
+                    <AuthorizeView Roles="Admin">
+                        <Authorized>
+                            <button class="btn btn-primary btn-sm me-2" @onclick="() => OpenNeighborDialog(n)">Edit</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteNeighbor(n.Id.Value)">Delete</button>
+                        </Authorized>
+                    </AuthorizeView>
                 </td>
             </tr>
         </RowTemplate>
@@ -214,7 +235,7 @@ else
 <!-- ================= VLAN Modal ================= -->
 @if (showVlanDialog)
 {
-    <Modal Title="@(selectedVlan.Id == Guid.Empty ? "Add VLAN" : "Edit VLAN")" OnClose="CloseVlanDialog">
+    <Modal Title="@(selectedVlan.Id == null ? "Add VLAN" : "Edit VLAN")" OnClose="CloseVlanDialog">
         <EditForm Model="selectedVlan" OnValidSubmit="SaveVlan">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -244,7 +265,7 @@ else
 <!-- ================= DeviceInterface Modal ================= -->
 @if (showDeviceDialog)
 {
-    <Modal Title="@(selectedDevice.Id == Guid.Empty ? "Add Device Interface" : "Edit Device Interface")" OnClose="CloseDeviceDialog">
+    <Modal Title="@(selectedDevice.Id == null ? "Add Device Interface" : "Edit Device Interface")" OnClose="CloseDeviceDialog">
         <EditForm Model="selectedDevice" OnValidSubmit="SaveDevice">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -283,7 +304,7 @@ else
 <!-- ================= Neighbor Modal ================= -->
 @if (showNeighborDialog)
 {
-    <Modal Title="@(selectedNeighbor.Id == Guid.Empty ? "Add Neighbor" : "Edit Neighbor")" OnClose="CloseNeighborDialog">
+    <Modal Title="@(selectedNeighbor.Id == null ? "Add Neighbor" : "Edit Neighbor")" OnClose="CloseNeighborDialog">
         <EditForm Model="selectedNeighbor" OnValidSubmit="SaveNeighbor">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -330,7 +351,7 @@ else
        OnClose="ClearToast" />
 
 @code {
-    [Parameter] public Guid id { get; set; }
+    [Parameter] public int id { get; set; }
 
     private SwitchViewModel? switchEntity;
     private CompanyViewModel? company;
@@ -362,10 +383,12 @@ else
         switchEntity = await SwitchService.GetByIdAsync(id);
         if (switchEntity != null)
         {
-            company = await CompanyService.GetByIdAsync(switchEntity.CompanyId);
+            allCompanies = await CompanyService.GetAllHierarchyAsync(); // 👈 همه‌ی درخت کمپانی‌ها
+            company = FindCompanyById(switchEntity.CompanyId);
             await LoadDataAsync();
         }
     }
+
 
     private async Task LoadDataAsync()
     {
@@ -441,7 +464,7 @@ else
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showVlanDialog = false; }
     }
-    private async Task DeleteVlan(Guid vid)
+    private async Task DeleteVlan(int vid)
     {
         var vlan = vlans.FirstOrDefault(v => v.Id == vid);
 
@@ -471,7 +494,7 @@ else
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showDeviceDialog = false; }
     }
-    private async Task DeleteDevice(Guid did)
+    private async Task DeleteDevice(int did)
     {
         if (await JS.InvokeAsync<bool>("confirm", "Delete Device Interface?"))
         {
@@ -490,7 +513,7 @@ else
         ShowToast(result.Success, result.Message);
         if (result.Success) { await LoadDataAsync(); showNeighborDialog = false; }
     }
-    private async Task DeleteNeighbor(Guid nid)
+    private async Task DeleteNeighbor(int nid)
     {
         if (await JS.InvokeAsync<bool>("confirm", "Delete Neighbor?"))
         {
@@ -565,4 +588,37 @@ else
         Validator.TryValidateObject(model, context, results, true);
         return results;
     }
+    private string GetFullCompanyName(CompanyViewModel? companyVm)
+    {
+        if (companyVm == null) return "";
+
+        // پیدا کردن پرنت درختی
+        var parent = FindCompanyById(companyVm.ParentCompanyId);
+        return parent != null
+            ? $"{GetFullCompanyName(parent)} → {companyVm.Name}"
+            : companyVm.Name;
+    }
+
+    // جستجو در درخت کمپانی‌ها (چون GetByIdAsync فقط لایه‌ی همون شرکت رو میده)
+    private CompanyViewModel? FindCompanyById(int? id)
+    {
+        if (id == null) return null;
+
+        CompanyViewModel? Search(List<CompanyViewModel> list, int idToFind)
+        {
+            foreach (var c in list)
+            {
+                if (c.Id == idToFind) return c;
+                var found = Search(c.SubCompanies, idToFind);
+                if (found != null) return found;
+            }
+            return null;
+        }
+
+        return Search(allCompanies, id.Value);
+    }
+
+    // همه کمپانی‌ها رو برای سرچ در درخت نگه می‌داریم
+    private List<CompanyViewModel> allCompanies = new();
+
 }
