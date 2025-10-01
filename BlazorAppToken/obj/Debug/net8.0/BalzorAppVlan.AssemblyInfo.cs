@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BalzorAppVlan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73bdbe5f8612c3e6e967fdca5c9d8ff41ed94528")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58532fb4b590f7128fbfd00a8314fbaef42e5de1")]
 [assembly: System.Reflection.AssemblyProductAttribute("BalzorAppVlan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BalzorAppVlan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

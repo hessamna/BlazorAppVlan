@@ -5279,23 +5279,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\h.nazerian\\.nuget\\packages\\": {},
+    "C:\\Users\\NoteBook\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
+      "projectUniqueName": "C:\\Users\\NoteBook\\Source\\Repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
       "projectName": "BalzorAppVlan",
-      "projectPath": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
-      "packagesPath": "C:\\Users\\h.nazerian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\obj\\",
+      "projectPath": "C:\\Users\\NoteBook\\Source\\Repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
+      "packagesPath": "C:\\Users\\NoteBook\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NoteBook\\Source\\Repos\\BlazorAppVlan\\BlazorAppToken\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\h.nazerian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NoteBook\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5303,8 +5303,9 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Users\\NoteBook\\Desktop\\dll": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5323,7 +5324,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -5381,7 +5382,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

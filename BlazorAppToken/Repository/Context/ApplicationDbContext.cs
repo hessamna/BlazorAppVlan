@@ -98,8 +98,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
                 {
                     entity.CreatedDate = now;
                     entity.CreatedBy = string.IsNullOrWhiteSpace(user) ? "System" : user;
-                    entity.CreatorIp = ip;
-                    entity.CreatorMachine = machine?.Length > 500 ? machine.Substring(0, 500) : machine;
+                    entity.CreatorIp = string.IsNullOrWhiteSpace(ip) ? "127.0.0.1" : ip;
+                    entity.CreatorMachine = string.IsNullOrWhiteSpace(machine)
+                        ? Environment.MachineName
+                        : (machine.Length > 500 ? machine.Substring(0, 500) : machine);
                 }
                 else if (entry.State == EntityState.Modified)
                 {
@@ -117,4 +119,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
 
         return await base.SaveChangesAsync(cancellationToken);
     }
+
 }
