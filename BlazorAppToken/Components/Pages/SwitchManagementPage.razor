@@ -27,7 +27,7 @@
 
 </div>
 
-<PaginatedTable TItem="SwitchViewModel" Items="filteredSwitches" ItemsPerPage="15">
+<PaginatedTable TItem="SwitchViewModel" Items="filteredSwitches.OrderByDescending(o=>o.Id).ToList()" ItemsPerPage="15">
     <HeaderTemplate>
         <tr>
             <th>Name</th>
@@ -102,7 +102,7 @@
                             <label class="form-label">Location</label>
                             <InputSelect class="form-select" @bind-Value="selectedSwitch.CompanyId">
                                 <option value="">-- Select Company --</option>
-                                @RenderCompanyOptions(companies)
+                                @RenderCompanyOptions(companies.OrderBy(o=>o.Id).ToList())
                             </InputSelect>
                             <ValidationMessage For="@(() => selectedSwitch.CompanyId)" />
                         </div>

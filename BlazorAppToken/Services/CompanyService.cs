@@ -183,7 +183,7 @@ namespace BalzorAppVlan.Services
                 entity.Name = vm.Name;
                 entity.IpInterface = vm.IpInterface;
                 entity.Model = vm.Model;
-                entity.CompanyId = vm.CompanyId;
+                entity.CompanyId = vm.CompanyId.Value;
 
                 repo.Update(entity);
                 await repo.SaveChangesAsync();
@@ -236,7 +236,7 @@ namespace BalzorAppVlan.Services
             Name = vm.Name,
             IpInterface = vm.IpInterface,
             Model = vm.Model,
-            CompanyId = vm.CompanyId
+            CompanyId = vm.CompanyId.Value
         };
     }
 
@@ -505,7 +505,7 @@ namespace BalzorAppVlan.Services
             NeighborSWName = vm.NeighborSWName,
             NeighborSWNamePortId = vm.NeighborSWNamePortId,
             SwitchId = vm.SwitchId,
-            VlanId = vm.VlanId
+            VlanId = vm.VlanId.Value
         };
     }
 }

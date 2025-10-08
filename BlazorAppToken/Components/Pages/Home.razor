@@ -35,7 +35,7 @@
                 <div class="switch-info mb-3">
                     <h4>🖥️ @selectedSwitch.Name (@selectedSwitch.Model)</h4>
                     <p><b>🌐 IP:</b> @selectedSwitch.IpInterface</p>
-                    <p><b>🏢 Location:</b> @GetFullCompanyPath(FindCompanyById(companies, selectedSwitch.CompanyId), companies)</p>
+                    <p><b>🏢 Location:</b> @GetFullCompanyPath(FindCompanyById(companies, selectedSwitch.CompanyId.Value), companies)</p>
 
                 </div>
 

@@ -3,8 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\switchmanagementpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\switchmanagementpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\services\\companyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\services\\companyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\models\\companyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\models\\companyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\models\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\models\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\support.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\support.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\systemsettings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\systemsettings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\shared\\switchrack.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\shared\\switchrack.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103431_changetoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,212 +91,176 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Migrations\\20250928124310_firstload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\CompanyService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Services\\CompanyService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\vlanmanagementpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\vlanmanagementpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\Company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\Company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\BaseEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\BaseEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\baserepository\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\baserepository\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\adminroles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\adminroles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\companies\\companyedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\companies\\companyedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\CompanyRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\CompanyRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\icompanyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\icompanyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ICompanyRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\ICompanyRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\editusercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\editusercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\createusercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\createusercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\changepasswordcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\changepasswordcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\NavMenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Layout\\NavMenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\assignrolecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\assignrolecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\admin\\users\\adminusers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\admin\\users\\adminusers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\services\\icompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\services\\icompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\migrations\\20250930110252_changetoint2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\migrations\\20250930110252_changetoint2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Support.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Support.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\migrations\\20250930104206_changetoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\migrations\\20250930104206_changetoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\systemsettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\systemsettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\systemsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\systemsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\ApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\CompanyViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Models\\CompanyViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\datas\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\datas\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\ICompanyService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Services\\ICompanyService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930104206_changetoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Migrations\\20250930104206_changetoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\SystemSettingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\SystemSettingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\shared\\paginatedtable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\shared\\paginatedtable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\SystemSetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\SystemSetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\logins\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\logins\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\AuditLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\AuditLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationRole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Datas\\ApplicationRole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\shared\\toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\shared\\toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\shared\\tablecolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\shared\\tablecolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\pages\\shared\\modal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\pages\\shared\\modal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\helper\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\helper\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\Login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Logins\\Login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\auditlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\auditlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\isystemsettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\isystemsettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\LoginLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Layout\\LoginLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\iauditlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\iauditlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Layout\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\logins\\statusmessage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\logins\\statusmessage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\repository\\context\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\repository\\context\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\services\\api\\controllers\\identitycomponentsendpointroutebuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\services\\api\\controllers\\identitycomponentsendpointroutebuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Helper\\ServiceResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Helper\\ServiceResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\AuditLogRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\AuditLogRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ISystemSettingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\ISystemSettingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\IAuditLogRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\IAuditLogRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SystemSettings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Pages\\SystemSettings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\StatusMessage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Logins\\StatusMessage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\SeedData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Repository\\Context\\SeedData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\UserViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Models\\UserViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BlazorAppToken\\Components\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|c:\\users\\h.nazerian\\source\\repos\\blazorappvlan\\blazorapptoken\\migrations\\20251008075559_newload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7430A91A-A9A4-419E-9F5F-5529A4CE3E0D}|BlazorAppToken\\BalzorAppVlan.csproj|solutionrelative:blazorapptoken\\migrations\\20251008075559_newload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -266,624 +270,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CompanyService.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\CompanyService.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\CompanyService.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\CompanyService.cs",
-              "RelativeToolTip": "BlazorAppToken\\Services\\CompanyService.cs",
-              "ViewState": "AgIAAN4BAAAAAAAAAAA4wP8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:07:01.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "VLanManagementPage.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
-              "ViewState": "AgIAAE0CAAAAAAAAAAAqwHACAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T13:54:35.139Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Company.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\Company.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\Company.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\Company.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\Company.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAkwGsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:56:46.637Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\BaseEntity.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:54:12.817Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IBaseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAIwGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:02:50.438Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAmwFUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:55:36.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AdminRoles.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T13:16:18.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CompanyEdit.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T13:05:11.447Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CompanyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\CompanyRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\CompanyRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\CompanyRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\CompanyRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:07:08.288Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ICompanyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ICompanyRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\ICompanyRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ICompanyRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\ICompanyRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:07:06.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.json",
-              "RelativeDocumentMoniker": "BlazorAppToken\\appsettings.json",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.json",
-              "RelativeToolTip": "BlazorAppToken\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-28T12:42:13.411Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 7,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.Development.json",
               "RelativeDocumentMoniker": "BlazorAppToken\\appsettings.Development.json",
               "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.Development.json",
               "RelativeToolTip": "BlazorAppToken\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-09-28T12:49:38.778Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "SwitchManagementPage.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T05:15:05.815Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T12:59:29.473Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "EditUserComponent.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T06:59:53.503Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "CreateUserComponent.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T07:00:11.18Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ChangePasswordComponent.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T07:00:12.343Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "AssignRoleComponent.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T07:00:12.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "AdminUsers.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T07:00:13.663Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Support.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Support.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Support.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Support.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Support.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T12:10:36.385Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T04:46:17.13Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Dashboard.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Dashboard.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Dashboard.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Dashboard.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Dashboard.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T04:46:21.312Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\ApplicationUser.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationUser.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:28:48.362Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "CompanyViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\CompanyViewModel.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Models\\CompanyViewModel.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\CompanyViewModel.cs",
-              "RelativeToolTip": "BlazorAppToken\\Models\\CompanyViewModel.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAmwFUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:06:50.382Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ICompanyService.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\ICompanyService.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\ICompanyService.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\ICompanyService.cs",
-              "RelativeToolTip": "BlazorAppToken\\Services\\ICompanyService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T14:28:35.979Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "20250930110252_changetoint2.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T11:02:52.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "20250930104206_changetoint.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T10:42:06.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "SystemSettingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\SystemSettingRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\SystemSettingRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\SystemSettingRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\SystemSettingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:08:05.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "SystemSetting.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\SystemSetting.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\SystemSetting.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\SystemSetting.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\SystemSetting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:54:38.71Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "AuditLog.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\AuditLog.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\AuditLog.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\AuditLog.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\AuditLog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:54:10.644Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "ApplicationRole.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationRole.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\ApplicationRole.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationRole.cs",
-              "RelativeToolTip": "BlazorAppToken\\Datas\\ApplicationRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:28:44.034Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Program.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Program.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Program.cs",
-              "RelativeToolTip": "BlazorAppToken\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAmwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:42:07.323Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20250930103431_changetoint.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T10:34:31.426Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20250930103353_changetoint.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T10:33:53.866Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "SwitchRack.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T14:35:58.482Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Profile.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Profile.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Profile.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Profile.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Profile.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T04:46:37.161Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "app.css",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\app.css",
-              "RelativeDocumentMoniker": "BlazorAppToken\\wwwroot\\app.css",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\app.css",
-              "RelativeToolTip": "BlazorAppToken\\wwwroot\\app.css",
-              "ViewState": "AgIAAOIAAAAAAAAAAAAAAPEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-09-30T04:58:07.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "PaginatedTable.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T13:54:58.371Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "Login.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\Login.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Logins\\Login.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\Login.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Logins\\Login.razor",
-              "ViewState": "AgIAABcAAAAAAAAAAAAuwDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T12:41:31.386Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "BlazorAppToken\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "BlazorAppToken\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-09-29T12:30:59.108Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "LoginLayout.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T08:44:06.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T08:44:07.824Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "Toast.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T08:14:00.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "TableColumn.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:54:52.174Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "Modal.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-29T08:14:12.559Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "ServiceResult.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Helper\\ServiceResult.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Helper\\ServiceResult.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Helper\\ServiceResult.cs",
-              "RelativeToolTip": "BlazorAppToken\\Helper\\ServiceResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:52:32.995Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "AuditLogRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\AuditLogRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\AuditLogRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\AuditLogRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\AuditLogRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:08:00.215Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "ISystemSettingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:07:27.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "IAuditLogRepository.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\IAuditLogRepository.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\IAuditLogRepository.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\IAuditLogRepository.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\IAuditLogRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T07:07:14.453Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "20250929053341_second-load-1.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T05:33:41.199Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20250929053044_second-load-6.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwDAAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T05:30:44.875Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 6,
               "Title": "SystemSettings.razor",
               "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SystemSettings.razor",
               "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\SystemSettings.razor",
@@ -895,115 +298,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "StatusMessage.razor",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
-              "RelativeToolTip": "BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABQAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T12:41:33.985Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "SeedData.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\SeedData.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\Context\\SeedData.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\SeedData.cs",
-              "RelativeToolTip": "BlazorAppToken\\Repository\\Context\\SeedData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:53:06.235Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "20250928135205_second-load-5.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwA4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:52:05.62Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20250928132936_second-load-4.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:29:36.901Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20250928132406_second-load-3.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:24:06.835Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "20250928132052_second-load-2.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:20:52.953Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20250928131836_second-load-1.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:18:36.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20250928130237_second-load.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
-              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:02:37.243Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "IdentityComponentsEndpointRouteBuilderExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
-              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
-              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
-              "RelativeToolTip": "BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "Title": "Support.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Support.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Support.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Support.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Support.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T12:58:11.366Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T12:10:36.385Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 0,
+              "Title": "SwitchManagementPage.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\SwitchManagementPage.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T05:15:05.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserViewModel.cs",
               "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\UserViewModel.cs",
               "RelativeDocumentMoniker": "BlazorAppToken\\Models\\UserViewModel.cs",
@@ -1015,7 +335,703 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CompanyViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\CompanyViewModel.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Models\\CompanyViewModel.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Models\\CompanyViewModel.cs",
+              "RelativeToolTip": "BlazorAppToken\\Models\\CompanyViewModel.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAA0wGIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:06:50.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompanyService.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\CompanyService.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\CompanyService.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\CompanyService.cs",
+              "RelativeToolTip": "BlazorAppToken\\Services\\CompanyService.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAIwO4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:07:01.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAmwCUAAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T04:46:17.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.json",
+              "RelativeDocumentMoniker": "BlazorAppToken\\appsettings.json",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\appsettings.json",
+              "RelativeToolTip": "BlazorAppToken\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-28T12:42:13.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "20251008075559_newload.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20251008075559_newload.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20251008075559_newload.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20251008075559_newload.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20251008075559_newload.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T07:55:59.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SwitchRack.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\SwitchRack.razor",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T14:35:58.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\Context\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAmwFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:55:36.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\BaseEntity.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:54:12.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CompanyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\CompanyRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\CompanyRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\CompanyRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\CompanyRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:07:08.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CompanyEdit.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Companies\\CompanyEdit.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T13:05:11.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AdminRoles.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminRoles.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T13:16:18.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IBaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\BaseRepository\\IBaseRepository.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAIwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:02:50.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Company.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\Company.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\Company.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\Company.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\Company.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAkwGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:56:46.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "VLanManagementPage.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\VLanManagementPage.razor",
+              "ViewState": "AgIAAE0CAAAAAAAAAAAqwHACAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T13:54:35.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ICompanyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ICompanyRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\ICompanyRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ICompanyRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\ICompanyRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:07:06.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T12:59:29.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "EditUserComponent.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\EditUserComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T06:59:53.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CreateUserComponent.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\CreateUserComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T07:00:11.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ChangePasswordComponent.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\ChangePasswordComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T07:00:12.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AssignRoleComponent.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AssignRoleComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T07:00:12.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "AdminUsers.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Admin\\Users\\AdminUsers.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T07:00:13.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T04:46:21.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationUser.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:28:48.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ICompanyService.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\ICompanyService.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\ICompanyService.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\ICompanyService.cs",
+              "RelativeToolTip": "BlazorAppToken\\Services\\ICompanyService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T14:28:35.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "20250930110252_changetoint2.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930110252_changetoint2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T11:02:52.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "20250930104206_changetoint.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930104206_changetoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T10:42:06.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "SystemSettingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\SystemSettingRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\SystemSettingRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\SystemSettingRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\SystemSettingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:08:05.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "SystemSetting.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\SystemSetting.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\SystemSetting.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\SystemSetting.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\SystemSetting.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:54:38.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "AuditLog.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\AuditLog.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\AuditLog.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\AuditLog.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\AuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:54:10.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Datas\\ApplicationRole.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Datas\\ApplicationRole.cs",
+              "RelativeToolTip": "BlazorAppToken\\Datas\\ApplicationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:28:44.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Program.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Program.cs",
+              "RelativeToolTip": "BlazorAppToken\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:42:07.323Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "20250930103431_changetoint.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930103431_changetoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T10:34:31.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20250930103353_changetoint.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250930103353_changetoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T10:33:53.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Profile.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Profile.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Profile.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Profile.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Profile.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T04:46:37.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "BlazorAppToken\\wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\app.css",
+              "RelativeToolTip": "BlazorAppToken\\wwwroot\\app.css",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAAAPEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-30T04:58:07.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "PaginatedTable.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\PaginatedTable.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T13:54:58.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\Login.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Logins\\Login.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\Login.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Logins\\Login.razor",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T12:41:31.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "BlazorAppToken\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "BlazorAppToken\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-29T12:30:59.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "LoginLayout.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\LoginLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T08:44:06.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T08:44:07.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Toast.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\Toast.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T08:14:00.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "TableColumn.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\TableColumn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:54:52.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Modal.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Pages\\Shared\\Modal.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T08:14:12.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "ServiceResult.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Helper\\ServiceResult.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Helper\\ServiceResult.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Helper\\ServiceResult.cs",
+              "RelativeToolTip": "BlazorAppToken\\Helper\\ServiceResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:52:32.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "AuditLogRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\AuditLogRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\AuditLogRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\AuditLogRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\AuditLogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:08:00.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "ISystemSettingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\ISystemSettingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:07:27.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "IAuditLogRepository.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\IAuditLogRepository.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\IAuditLogRepository.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\IAuditLogRepository.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\IAuditLogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:07:14.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20250929053341_second-load-1.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250929053341_second-load-1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T05:33:41.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20250929053044_second-load-6.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250929053044_second-load-6.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwDAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T05:30:44.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "StatusMessage.razor",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
+              "RelativeToolTip": "BlazorAppToken\\Components\\Logins\\StatusMessage.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABQAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-28T12:41:33.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\SeedData.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Repository\\Context\\SeedData.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Repository\\Context\\SeedData.cs",
+              "RelativeToolTip": "BlazorAppToken\\Repository\\Context\\SeedData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:53:06.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20250928135205_second-load-5.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928135205_second-load-5.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:52:05.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20250928132936_second-load-4.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132936_second-load-4.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:29:36.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20250928132406_second-load-3.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132406_second-load-3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:24:06.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20250928132052_second-load-2.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928132052_second-load-2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:20:52.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20250928131836_second-load-1.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928131836_second-load-1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:18:36.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20250928130237_second-load.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
+              "RelativeToolTip": "BlazorAppToken\\Migrations\\20250928130237_second-load.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T13:02:37.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "RelativeDocumentMoniker": "BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "ToolTip": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "RelativeToolTip": "BlazorAppToken\\Services\\API\\Controllers\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T12:58:11.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "20250928124310_firstload.cs",
               "DocumentMoniker": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\Migrations\\20250928124310_firstload.cs",
               "RelativeDocumentMoniker": "BlazorAppToken\\Migrations\\20250928124310_firstload.cs",

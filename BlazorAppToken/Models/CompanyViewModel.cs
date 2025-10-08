@@ -32,7 +32,7 @@ public class SwitchViewModel
     public string? Model { get; set; }
 
     [Required(ErrorMessage = "CompanyId is required")]
-    public int CompanyId { get; set; }
+    public int? CompanyId { get; set; }
 }
 
 public class VlanViewModel
@@ -96,7 +96,7 @@ public class NeighborViewModel
     public string NeighborSWNamePortId { get; set; }
 
     [Required(ErrorMessage = "VlanId is required")]
-    public int VlanId { get; set; }
+    public int? VlanId { get; set; }
 
     [Required(ErrorMessage = "SwitchId is required")]
     public int SwitchId { get; set; }
