@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj": {}
+    "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlanNew\\BlazorAppToken\\BalzorAppVlan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj": {
+    "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlanNew\\BlazorAppToken\\BalzorAppVlan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
+        "projectUniqueName": "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlanNew\\BlazorAppToken\\BalzorAppVlan.csproj",
         "projectName": "BalzorAppVlan",
-        "projectPath": "C:\\Users\\h.nazerian\\source\\repos\\BlazorAppVlan\\BlazorAppToken\\BalzorAppVlan.csproj",
+        "projectPath": "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlanNew\\BlazorAppToken\\BalzorAppVlan.csproj",
         "packagesPath": "C:\\Users\\h.nazerian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlan\\BlazorAppToken\\obj\\",
+        "outputPath": "C:\\Users\\h.nazerian\\Source\\Repos\\BlazorAppVlanNew\\BlazorAppToken\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

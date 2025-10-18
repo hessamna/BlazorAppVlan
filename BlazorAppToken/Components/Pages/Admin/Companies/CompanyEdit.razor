@@ -55,7 +55,11 @@
                             <InputCheckbox class="form-check-input" @bind-Value="selectedCompany.IsVerified" />
                             <label class="form-check-label">Verified</label>
                         </div>
-
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Address</label>
+                            <InputText class="form-control" @bind-Value="selectedCompany.Name" />
+                            <ValidationMessage For="@(() => selectedCompany.Name)" />
+                        </div>
                         @if (selectedCompany.ParentCompanyId != null)
                         {
                             <div class="alert alert-info">
